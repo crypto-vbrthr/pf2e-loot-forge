@@ -1,0 +1,19 @@
+<form>
+  <p>{{lf "LF.Settings.CompendiumSources.Description"}}</p>
+  <div class="lf-pack-list">
+    {{#each packs}}
+      <label class="lf-check">
+        <input type="checkbox" name="pack.{{collection}}" {{#if checked}}checked{{/if}}>
+        <strong>{{label}}</strong>
+        <span class="lf-muted">{{collection}}</span>
+      </label>
+    {{/each}}
+  </div>
+
+  <footer class="sheet-footer flexrow">
+    <button type="submit">
+      <i class="fa-solid fa-save"></i>
+      {{lf "LF.Button.Save"}}
+    </button>
+  </footer>
+</form>

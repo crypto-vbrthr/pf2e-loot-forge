@@ -1,0 +1,54 @@
+.lf-app {
+  padding: 1rem;
+}
+
+.lf-header h2 {
+  margin: 0;
+}
+
+.lf-header p,
+.lf-muted {
+  opacity: 0.75;
+}
+
+.lf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.lf-panel {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+
+.lf-result {
+  grid-column: 1 / -1;
+}
+
+.lf-pack-list {
+  max-height: 280px;
+  overflow: auto;
+  padding-right: 0.25rem;
+}
+
+.lf-check {
+  display: block;
+  margin: 0.25rem 0;
+}
+
+.lf-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pf2e-loot-forge-directory-wrapper {
+  padding: 0.25rem;
+}
+
+.pf2e-loot-forge-directory-button {
+  width: 100%;
+  margin-top: 0.25rem;
+}
