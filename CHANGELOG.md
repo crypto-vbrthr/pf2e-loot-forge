@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1
+- Fixed form state reset after generating loot
+- Rarity selection now persists after render
+- Treasure profile selection now persists after render
+- Theme, loot style, checkboxes, and item level range now use the preserved render config more consistently
+- Added selected option data for dropdown rendering
+
 ## 0.1.0
 - Added larger generated treasure libraries
 - Added paintings, statues, jewelry, beverages, curiosities, and documents as data pools

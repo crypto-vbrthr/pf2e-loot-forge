@@ -25,7 +25,10 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     this.targetActorId = options.targetActorId ?? null;
   }
 
+
   async _prepareContext() {
+    const config = this.#getRenderConfig();
+
     const enabled = new Set(game.settings.get(MODULE_ID, "enabledCompendiums") ?? []);
     const packs = CompendiumScanner.getAvailableItemPacks().map(pack => ({
       collection: pack.collection,
@@ -33,7 +36,11 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       checked: enabled.has(pack.collection)
     }));
 
-    const themes = (await ThemeManager.getThemes()).map(theme => ({ id: theme.id, name: lfLocalize(theme.name), selected: theme.id === (this.lastConfig?.theme ?? "generic") }));
+    const themes = (await ThemeManager.getThemes()).map(theme => ({
+      id: theme.id,
+      name: lfLocalize(theme.name),
+      selected: theme.id === config.theme
+    }));
 
     const actors = game.actors
       .filter(actor => actor.isOwner && ["loot", "character", "npc", "creature"].includes(actor.type))
@@ -50,25 +57,22 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
         return a.name.localeCompare(b.name);
       });
 
+    const rarityOptions = ["common", "uncommon", "rare", "unique"].map(value => ({
+      value,
+      label: lfLocalize(`LF.Rarity.${value.charAt(0).toUpperCase()}${value.slice(1)}`),
+      selected: value === config.rarity
+    }));
+
+    const treasureProfileOptions = ["poor", "standard", "rich", "boss", "hoard"].map(value => ({
+      value,
+      label: lfLocalize(`LF.Profile.${value.charAt(0).toUpperCase()}${value.slice(1).replace("hoard", "Hoard")}`),
+      selected: value === config.treasureProfile
+    }));
+
     return {
-      config: this.lastConfig ?? {
-        level: 1,
-        partySize: 4,
-        itemLevelMin: 0,
-        itemLevelMax: 2,
-        rarity: game.settings.get(MODULE_ID, "defaultRarity"),
-        treasureProfile: "standard",
-        theme: "generic",
-        environment: "generic",
-        lootTarget: "display",
-        newLootActorName: "Loot Forge Treasure",
-        lootStyle: 50,
-        includeCombatGear: false,
-        includeConsumables: true,
-        includePermanentItems: true,
-        includeValuables: true,
-        includeCuriosities: true
-      },
+      config,
+      rarityOptions,
+      treasureProfileOptions,
       packs,
       themes,
       actors,
@@ -77,6 +81,26 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     };
   }
 
+  #getRenderConfig() {
+    return foundry.utils.mergeObject({
+      level: 1,
+      partySize: 4,
+      itemLevelMin: 0,
+      itemLevelMax: 2,
+      rarity: game.settings.get(MODULE_ID, "defaultRarity"),
+      treasureProfile: "standard",
+      theme: "generic",
+      environment: "generic",
+      lootTarget: "display",
+      newLootActorName: "Loot Forge Treasure",
+      lootStyle: 50,
+      includeCombatGear: false,
+      includeConsumables: true,
+      includePermanentItems: true,
+      includeValuables: true,
+      includeCuriosities: true
+    }, this.lastConfig ?? {}, { inplace: false });
+  }
 
   _onRender(context, options) {
     super._onRender(context, options);
@@ -109,6 +133,8 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     const action = event.submitter?.dataset?.action ?? "generate";
 
     const config = LootForgeApp.#configFromFormData(data);
+    app.lastConfig = foundry.utils.deepClone(config);
+    app.targetActorId = data.targetActorId ?? null;
 
     if (action === "apply") {
       if (!app.result) {
@@ -145,7 +171,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
     config.compendiums = enabledCompendiums;
     app.result = await LootGenerator.generate(config);
-    app.lastConfig = config;
+    app.lastConfig = foundry.utils.deepClone(config);
     app.targetActorId = data.targetActorId ?? null;
     app.render({ force: true });
   }

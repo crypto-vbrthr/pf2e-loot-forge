@@ -32,21 +32,18 @@
         <div class="form-group">
           <label>{{lf "LF.Field.Rarity"}}</label>
           <select name="rarity">
-            <option value="common">{{lf "LF.Rarity.Common"}}</option>
-            <option value="uncommon">{{lf "LF.Rarity.Uncommon"}}</option>
-            <option value="rare">{{lf "LF.Rarity.Rare"}}</option>
-            <option value="unique">{{lf "LF.Rarity.Unique"}}</option>
+            {{#each rarityOptions}}
+              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
           </select>
         </div>
 
         <div class="form-group">
           <label>{{lf "LF.Field.TreasureProfile"}}</label>
           <select name="treasureProfile">
-            <option value="poor">{{lf "LF.Profile.Poor"}}</option>
-            <option value="standard" selected>{{lf "LF.Profile.Standard"}}</option>
-            <option value="rich">{{lf "LF.Profile.Rich"}}</option>
-            <option value="boss">{{lf "LF.Profile.Boss"}}</option>
-            <option value="hoard">{{lf "LF.Profile.Hoard"}}</option>
+            {{#each treasureProfileOptions}}
+              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+            {{/each}}
           </select>
         </div>
 
