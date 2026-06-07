@@ -3,28 +3,14 @@ import { lfFormat, lfLocalize } from "./localization-helper.js";
 
 export class ItemFactory {
   static createCoins(config) {
-    const multiplier = {
-      poor: 2,
-      standard: 5,
-      rich: 8,
-      boss: 12,
-      hoard: 20
-    }[config.treasureProfile] ?? 5;
-
-    return {
-      cp: 0,
-      sp: 0,
-      gp: Math.max(1, config.level * multiplier),
-      pp: 0
-    };
+    const multiplier = { poor: 2, standard: 5, rich: 8, boss: 12, hoard: 20 }[config.treasureProfile] ?? 5;
+    return { cp: 0, sp: 0, gp: Math.max(1, config.level * multiplier), pp: 0 };
   }
 
   static createCoinTreasureItems(coins = {}) {
     const items = [];
-
     for (const [denomination, amount] of Object.entries(coins)) {
       if (!amount || amount <= 0) continue;
-
       items.push({
         name: lfFormat("LF.Item.Coins.Name", {
           amount,
@@ -33,23 +19,14 @@ export class ItemFactory {
         type: "treasure",
         img: COIN_IMAGE,
         system: {
-          description: {
-            value: `<p>${lfLocalize("LF.Item.Coins.Description")}</p>`
-          },
-          price: {
-            value: {
-              [denomination]: 1
-            }
-          },
+          description: { value: `<p>${lfLocalize("LF.Item.Coins.Description")}</p>` },
+          price: { value: { [denomination]: 1 } },
           quantity: amount,
-          bulk: {
-            value: 0
-          },
+          bulk: { value: 0 },
           stackGroup: "coins"
         }
       });
     }
-
     return items;
   }
 
@@ -99,18 +76,10 @@ export class ItemFactory {
       type: "treasure",
       img: GENERATED_ITEM_IMAGE,
       system: {
-        description: {
-          value: `<p>${description}</p>`
-        },
-        price: {
-          value: {
-            gp: value
-          }
-        },
+        description: { value: `<p>${description}</p>` },
+        price: { value: { gp: value } },
         quantity: 1,
-        bulk: {
-          value: 0
-        },
+        bulk: { value: 0 },
         stackGroup: ""
       }
     };

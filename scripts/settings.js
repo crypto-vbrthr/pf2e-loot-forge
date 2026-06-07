@@ -74,7 +74,6 @@ export class LootForgeCompendiumSourcesConfig extends FormApplication {
     const enabled = Object.entries(formData)
       .filter(([key, value]) => key.startsWith("pack.") && value)
       .map(([key]) => key.replace(/^pack\./, ""));
-
     await game.settings.set(MODULE_ID, "enabledCompendiums", enabled);
   }
 }

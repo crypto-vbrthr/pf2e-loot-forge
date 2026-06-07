@@ -8,18 +8,15 @@ function getLanguage() {
 export function lfLocalize(key) {
   const foundryValue = game?.i18n?.localize?.(key);
   if (foundryValue && foundryValue !== key) return foundryValue;
-
   const lang = getLanguage();
   return LF_TRANSLATIONS[lang]?.[key] ?? LF_TRANSLATIONS.en?.[key] ?? key;
 }
 
 export function lfFormat(key, data = {}) {
   let template = lfLocalize(key);
-
   for (const [token, value] of Object.entries(data)) {
     template = template.replaceAll(`{${token}}`, value);
   }
-
   return template;
 }
 

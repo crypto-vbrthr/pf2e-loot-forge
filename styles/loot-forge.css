@@ -1,34 +1,70 @@
-.lf-app {
-  padding: 1rem;
+.lf-app { padding: 1rem; }
+.lf-header h2 { margin: 0; }
+.lf-header p, .lf-muted { opacity: 0.75; }
+
+.lf-tab-radio { display: none; }
+
+.lf-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0 1rem;
+  border-bottom: 1px solid var(--color-border-light-primary);
 }
 
-.lf-header h2 {
-  margin: 0;
+.lf-tabs label {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
-.lf-header p,
-.lf-muted {
-  opacity: 0.75;
+#lf-tab-main:checked ~ .lf-tabs label[for="lf-tab-main"],
+#lf-tab-compendiums:checked ~ .lf-tabs label[for="lf-tab-compendiums"] {
+  border-color: var(--color-border-light-primary);
+  background: rgba(255, 255, 255, 0.06);
+  opacity: 1;
 }
 
-.lf-grid {
+.lf-tab-panel { display: none; }
+
+#lf-tab-main:checked ~ .lf-main-panel,
+#lf-tab-compendiums:checked ~ .lf-compendium-panel {
+  display: block;
+}
+
+.lf-main-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  grid-template-columns: minmax(260px, 0.9fr) 1px minmax(320px, 1.1fr);
+  gap: 1rem;
+  align-items: start;
 }
 
-.lf-panel {
+.lf-column {
+  min-width: 0;
+}
+
+.lf-vertical-separator {
+  width: 1px;
+  min-height: 100%;
+  background: var(--color-border-light-primary);
+  opacity: 0.85;
+}
+
+.lf-panel,
+.lf-target-box {
   border: 1px solid var(--color-border-light-primary);
   border-radius: 6px;
   padding: 0.75rem;
 }
 
-.lf-result {
-  grid-column: 1 / -1;
+.lf-target-box {
+  margin-top: 1rem;
 }
 
 .lf-pack-list {
-  max-height: 280px;
+  max-height: 480px;
   overflow: auto;
   padding-right: 0.25rem;
 }
@@ -38,17 +74,44 @@
   margin: 0.25rem 0;
 }
 
+.lf-check-grid {
+  margin-top: 0.5rem;
+}
+
+.lf-summary {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.lf-summary p {
+  margin: 0.15rem 0;
+}
+
+.lf-preview-list {
+  margin-top: 0.25rem;
+}
+
 .lf-actions {
   margin-top: 0.75rem;
   display: flex;
   justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.pf2e-loot-forge-directory-wrapper {
-  padding: 0.25rem;
-}
+.pf2e-loot-forge-directory-wrapper { padding: 0.25rem; }
+.pf2e-loot-forge-directory-button { width: 100%; margin-top: 0.25rem; }
 
-.pf2e-loot-forge-directory-button {
-  width: 100%;
-  margin-top: 0.25rem;
+@media (max-width: 760px) {
+  .lf-main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lf-vertical-separator {
+    width: auto;
+    height: 1px;
+    min-height: 1px;
+  }
 }

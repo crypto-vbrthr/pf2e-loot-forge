@@ -8,31 +8,19 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
   static DEFAULT_OPTIONS = {
     id: "pf2e-loot-forge-app",
     tag: "form",
-    window: {
-      title: "PF2E Loot Forge",
-      icon: "fa-solid fa-gem",
-      resizable: true
-    },
-    position: {
-      width: 780,
-      height: "auto"
-    },
-    form: {
-      handler: LootForgeApp.#onSubmit,
-      submitOnChange: false,
-      closeOnSubmit: false
-    }
+    window: { title: "PF2E Loot Forge", icon: "fa-solid fa-gem", resizable: true },
+    position: { width: 820, height: "auto" },
+    form: { handler: LootForgeApp.#onSubmit, submitOnChange: false, closeOnSubmit: false }
   };
 
   static PARTS = {
-    form: {
-      template: `modules/${MODULE_ID}/templates/loot-forge-app.hbs`
-    }
+    form: { template: `modules/${MODULE_ID}/templates/loot-forge-app.hbs` }
   };
 
   constructor(options = {}) {
     super(options);
     this.result = null;
+    this.lastConfig = null;
     this.targetActorId = options.targetActorId ?? null;
   }
 
@@ -45,25 +33,42 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     }));
 
     const actors = game.actors
-      .filter(actor => actor.isOwner)
+      .filter(actor => actor.isOwner && ["loot", "character", "npc", "creature"].includes(actor.type))
       .map(actor => ({
         id: actor.id,
         name: actor.name,
+        type: actor.type,
+        typeLabel: actor.type === "loot" ? lfLocalize("LF.ActorType.Loot") : actor.type === "character" ? lfLocalize("LF.ActorType.Character") : lfLocalize("LF.ActorType.NPC"),
+        isLoot: actor.type === "loot",
         selected: actor.id === this.targetActorId
       }))
-      .sort((a, b) => a.name.localeCompare(b.name));
+      .sort((a, b) => {
+        if (a.isLoot !== b.isLoot) return a.isLoot ? -1 : 1;
+        return a.name.localeCompare(b.name);
+      });
 
     return {
-      level: 1,
-      partySize: 4,
-      itemLevelMin: 0,
-      itemLevelMax: 2,
-      rarity: game.settings.get(MODULE_ID, "defaultRarity"),
+      config: this.lastConfig ?? {
+        level: 1,
+        partySize: 4,
+        itemLevelMin: 0,
+        itemLevelMax: 2,
+        rarity: game.settings.get(MODULE_ID, "defaultRarity"),
+        treasureProfile: "standard",
+        theme: "generic",
+        environment: "generic",
+        lootTarget: "display",
+        newLootActorName: "Loot Forge Treasure",
+        includeCombatGear: false,
+        includeConsumables: true,
+        includePermanentItems: true,
+        includeValuables: true,
+        includeCuriosities: true
+      },
       packs,
       actors,
       result: this.result,
-      hasResult: Boolean(this.result),
-      canApplyToActor: Boolean(this.result)
+      hasResult: Boolean(this.result)
     };
   }
 
@@ -72,6 +77,36 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
     const app = foundry.applications.instances.get("pf2e-loot-forge-app");
     const data = formData.object;
+    const action = event.submitter?.dataset?.action ?? "generate";
+
+    const config = LootForgeApp.#configFromFormData(data);
+
+    if (action === "apply") {
+      if (!app.result) {
+        ui.notifications.warn(lfLocalize("LF.Notification.NoPreview"));
+        return;
+      }
+
+      const actor = game.actors.get(data.targetActorId);
+      if (!actor) {
+        ui.notifications.warn(lfLocalize("LF.Notification.NoActor"));
+        return;
+      }
+
+      await LootForgeAPI.addLootToActor(actor, app.result);
+      return;
+    }
+
+    if (action === "create-loot-actor") {
+      if (!app.result) {
+        ui.notifications.warn(lfLocalize("LF.Notification.NoPreview"));
+        return;
+      }
+
+      await LootForgeAPI.createLootActorWithLoot(data.newLootActorName, app.result);
+      app.render({ force: true });
+      return;
+    }
 
     const enabledCompendiums = Object.entries(data)
       .filter(([key, value]) => key.startsWith("pack.") && value)
@@ -79,7 +114,15 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
     await game.settings.set(MODULE_ID, "enabledCompendiums", enabledCompendiums);
 
-    const result = await LootGenerator.generate({
+    config.compendiums = enabledCompendiums;
+    app.result = await LootGenerator.generate(config);
+    app.lastConfig = config;
+    app.targetActorId = data.targetActorId ?? null;
+    app.render({ force: true });
+  }
+
+  static #configFromFormData(data) {
+    return {
       level: Number(data.level ?? 1),
       partySize: Number(data.partySize ?? 4),
       itemLevelMin: Number(data.itemLevelMin ?? 0),
@@ -89,23 +132,12 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       theme: data.theme ?? "generic",
       environment: data.environment ?? "generic",
       lootTarget: data.lootTarget ?? "display",
+      newLootActorName: data.newLootActorName ?? "Loot Forge Treasure",
       includeCombatGear: Boolean(data.includeCombatGear),
       includeConsumables: Boolean(data.includeConsumables),
       includePermanentItems: Boolean(data.includePermanentItems),
       includeValuables: Boolean(data.includeValuables),
-      includeCuriosities: Boolean(data.includeCuriosities),
-      compendiums: enabledCompendiums
-    });
-
-    app.result = result;
-    app.targetActorId = data.targetActorId ?? null;
-
-    if (data.lootTarget === "selectedActor") {
-      const actor = game.actors.get(app.targetActorId);
-      if (actor) await LootForgeAPI.addLootToActor(actor, result);
-      else ui.notifications.warn(lfLocalize("LF.Notification.NoActor"));
-    }
-
-    app.render({ force: true });
+      includeCuriosities: Boolean(data.includeCuriosities)
+    };
   }
 }

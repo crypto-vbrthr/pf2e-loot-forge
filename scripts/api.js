@@ -42,11 +42,20 @@ export class LootForgeAPI {
     }
 
     const created = await actor.createEmbeddedDocuments("Item", itemData);
-    ui.notifications.info(lfFormat("LF.Notification.AddedToActor", {
-      count: created.length,
-      actor: actor.name
-    }));
-
+    ui.notifications.info(lfFormat("LF.Notification.AddedToActor", { count: created.length, actor: actor.name }));
     return created;
+  }
+
+  static async createLootActorWithLoot(name, loot) {
+    const actorName = name?.trim() || "Loot Forge Treasure";
+    const actor = await Actor.create({
+      name: actorName,
+      type: "loot",
+      img: "icons/containers/chest/chest-reinforced-steel-red.webp"
+    });
+
+    await this.addLootToActor(actor, loot);
+    ui.notifications.info(lfFormat("LF.Notification.CreatedLootActor", { actor: actor.name }));
+    return actor;
   }
 }

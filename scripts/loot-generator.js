@@ -16,6 +16,7 @@ export class LootGenerator {
       pf2eItems,
       generatedItems,
       selectedRefs,
+      totalValueGp: this.#estimateTotalValueGp(coins, generatedItems),
       summary: {
         level: config.level,
         theme: config.theme,
@@ -28,7 +29,6 @@ export class LootGenerator {
 
   static #normalizeOptions(options) {
     const level = Number(options.level ?? 1);
-
     return {
       level,
       partySize: Number(options.partySize ?? 4),
@@ -51,17 +51,13 @@ export class LootGenerator {
 
   static #pickItems(items, config) {
     if (!items.length) return [];
+    const amount = { poor: 1, standard: 2, rich: 3, boss: 4, hoard: 6 }[config.treasureProfile] ?? 2;
+    return foundry.utils.deepClone(items).sort(() => Math.random() - 0.5).slice(0, amount);
+  }
 
-    const amount = {
-      poor: 1,
-      standard: 2,
-      rich: 3,
-      boss: 4,
-      hoard: 6
-    }[config.treasureProfile] ?? 2;
-
-    return foundry.utils.deepClone(items)
-      .sort(() => Math.random() - 0.5)
-      .slice(0, amount);
+  static #estimateTotalValueGp(coins, generatedItems) {
+    const coinGp = (coins.gp ?? 0) + ((coins.sp ?? 0) / 10) + ((coins.cp ?? 0) / 100) + ((coins.pp ?? 0) * 10);
+    const generatedGp = generatedItems.reduce((sum, item) => sum + Number(item.system?.price?.value?.gp ?? 0), 0);
+    return Math.round((coinGp + generatedGp) * 100) / 100;
   }
 }
