@@ -26,4 +26,8 @@ export function registerLocalizationHelpers() {
     if (Object.keys(hash).length) return lfFormat(key, hash);
     return lfLocalize(key);
   });
+
+  Handlebars.registerHelper("lfKey", function (key) {
+    return lfLocalize(key);
+  });
 }

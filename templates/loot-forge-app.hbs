@@ -27,6 +27,7 @@
         <div class="form-group"><label>{{lf "LF.Field.PartySize"}}</label><input type="number" name="partySize" value="{{config.partySize}}" min="1" max="8"></div>
         <div class="form-group"><label>{{lf "LF.Field.ItemLevelMin"}}</label><input type="number" name="itemLevelMin" value="{{config.itemLevelMin}}" min="0" max="25"></div>
         <div class="form-group"><label>{{lf "LF.Field.ItemLevelMax"}}</label><input type="number" name="itemLevelMax" value="{{config.itemLevelMax}}" min="0" max="25"></div>
+        <p class="lf-form-hint">{{lf "LF.Hint.ItemLevelAutoRange"}}</p>
 
         <div class="form-group">
           <label>{{lf "LF.Field.Rarity"}}</label>
@@ -49,8 +50,24 @@
           </select>
         </div>
 
-        <div class="form-group"><label>{{lf "LF.Field.Theme"}}</label><input type="text" name="theme" value="{{config.theme}}"></div>
+        <div class="form-group">
+          <label>{{lf "LF.Field.Theme"}}</label>
+          <select name="theme">
+            {{#each themes}}
+              <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
         <div class="form-group"><label>{{lf "LF.Field.Environment"}}</label><input type="text" name="environment" value="{{config.environment}}"></div>
+
+        <div class="form-group lf-style-control">
+          <label>{{lf "LF.Field.LootStyle"}}</label>
+          <div class="lf-style-labels">
+            <span>{{lf "LF.Style.Atmospheric"}}</span>
+            <span>{{lf "LF.Style.Practical"}}</span>
+          </div>
+          <input type="range" name="lootStyle" value="{{config.lootStyle}}" min="0" max="100" step="5">
+        </div>
 
         <div class="lf-check-grid">
           <label class="lf-check"><input type="checkbox" name="includeCombatGear" {{#if config.includeCombatGear}}checked{{/if}}> {{lf "LF.Option.IncludeCombatGear"}}</label>
@@ -68,15 +85,18 @@
 
         {{#if hasResult}}
           <div class="lf-summary">
+            <p><strong>{{lf "LF.Result.Theme"}}:</strong> {{result.summary.theme}}</p>
             <p><strong>{{lf "LF.Result.Candidates"}}:</strong> {{result.summary.candidates}}</p>
             <p><strong>{{lf "LF.Result.Coins"}}:</strong> {{result.coins.gp}} {{lf "LF.Currency.GP"}}</p>
+            <p><strong>{{lf "LF.Result.TargetBudget"}}:</strong> {{result.budget.targetGp}} {{lf "LF.Currency.GP"}}</p>
             <p><strong>{{lf "LF.Result.TotalValue"}}:</strong> {{result.totalValueGp}} {{lf "LF.Currency.GP"}}</p>
+            <p><strong>{{lf "LF.Result.BudgetDelta"}}:</strong> {{result.budgetDeltaGp}} {{lf "LF.Currency.GP"}}</p>
           </div>
 
           <h4>{{lf "LF.Result.PF2EItems"}}</h4>
           <ul class="lf-preview-list">
             {{#each result.selectedRefs}}
-              <li>{{name}} <span class="lf-muted">({{type}}, {{lf "LF.Field.Level"}} {{level}})</span></li>
+              <li>{{name}} <span class="lf-muted">({{lfKey typeLabelKey}}, {{lf "LF.Field.Level"}} {{level}})</span></li>
             {{/each}}
           </ul>
 

@@ -1,0 +1,270 @@
+[
+  {
+    "id": "generic",
+    "name": "LF.Theme.Generic",
+    "weights": {
+      "coins": 30,
+      "consumables": 20,
+      "permanent": 20,
+      "art": 10,
+      "valuables": 10,
+      "curiosities": 10
+    },
+    "tags": [
+      "generic"
+    ],
+    "monsterTraits": []
+  },
+  {
+    "id": "goblin",
+    "name": "LF.Theme.Goblin",
+    "weights": {
+      "coins": 20,
+      "weapons": 30,
+      "armor": 5,
+      "consumables": 25,
+      "art": 5,
+      "curiosities": 15
+    },
+    "tags": [
+      "goblin",
+      "junk",
+      "tribal"
+    ],
+    "monsterTraits": [
+      "goblin"
+    ]
+  },
+  {
+    "id": "bandit",
+    "name": "LF.Theme.Bandit",
+    "weights": {
+      "coins": 30,
+      "weapons": 25,
+      "armor": 10,
+      "consumables": 15,
+      "valuables": 15,
+      "documents": 5
+    },
+    "tags": [
+      "bandit",
+      "criminal",
+      "stolen"
+    ],
+    "monsterTraits": [
+      "human",
+      "humanoid"
+    ]
+  },
+  {
+    "id": "undead",
+    "name": "LF.Theme.Undead",
+    "weights": {
+      "coins": 15,
+      "weapons": 15,
+      "armor": 10,
+      "art": 15,
+      "curiosities": 25,
+      "religious": 20
+    },
+    "tags": [
+      "undead",
+      "grave",
+      "relic"
+    ],
+    "monsterTraits": [
+      "undead"
+    ]
+  },
+  {
+    "id": "cultist",
+    "name": "LF.Theme.Cultist",
+    "weights": {
+      "coins": 10,
+      "weapons": 15,
+      "consumables": 20,
+      "documents": 20,
+      "religious": 25,
+      "curiosities": 10
+    },
+    "tags": [
+      "cult",
+      "ritual",
+      "forbidden"
+    ],
+    "monsterTraits": [
+      "cultist"
+    ]
+  },
+  {
+    "id": "temple",
+    "name": "LF.Theme.Temple",
+    "weights": {
+      "coins": 10,
+      "consumables": 15,
+      "art": 20,
+      "valuables": 10,
+      "documents": 15,
+      "religious": 30
+    },
+    "tags": [
+      "temple",
+      "holy",
+      "relic"
+    ],
+    "monsterTraits": []
+  },
+  {
+    "id": "wizard",
+    "name": "LF.Theme.Wizard",
+    "weights": {
+      "coins": 10,
+      "consumables": 25,
+      "permanent": 20,
+      "documents": 20,
+      "curiosities": 10,
+      "magic": 15
+    },
+    "tags": [
+      "wizard",
+      "arcane",
+      "study"
+    ],
+    "monsterTraits": [
+      "wizard",
+      "spellcaster"
+    ]
+  },
+  {
+    "id": "noble",
+    "name": "LF.Theme.Noble",
+    "weights": {
+      "coins": 25,
+      "art": 25,
+      "valuables": 30,
+      "documents": 10,
+      "curiosities": 10
+    },
+    "tags": [
+      "noble",
+      "luxury",
+      "estate"
+    ],
+    "monsterTraits": []
+  },
+  {
+    "id": "military",
+    "name": "LF.Theme.Military",
+    "weights": {
+      "coins": 15,
+      "weapons": 35,
+      "armor": 25,
+      "consumables": 10,
+      "documents": 10,
+      "curiosities": 5
+    },
+    "tags": [
+      "military",
+      "soldier",
+      "war"
+    ],
+    "monsterTraits": [
+      "soldier"
+    ]
+  },
+  {
+    "id": "dwarf-ruin",
+    "name": "LF.Theme.DwarfRuin",
+    "weights": {
+      "coins": 20,
+      "weapons": 20,
+      "armor": 15,
+      "art": 15,
+      "valuables": 20,
+      "curiosities": 10
+    },
+    "tags": [
+      "dwarf",
+      "ruin",
+      "craft"
+    ],
+    "monsterTraits": [
+      "dwarf"
+    ]
+  },
+  {
+    "id": "elf-ruin",
+    "name": "LF.Theme.ElfRuin",
+    "weights": {
+      "coins": 10,
+      "weapons": 10,
+      "permanent": 20,
+      "art": 25,
+      "documents": 15,
+      "curiosities": 20
+    },
+    "tags": [
+      "elf",
+      "ruin",
+      "ancient"
+    ],
+    "monsterTraits": [
+      "elf"
+    ]
+  },
+  {
+    "id": "dragon-hoard",
+    "name": "LF.Theme.DragonHoard",
+    "weights": {
+      "coins": 40,
+      "art": 20,
+      "valuables": 25,
+      "permanent": 10,
+      "curiosities": 5
+    },
+    "tags": [
+      "dragon",
+      "hoard",
+      "treasure"
+    ],
+    "monsterTraits": [
+      "dragon"
+    ]
+  },
+  {
+    "id": "pirate",
+    "name": "LF.Theme.Pirate",
+    "weights": {
+      "coins": 30,
+      "weapons": 20,
+      "consumables": 15,
+      "valuables": 20,
+      "documents": 10,
+      "curiosities": 5
+    },
+    "tags": [
+      "pirate",
+      "sea",
+      "stolen"
+    ],
+    "monsterTraits": []
+  },
+  {
+    "id": "alchemist",
+    "name": "LF.Theme.Alchemist",
+    "weights": {
+      "coins": 10,
+      "consumables": 40,
+      "alchemy": 30,
+      "documents": 10,
+      "curiosities": 10
+    },
+    "tags": [
+      "alchemy",
+      "laboratory"
+    ],
+    "monsterTraits": [
+      "alchemist"
+    ]
+  }
+]

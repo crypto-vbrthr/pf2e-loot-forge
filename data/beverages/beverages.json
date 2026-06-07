@@ -1,0 +1,76 @@
+[
+  {
+    "id": "lavabrand",
+    "theme": [
+      "dwarf-ruin",
+      "generic"
+    ],
+    "name": "LF.Beverage.Lavabrand",
+    "origin": "LF.Origin.DongunHold",
+    "valueWeight": 1.1
+  },
+  {
+    "id": "mushroom_liquor",
+    "theme": [
+      "goblin"
+    ],
+    "name": "LF.Beverage.MushroomLiquor",
+    "origin": "LF.Origin.GoblinStill",
+    "valueWeight": 0.3
+  },
+  {
+    "id": "sunwine",
+    "theme": [
+      "noble"
+    ],
+    "name": "LF.Beverage.Sunwine",
+    "origin": "LF.Origin.Cheliax",
+    "valueWeight": 1.4
+  },
+  {
+    "id": "salt_rum",
+    "theme": [
+      "pirate"
+    ],
+    "name": "LF.Beverage.SaltRum",
+    "origin": "LF.Origin.Shackles",
+    "valueWeight": 0.9
+  },
+  {
+    "id": "monastery_cordial",
+    "theme": [
+      "temple"
+    ],
+    "name": "LF.Beverage.MonasteryCordial",
+    "origin": "LF.Origin.OldMonastery",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "blue_reagent",
+    "theme": [
+      "alchemist"
+    ],
+    "name": "LF.Beverage.BlueReagent",
+    "origin": "LF.Origin.AlchemyGuild",
+    "valueWeight": 1.2
+  },
+  {
+    "id": "funeral_wine",
+    "theme": [
+      "undead"
+    ],
+    "name": "LF.Beverage.FuneralWine",
+    "origin": "LF.Origin.ForgottenCrypt",
+    "valueWeight": 0.8
+  },
+  {
+    "id": "star_absinthe",
+    "theme": [
+      "wizard",
+      "cultist"
+    ],
+    "name": "LF.Beverage.StarAbsinthe",
+    "origin": "LF.Origin.ArcaneSalon",
+    "valueWeight": 1.5
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "burned_letter",
+    "theme": [
+      "generic",
+      "bandit"
+    ],
+    "name": "LF.Document.BurnedLetter.Name",
+    "description": "LF.Document.BurnedLetter.Description",
+    "valueWeight": 0.1
+  },
+  {
+    "id": "debt_note",
+    "theme": [
+      "bandit",
+      "noble"
+    ],
+    "name": "LF.Document.DebtNote.Name",
+    "description": "LF.Document.DebtNote.Description",
+    "valueWeight": 0.2
+  },
+  {
+    "id": "temple_inventory",
+    "theme": [
+      "temple"
+    ],
+    "name": "LF.Document.TempleInventory.Name",
+    "description": "LF.Document.TempleInventory.Description",
+    "valueWeight": 0.2
+  },
+  {
+    "id": "ritual_fragment",
+    "theme": [
+      "cultist"
+    ],
+    "name": "LF.Document.RitualFragment.Name",
+    "description": "LF.Document.RitualFragment.Description",
+    "valueWeight": 0.3
+  },
+  {
+    "id": "captain_log",
+    "theme": [
+      "pirate"
+    ],
+    "name": "LF.Document.CaptainLog.Name",
+    "description": "LF.Document.CaptainLog.Description",
+    "valueWeight": 0.3
+  },
+  {
+    "id": "lab_notes",
+    "theme": [
+      "alchemist"
+    ],
+    "name": "LF.Document.LabNotes.Name",
+    "description": "LF.Document.LabNotes.Description",
+    "valueWeight": 0.2
+  },
+  {
+    "id": "old_orders",
+    "theme": [
+      "military"
+    ],
+    "name": "LF.Document.OldOrders.Name",
+    "description": "LF.Document.OldOrders.Description",
+    "valueWeight": 0.2
+  },
+  {
+    "id": "genealogy",
+    "theme": [
+      "noble",
+      "undead"
+    ],
+    "name": "LF.Document.Genealogy.Name",
+    "description": "LF.Document.Genealogy.Description",
+    "valueWeight": 0.4
+  }
+]

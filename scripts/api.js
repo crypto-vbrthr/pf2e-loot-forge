@@ -1,6 +1,7 @@
 import { LootGenerator } from "./loot-generator.js";
 import { ItemFactory } from "./item-factory.js";
 import { lfFormat, lfLocalize } from "./localization-helper.js";
+import { ThemeManager } from "./theme-manager.js";
 
 export class LootForgeAPI {
   static async generateLoot(options = {}) {
@@ -8,20 +9,45 @@ export class LootForgeAPI {
   }
 
   static async generateLootForCreature(creatureData = {}) {
+    const themeProfile = await ThemeManager.inferThemeFromCreature(creatureData);
+
     return LootGenerator.generate({
       level: creatureData.level ?? 1,
       creatureTraits: creatureData.traits ?? [],
       creatureRole: creatureData.role ?? "standard",
-      theme: creatureData.theme ?? "generic",
+      theme: themeProfile.id,
+      themeProfile,
       environment: creatureData.environment ?? "generic",
       lootType: "creature",
       treasureProfile: creatureData.treasureProfile ?? "standard",
-      includeCombatGear: creatureData.includeCombatGear ?? false,
-      includeConsumables: true,
-      includePermanentItems: true,
-      includeValuables: true,
-      includeCuriosities: true
+      includeCombatGear: creatureData.includeCombatGear ?? true,
+      includeConsumables: creatureData.includeConsumables ?? true,
+      includePermanentItems: creatureData.includePermanentItems ?? true,
+      includeValuables: creatureData.includeValuables ?? true,
+      includeCuriosities: creatureData.includeCuriosities ?? true,
+      compendiums: creatureData.compendiums
     });
+  }
+
+  static async generateInventoryForCreature(creatureData = {}) {
+    const loot = await this.generateLootForCreature({
+      ...creatureData,
+      includeCombatGear: creatureData.includeCombatGear ?? true,
+      includeValuables: creatureData.includeValuables ?? false,
+      includeCuriosities: creatureData.includeCuriosities ?? false,
+      treasureProfile: creatureData.treasureProfile ?? "standard",
+      lootStyle: creatureData.lootStyle ?? 85
+    });
+
+    return {
+      combatGear: loot.pf2eItems ?? [],
+      consumables: (loot.pf2eItems ?? []).filter(item => item.type === "consumable"),
+      treasure: loot.generatedItems ?? [],
+      documents: [],
+      curiosities: [],
+      coins: loot.coins ?? {},
+      raw: loot
+    };
   }
 
   static async addLootToActor(actor, loot) {

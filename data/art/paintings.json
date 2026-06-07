@@ -1,7 +1,129 @@
 [
   {
     "id": "dragon_volcano",
-    "template": "LF.Template.Art.Painting.Scene",
-    "valueMultiplier": 10
+    "theme": [
+      "generic",
+      "dragon-hoard"
+    ],
+    "subject": "LF.Art.Subject.Dragon",
+    "background": "LF.Art.Background.Volcano",
+    "condition": "LF.Art.Condition.SootStained",
+    "valueWeight": 1.3
+  },
+  {
+    "id": "dwarf_king",
+    "theme": [
+      "dwarf-ruin",
+      "noble"
+    ],
+    "subject": "LF.Art.Subject.DwarfKing",
+    "background": "LF.Art.Background.MountainFortress",
+    "condition": "LF.Art.Condition.Faded",
+    "valueWeight": 1.1
+  },
+  {
+    "id": "elven_queen",
+    "theme": [
+      "elf-ruin",
+      "noble"
+    ],
+    "subject": "LF.Art.Subject.ElvenQueen",
+    "background": "LF.Art.Background.MoonlitGarden",
+    "condition": "LF.Art.Condition.Pristine",
+    "valueWeight": 1.4
+  },
+  {
+    "id": "sea_battle",
+    "theme": [
+      "pirate",
+      "military"
+    ],
+    "subject": "LF.Art.Subject.SeaBattle",
+    "background": "LF.Art.Background.StormSea",
+    "condition": "LF.Art.Condition.WaterStained",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "saint",
+    "theme": [
+      "temple"
+    ],
+    "subject": "LF.Art.Subject.Saint",
+    "background": "LF.Art.Background.GoldenHalo",
+    "condition": "LF.Art.Condition.CandleSmoke",
+    "valueWeight": 1.2
+  },
+  {
+    "id": "forgotten_city",
+    "theme": [
+      "wizard",
+      "elf-ruin"
+    ],
+    "subject": "LF.Art.Subject.ForgottenCity",
+    "background": "LF.Art.Background.StarrySky",
+    "condition": "LF.Art.Condition.Cracked",
+    "valueWeight": 1.1
+  },
+  {
+    "id": "noble_family",
+    "theme": [
+      "noble"
+    ],
+    "subject": "LF.Art.Subject.NobleFamily",
+    "background": "LF.Art.Background.MarbleHall",
+    "condition": "LF.Art.Condition.Pristine",
+    "valueWeight": 1.5
+  },
+  {
+    "id": "battlefield",
+    "theme": [
+      "military",
+      "undead"
+    ],
+    "subject": "LF.Art.Subject.Battlefield",
+    "background": "LF.Art.Background.RedSunset",
+    "condition": "LF.Art.Condition.Torn",
+    "valueWeight": 0.9
+  },
+  {
+    "id": "alchemist",
+    "theme": [
+      "alchemist"
+    ],
+    "subject": "LF.Art.Subject.Alchemist",
+    "background": "LF.Art.Background.Laboratory",
+    "condition": "LF.Art.Condition.AcidSpotted",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "masked_ball",
+    "theme": [
+      "noble",
+      "cultist"
+    ],
+    "subject": "LF.Art.Subject.MaskedBall",
+    "background": "LF.Art.Background.DarkHall",
+    "condition": "LF.Art.Condition.Faded",
+    "valueWeight": 1.2
+  },
+  {
+    "id": "goblin_feast",
+    "theme": [
+      "goblin"
+    ],
+    "subject": "LF.Art.Subject.GoblinFeast",
+    "background": "LF.Art.Background.CaveFire",
+    "condition": "LF.Art.Condition.Greasy",
+    "valueWeight": 0.4
+  },
+  {
+    "id": "necropolis",
+    "theme": [
+      "undead"
+    ],
+    "subject": "LF.Art.Subject.Necropolis",
+    "background": "LF.Art.Background.BlackMoon",
+    "condition": "LF.Art.Condition.Dusty",
+    "valueWeight": 1.0
   }
 ]

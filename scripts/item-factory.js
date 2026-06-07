@@ -1,10 +1,14 @@
 import { COIN_IMAGE, GENERATED_ITEM_IMAGE } from "./constants.js";
+import { GeneratedLibrary } from "./generated-library.js";
 import { lfFormat, lfLocalize } from "./localization-helper.js";
 
 export class ItemFactory {
   static createCoins(config) {
-    const multiplier = { poor: 2, standard: 5, rich: 8, boss: 12, hoard: 20 }[config.treasureProfile] ?? 5;
-    return { cp: 0, sp: 0, gp: Math.max(1, config.level * multiplier), pp: 0 };
+    const budget = Number(config.budgetSplit?.coins ?? 0);
+    const fallback = Math.max(1, config.level * 5);
+    const gp = Math.max(0, Math.round(budget || fallback));
+
+    return { cp: 0, sp: 0, gp, pp: 0 };
   }
 
   static createCoinTreasureItems(coins = {}) {
@@ -32,42 +36,103 @@ export class ItemFactory {
 
   static async createGeneratedValuables(config) {
     const items = [];
+    const themeId = config.themeProfile?.id ?? "generic";
+    const library = await GeneratedLibrary.loadAll();
 
     if (config.includeValuables) {
-      items.push(this.#createTreasureItem({
-        name: lfFormat("LF.Template.Art.Painting.Scene.Name", {
-          subject: lfLocalize("LF.Subject.Dragon"),
-          background: lfLocalize("LF.Background.Volcano")
-        }),
-        description: lfFormat("LF.Template.Art.Painting.Scene.Description", {
-          subject: lfLocalize("LF.Subject.Dragon"),
-          background: lfLocalize("LF.Background.Volcano"),
-          condition: lfLocalize("LF.Condition.SootStained")
-        }),
-        value: Math.max(5, config.level * 10)
-      }));
+      const valueBudget = Number(config.budgetSplit?.art ?? 0) + Number(config.budgetSplit?.valuables ?? 0) + Number(config.budgetSplit?.religious ?? 0);
+      const valuableCount = this.#countForStyle(config, "valuable");
+      const pools = [library.paintings, library.statues, library.jewelry, library.beverages];
 
-      items.push(this.#createTreasureItem({
-        name: lfFormat("LF.Template.Valuable.Beverage.Name", {
-          beverage: lfLocalize("LF.Beverage.Lavabrand")
-        }),
-        description: lfFormat("LF.Template.Valuable.Beverage.Description", {
-          beverage: lfLocalize("LF.Beverage.Lavabrand"),
-          origin: lfLocalize("LF.Origin.DongunHold")
-        }),
-        value: Math.max(3, config.level * 6)
-      }));
+      for (let i = 0; i < valuableCount; i++) {
+        const pool = GeneratedLibrary.filterByTheme(pools[i % pools.length], themeId);
+        const entry = GeneratedLibrary.random(pool);
+        const item = this.#entryToTreasure(entry, config, valueBudget / valuableCount, "valuable");
+        if (item) items.push(item);
+      }
     }
 
     if (config.includeCuriosities) {
-      items.push(this.#createTreasureItem({
-        name: lfLocalize("LF.Curiosity.FogBottle.Name"),
-        description: lfLocalize("LF.Curiosity.FogBottle.Description"),
-        value: Math.max(1, config.level * 3)
-      }));
+      const curiosityBudget = Number(config.budgetSplit?.curiosities ?? 0) + Number(config.budgetSplit?.documents ?? 0);
+      const curiosityCount = this.#countForStyle(config, "curiosity");
+      const pools = [library.curiosities, library.documents];
+
+      for (let i = 0; i < curiosityCount; i++) {
+        const pool = GeneratedLibrary.filterByTheme(pools[i % pools.length], themeId);
+        const entry = GeneratedLibrary.random(pool);
+        const item = this.#entryToTreasure(entry, config, curiosityBudget / curiosityCount, "curiosity");
+        if (item) items.push(item);
+      }
     }
 
-    return items;
+    return items.filter(Boolean);
+  }
+
+  static #countForStyle(config, kind) {
+    const style = Number(config.lootStyle ?? 50);
+
+    if (kind === "valuable") {
+      if (style <= 25) return 3;
+      if (style <= 60) return 2;
+      return 1;
+    }
+
+    if (style <= 25) return 3;
+    if (style <= 60) return 2;
+    return 1;
+  }
+
+  static #entryToTreasure(entry, config, budget, kind) {
+    if (!entry) return null;
+
+    const value = Math.max(kind === "curiosity" ? 0 : 1, Math.round((budget || config.level * 3) * Number(entry.valueWeight ?? 1)));
+
+    let name = "";
+    let description = "";
+
+    if (entry.subject && entry.background && entry.condition) {
+      name = lfFormat("LF.Template.Art.Painting.Scene.Name", {
+        subject: lfLocalize(entry.subject),
+        background: lfLocalize(entry.background)
+      });
+      description = lfFormat("LF.Template.Art.Painting.Scene.Description", {
+        subject: lfLocalize(entry.subject),
+        background: lfLocalize(entry.background),
+        condition: lfLocalize(entry.condition)
+      });
+    } else if (entry.material && entry.subject) {
+      name = lfFormat("LF.Template.Art.Statue.Name", {
+        material: lfLocalize(entry.material),
+        subject: lfLocalize(entry.subject)
+      });
+      description = lfFormat("LF.Template.Art.Statue.Description", {
+        material: lfLocalize(entry.material),
+        subject: lfLocalize(entry.subject)
+      });
+    } else if (entry.kind && entry.detail) {
+      name = lfFormat("LF.Template.Art.Jewelry.Name", {
+        kind: lfLocalize(entry.kind)
+      });
+      description = lfFormat("LF.Template.Art.Jewelry.Description", {
+        kind: lfLocalize(entry.kind),
+        detail: lfLocalize(entry.detail)
+      });
+    } else if (entry.name && entry.origin) {
+      name = lfFormat("LF.Template.Valuable.Beverage.Name", {
+        beverage: lfLocalize(entry.name)
+      });
+      description = lfFormat("LF.Template.Valuable.Beverage.Description", {
+        beverage: lfLocalize(entry.name),
+        origin: lfLocalize(entry.origin)
+      });
+    } else if (entry.name && entry.description) {
+      name = lfLocalize(entry.name);
+      description = lfLocalize(entry.description);
+    }
+
+    if (!name) return null;
+
+    return this.#createTreasureItem({ name, description, value });
   }
 
   static #createTreasureItem({ name, description, value }) {

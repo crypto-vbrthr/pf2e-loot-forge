@@ -115,3 +115,16 @@
     min-height: 1px;
   }
 }
+
+.lf-form-hint { margin: -0.25rem 0 0.5rem; font-size: 0.85em; opacity: 0.72; }
+
+.lf-style-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  opacity: 0.78;
+}
+
+.lf-style-control input[type="range"] {
+  width: 100%;
+}

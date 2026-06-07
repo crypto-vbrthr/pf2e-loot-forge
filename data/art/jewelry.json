@@ -1,1 +1,77 @@
-[]
+[
+  {
+    "id": "tarnished_ring",
+    "theme": [
+      "undead"
+    ],
+    "kind": "LF.Jewelry.Kind.Ring",
+    "detail": "LF.Jewelry.Detail.FadedInitials",
+    "valueWeight": 0.9
+  },
+  {
+    "id": "ruby_brooch",
+    "theme": [
+      "noble",
+      "dragon-hoard"
+    ],
+    "kind": "LF.Jewelry.Kind.Brooch",
+    "detail": "LF.Jewelry.Detail.RubyEye",
+    "valueWeight": 1.6
+  },
+  {
+    "id": "silver_chain",
+    "theme": [
+      "temple",
+      "generic"
+    ],
+    "kind": "LF.Jewelry.Kind.Chain",
+    "detail": "LF.Jewelry.Detail.HolyCharm",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "pirate_earring",
+    "theme": [
+      "pirate"
+    ],
+    "kind": "LF.Jewelry.Kind.Earring",
+    "detail": "LF.Jewelry.Detail.TinyAnchor",
+    "valueWeight": 0.8
+  },
+  {
+    "id": "goblin_button",
+    "theme": [
+      "goblin"
+    ],
+    "kind": "LF.Jewelry.Kind.Button",
+    "detail": "LF.Jewelry.Detail.ShinyButWorthless",
+    "valueWeight": 0.2
+  },
+  {
+    "id": "moonstone_diadem",
+    "theme": [
+      "elf-ruin",
+      "noble"
+    ],
+    "kind": "LF.Jewelry.Kind.Diadem",
+    "detail": "LF.Jewelry.Detail.Moonstones",
+    "valueWeight": 1.8
+  },
+  {
+    "id": "iron_medal",
+    "theme": [
+      "military"
+    ],
+    "kind": "LF.Jewelry.Kind.Medal",
+    "detail": "LF.Jewelry.Detail.OldCampaign",
+    "valueWeight": 0.7
+  },
+  {
+    "id": "copper_cult_ring",
+    "theme": [
+      "cultist"
+    ],
+    "kind": "LF.Jewelry.Kind.Ring",
+    "detail": "LF.Jewelry.Detail.HiddenSigil",
+    "valueWeight": 0.6
+  }
+]

@@ -1,6 +1,140 @@
 [
   {
     "id": "fog_bottle",
-    "name": "LF.Curiosity.FogBottle.Name"
+    "theme": [
+      "generic",
+      "wizard"
+    ],
+    "name": "LF.Curiosity.FogBottle.Name",
+    "description": "LF.Curiosity.FogBottle.Description",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "chewed_doll_leg",
+    "theme": [
+      "goblin"
+    ],
+    "name": "LF.Themed.Goblin.Curiosity.Name",
+    "description": "LF.Themed.Goblin.Curiosity.Description",
+    "valueWeight": 0.2
+  },
+  {
+    "id": "grave_relief",
+    "theme": [
+      "undead"
+    ],
+    "name": "LF.Themed.Undead.Curiosity.Name",
+    "description": "LF.Themed.Undead.Curiosity.Description",
+    "valueWeight": 0.8
+  },
+  {
+    "id": "ritual_diagram",
+    "theme": [
+      "cultist"
+    ],
+    "name": "LF.Themed.Cultist.Curiosity.Name",
+    "description": "LF.Themed.Cultist.Curiosity.Description",
+    "valueWeight": 0.7
+  },
+  {
+    "id": "self_correcting_note",
+    "theme": [
+      "wizard"
+    ],
+    "name": "LF.Themed.Wizard.Curiosity.Name",
+    "description": "LF.Themed.Wizard.Curiosity.Description",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "salt_compass",
+    "theme": [
+      "pirate"
+    ],
+    "name": "LF.Themed.Pirate.Curiosity.Name",
+    "description": "LF.Themed.Pirate.Curiosity.Description",
+    "valueWeight": 0.9
+  },
+  {
+    "id": "prayer_beads",
+    "theme": [
+      "temple"
+    ],
+    "name": "LF.Themed.Temple.Curiosity.Name",
+    "description": "LF.Themed.Temple.Curiosity.Description",
+    "valueWeight": 0.8
+  },
+  {
+    "id": "tiny_anvil",
+    "theme": [
+      "dwarf-ruin"
+    ],
+    "name": "LF.Curiosity.TinyAnvil.Name",
+    "description": "LF.Curiosity.TinyAnvil.Description",
+    "valueWeight": 0.7
+  },
+  {
+    "id": "leaf_key",
+    "theme": [
+      "elf-ruin"
+    ],
+    "name": "LF.Curiosity.LeafKey.Name",
+    "description": "LF.Curiosity.LeafKey.Description",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "black_candle",
+    "theme": [
+      "cultist",
+      "undead"
+    ],
+    "name": "LF.Curiosity.BlackCandle.Name",
+    "description": "LF.Curiosity.BlackCandle.Description",
+    "valueWeight": 0.6
+  },
+  {
+    "id": "brass_beetle",
+    "theme": [
+      "alchemist",
+      "wizard"
+    ],
+    "name": "LF.Curiosity.BrassBeetle.Name",
+    "description": "LF.Curiosity.BrassBeetle.Description",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "dragon_scale_box",
+    "theme": [
+      "dragon-hoard"
+    ],
+    "name": "LF.Curiosity.ScaleBox.Name",
+    "description": "LF.Curiosity.ScaleBox.Description",
+    "valueWeight": 1.5
+  },
+  {
+    "id": "soldier_dice",
+    "theme": [
+      "military"
+    ],
+    "name": "LF.Curiosity.SoldierDice.Name",
+    "description": "LF.Curiosity.SoldierDice.Description",
+    "valueWeight": 0.5
+  },
+  {
+    "id": "perfume_vial",
+    "theme": [
+      "noble"
+    ],
+    "name": "LF.Curiosity.PerfumeVial.Name",
+    "description": "LF.Curiosity.PerfumeVial.Description",
+    "valueWeight": 1.1
+  },
+  {
+    "id": "shark_tooth_map",
+    "theme": [
+      "pirate"
+    ],
+    "name": "LF.Curiosity.SharkToothMap.Name",
+    "description": "LF.Curiosity.SharkToothMap.Description",
+    "valueWeight": 0.9
   }
 ]

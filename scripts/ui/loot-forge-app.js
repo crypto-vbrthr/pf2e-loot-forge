@@ -3,6 +3,7 @@ import { LootGenerator } from "../loot-generator.js";
 import { LootForgeAPI } from "../api.js";
 import { CompendiumScanner } from "../compendium-scanner.js";
 import { lfLocalize } from "../localization-helper.js";
+import { ThemeManager } from "../theme-manager.js";
 
 export class LootForgeApp extends foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   static DEFAULT_OPTIONS = {
@@ -32,6 +33,8 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       checked: enabled.has(pack.collection)
     }));
 
+    const themes = (await ThemeManager.getThemes()).map(theme => ({ id: theme.id, name: lfLocalize(theme.name), selected: theme.id === (this.lastConfig?.theme ?? "generic") }));
+
     const actors = game.actors
       .filter(actor => actor.isOwner && ["loot", "character", "npc", "creature"].includes(actor.type))
       .map(actor => ({
@@ -59,6 +62,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
         environment: "generic",
         lootTarget: "display",
         newLootActorName: "Loot Forge Treasure",
+        lootStyle: 50,
         includeCombatGear: false,
         includeConsumables: true,
         includePermanentItems: true,
@@ -66,10 +70,35 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
         includeCuriosities: true
       },
       packs,
+      themes,
       actors,
       result: this.result,
       hasResult: Boolean(this.result)
     };
+  }
+
+
+  _onRender(context, options) {
+    super._onRender(context, options);
+
+    const element = this.element;
+    const levelInput = element.querySelector('input[name="level"]');
+    const minInput = element.querySelector('input[name="itemLevelMin"]');
+    const maxInput = element.querySelector('input[name="itemLevelMax"]');
+
+    if (!levelInput || !minInput || !maxInput) return;
+
+    const updateRange = () => {
+      const level = Number(levelInput.value ?? 1);
+      const min = Math.max(0, level - 2);
+      const max = Math.max(0, level + 1);
+
+      minInput.value = String(min);
+      maxInput.value = String(max);
+    };
+
+    levelInput.addEventListener("change", updateRange);
+    levelInput.addEventListener("input", updateRange);
   }
 
   static async #onSubmit(event, form, formData) {
@@ -133,6 +162,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       environment: data.environment ?? "generic",
       lootTarget: data.lootTarget ?? "display",
       newLootActorName: data.newLootActorName ?? "Loot Forge Treasure",
+      lootStyle: Number(data.lootStyle ?? 50),
       includeCombatGear: Boolean(data.includeCombatGear),
       includeConsumables: Boolean(data.includeConsumables),
       includePermanentItems: Boolean(data.includePermanentItems),

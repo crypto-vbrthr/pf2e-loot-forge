@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.1.0
+- Added larger generated treasure libraries
+- Added paintings, statues, jewelry, beverages, curiosities, and documents as data pools
+- Added atmospheric/practical loot style slider
+- Loot style now shifts budget toward PF2E items or generated treasures
+- Generated treasures are now selected from external JSON data
+- Added `GeneratedLibrary`
+- Stabilized `generateInventoryForCreature()` return structure for Monster Forge
+
+## 0.0.9
+- Item level range now automatically updates when the level field changes
+- Default range is level -2 through level +1
+- Added localized item type labels in preview
+- `consumable` now displays as `Verbrauchsgegenstand` in German
+- Added dynamic localization helper `lfKey`
+
+## 0.0.8
+- Added treasure budget foundation by level, party size, and treasure profile
+- Added budget split by theme weights
+- Coin generation now follows the theme budget split
+- Generated valuables and curiosities now use budget categories
+- PF2E item selection now tries to stay near item budget
+- Preview now shows target budget, estimated total value, and delta
+- Added `TreasureBudget` helper and data table
+
+## 0.0.7
+- Added theme profile system
+- Added weighted loot categories per theme
+- Added localized theme dropdown
+- Added first 14 loot themes
+- Added themed valuables and curiosities
+- Added `ThemeManager` for theme loading and creature-trait inference
+- Added `generateInventoryForCreature(creatureData)` API method for Monster Forge
+- Improved `generateLootForCreature(creatureData)` to infer themes from traits
+
 ## 0.0.6
 - Reworked UI into tabbed layout
 - Moved compendium selection into its own tab

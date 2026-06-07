@@ -1,1 +1,79 @@
-[]
+[
+  {
+    "id": "silver_saint",
+    "theme": [
+      "temple"
+    ],
+    "material": "LF.Material.Silver",
+    "subject": "LF.Statue.Subject.Saint",
+    "valueWeight": 1.5
+  },
+  {
+    "id": "bronze_general",
+    "theme": [
+      "military",
+      "noble"
+    ],
+    "material": "LF.Material.Bronze",
+    "subject": "LF.Statue.Subject.General",
+    "valueWeight": 1.1
+  },
+  {
+    "id": "obsidian_dragon",
+    "theme": [
+      "dragon-hoard"
+    ],
+    "material": "LF.Material.Obsidian",
+    "subject": "LF.Statue.Subject.Dragon",
+    "valueWeight": 1.6
+  },
+  {
+    "id": "bone_idol",
+    "theme": [
+      "goblin",
+      "cultist",
+      "undead"
+    ],
+    "material": "LF.Material.Bone",
+    "subject": "LF.Statue.Subject.Idol",
+    "valueWeight": 0.6
+  },
+  {
+    "id": "jade_fox",
+    "theme": [
+      "noble",
+      "elf-ruin"
+    ],
+    "material": "LF.Material.Jade",
+    "subject": "LF.Statue.Subject.Fox",
+    "valueWeight": 1.3
+  },
+  {
+    "id": "stone_dwarf",
+    "theme": [
+      "dwarf-ruin"
+    ],
+    "material": "LF.Material.Stone",
+    "subject": "LF.Statue.Subject.DwarfSmith",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "glass_serpent",
+    "theme": [
+      "wizard",
+      "alchemist"
+    ],
+    "material": "LF.Material.Glass",
+    "subject": "LF.Statue.Subject.Serpent",
+    "valueWeight": 1.0
+  },
+  {
+    "id": "wooden_mermaid",
+    "theme": [
+      "pirate"
+    ],
+    "material": "LF.Material.Wood",
+    "subject": "LF.Statue.Subject.Mermaid",
+    "valueWeight": 0.9
+  }
+]
