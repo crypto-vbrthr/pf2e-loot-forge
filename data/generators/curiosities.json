@@ -1,0 +1,140 @@
+{
+  "templates": [
+    "LF.Generated.Curiosity.Template.Feature"
+  ],
+  "objects": [
+    {
+      "key": "LF.Generated.CuriosityObject.BrassBeetle",
+      "themes": [
+        "alchemist",
+        "wizard"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.BlackCandle",
+      "themes": [
+        "cultist",
+        "undead"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.LeafKey",
+      "themes": [
+        "elf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.ScaleBox",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.SoldierDice",
+      "themes": [
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.PerfumeVial",
+      "themes": [
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.SharkskinMap",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.TinyAnvil",
+      "themes": [
+        "dwarf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.FogBottle"
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.ChewedDollLeg",
+      "themes": [
+        "goblin"
+      ]
+    }
+  ],
+  "features": [
+    {
+      "key": "LF.Generated.CuriosityFeature.ClockworkLegs",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.NoWick",
+      "themes": [
+        "cultist",
+        "undead"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.GrowingTeeth",
+      "themes": [
+        "elf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.ScaleInlay",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.SwordPips",
+      "themes": [
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.FloralScent",
+      "themes": [
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.CoastalScratches",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.TooHeavy",
+      "themes": [
+        "dwarf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.MovingMist"
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.TeethMarks",
+      "themes": [
+        "goblin"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Condition.Pristine",
+      "valueMultiplier": 1.2
+    },
+    {
+      "key": "LF.Generated.Condition.Cracked",
+      "valueMultiplier": 0.7
+    }
+  ]
+}

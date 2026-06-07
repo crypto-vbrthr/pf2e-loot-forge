@@ -1,0 +1,136 @@
+{
+  "templates": [
+    "LF.Generated.Jewelry.Template.Detail"
+  ],
+  "materials": [
+    {
+      "key": "LF.Generated.Material.Gold",
+      "valueMultiplier": 1.8
+    },
+    {
+      "key": "LF.Generated.Material.Silver",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Material.Copper",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Material.Platinum",
+      "valueMultiplier": 2.2
+    },
+    {
+      "key": "LF.Generated.Material.Iron",
+      "valueMultiplier": 0.3
+    },
+    {
+      "key": "LF.Generated.Material.Bronze",
+      "valueMultiplier": 0.6
+    }
+  ],
+  "kinds": [
+    {
+      "key": "LF.Generated.JewelryKind.Ring"
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Brooch"
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Chain"
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Earring"
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Button",
+      "themes": [
+        "goblin"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Diadem",
+      "themes": [
+        "noble",
+        "elf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Medal",
+      "themes": [
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Amulet",
+      "themes": [
+        "temple",
+        "cultist",
+        "wizard"
+      ]
+    }
+  ],
+  "details": [
+    {
+      "key": "LF.Generated.JewelryDetail.FadedInitials",
+      "themes": [
+        "undead",
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.RubyEye",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.HolyCharm",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.TinyAnchor",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.ShinyWorthless",
+      "themes": [
+        "goblin"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.Moonstones",
+      "themes": [
+        "elf-ruin",
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.OldCampaign",
+      "themes": [
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.HiddenSigil",
+      "themes": [
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.AcidEtching",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.MovingInk",
+      "themes": [
+        "wizard"
+      ]
+    }
+  ]
+}

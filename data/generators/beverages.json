@@ -1,0 +1,136 @@
+{
+  "templates": [
+    "LF.Generated.Beverage.Template.Bottle"
+  ],
+  "names": [
+    {
+      "key": "LF.Generated.Beverage.Lavabrand",
+      "themes": [
+        "dwarf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.MushroomLiquor",
+      "themes": [
+        "goblin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.Sunwine",
+      "themes": [
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.SaltRum",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.MonasteryCordial",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.BlueReagent",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.FuneralWine",
+      "themes": [
+        "undead"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.StarAbsinthe",
+      "themes": [
+        "wizard",
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.AmberBrandy"
+    },
+    {
+      "key": "LF.Generated.Beverage.SpicedMead"
+    }
+  ],
+  "origins": [
+    {
+      "key": "LF.Generated.Origin.DongunHold",
+      "themes": [
+        "dwarf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.GoblinStill",
+      "themes": [
+        "goblin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Cheliax",
+      "themes": [
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Shackles",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.OldMonastery",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.AlchemyGuild",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.ForgottenCrypt",
+      "themes": [
+        "undead"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.ArcaneSalon",
+      "themes": [
+        "wizard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Andoran"
+    },
+    {
+      "key": "LF.Generated.Origin.Nex"
+    }
+  ],
+  "seals": [
+    {
+      "key": "LF.Generated.Seal.Unbroken",
+      "valueMultiplier": 1.2
+    },
+    {
+      "key": "LF.Generated.Seal.Cracked",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Seal.Wax",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Seal.None",
+      "valueMultiplier": 0.7
+    }
+  ]
+}

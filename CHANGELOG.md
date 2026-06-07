@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.2
+- Added procedural generated treasure architecture
+- Added shared `ProceduralGenerator` base class
+- Added category generators for paintings, statues, jewelry, beverages, documents, and curiosities
+- Added `GeneratedTreasureFactory`
+- Added data-driven generator component pools under `data/generators/`
+- Replaced fixed generated treasure selection with template + component generation
+- Generated treasure now stores `flags.pf2e-loot-forge.sourceType` for future single-item rerolls
+
 ## 0.1.1
 - Fixed form state reset after generating loot
 - Rarity selection now persists after render

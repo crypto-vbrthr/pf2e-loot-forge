@@ -1,0 +1,127 @@
+{
+  "templates": [
+    "LF.Generated.Document.Template.Subject"
+  ],
+  "kinds": [
+    {
+      "key": "LF.Generated.DocumentKind.Letter"
+    },
+    {
+      "key": "LF.Generated.DocumentKind.Contract"
+    },
+    {
+      "key": "LF.Generated.DocumentKind.MarchingOrders",
+      "themes": [
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentKind.JournalPage"
+    },
+    {
+      "key": "LF.Generated.DocumentKind.Map",
+      "themes": [
+        "pirate",
+        "dwarf-ruin",
+        "elf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentKind.RitualFragment",
+      "themes": [
+        "cultist",
+        "wizard"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentKind.Inventory",
+      "themes": [
+        "temple",
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentKind.Genealogy",
+      "themes": [
+        "noble",
+        "undead"
+      ]
+    }
+  ],
+  "subjects": [
+    {
+      "key": "LF.Generated.DocumentSubject.IronDelivery",
+      "themes": [
+        "dwarf-ruin",
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.MissingBrother"
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.NorthBorder",
+      "themes": [
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.StrangeDreams",
+      "themes": [
+        "wizard",
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.HiddenVault",
+      "themes": [
+        "dragon-hoard",
+        "dwarf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.UnpaidDebt",
+      "themes": [
+        "bandit",
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.ForbiddenPrayer",
+      "themes": [
+        "cultist",
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.Shipwreck",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.DocumentSubject.GraveNames",
+      "themes": [
+        "undead"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "key": "LF.Generated.Condition.Burned",
+      "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.WaterStained",
+      "valueMultiplier": 0.6
+    },
+    {
+      "key": "LF.Generated.Condition.Pristine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Condition.Torn",
+      "valueMultiplier": 0.4
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "templates": [
+    "LF.Generated.Painting.Template.Scene"
+  ],
+  "subjects": [
+    {
+      "key": "LF.Generated.Subject.Dragon",
+      "themes": [
+        "dragon-hoard",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.DwarfKing",
+      "themes": [
+        "dwarf-ruin",
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.ElvenQueen",
+      "themes": [
+        "elf-ruin",
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.SeaBattle",
+      "themes": [
+        "pirate",
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.Saint",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.ForgottenCity",
+      "themes": [
+        "wizard",
+        "elf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.NobleFamily",
+      "themes": [
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.Battlefield",
+      "themes": [
+        "military",
+        "undead"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.Alchemist",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.MaskedBall",
+      "themes": [
+        "noble",
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.GoblinFeast",
+      "themes": [
+        "goblin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Subject.Necropolis",
+      "themes": [
+        "undead"
+      ]
+    }
+  ],
+  "backgrounds": [
+    {
+      "key": "LF.Generated.Background.Volcano",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.MountainFortress",
+      "themes": [
+        "dwarf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.MoonlitGarden",
+      "themes": [
+        "elf-ruin",
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.StormSea",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.GoldenHalo",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.StarrySky",
+      "themes": [
+        "wizard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.MarbleHall",
+      "themes": [
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.RedSunset",
+      "themes": [
+        "military"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.Laboratory",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.DarkHall",
+      "themes": [
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.CaveFire",
+      "themes": [
+        "goblin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Background.BlackMoon",
+      "themes": [
+        "undead"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Faded",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Condition.Pristine",
+      "valueMultiplier": 1.4
+    },
+    {
+      "key": "LF.Generated.Condition.WaterStained",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.CandleSmoke",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Cracked",
+      "valueMultiplier": 0.6
+    },
+    {
+      "key": "LF.Generated.Condition.Torn",
+      "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    }
+  ]
+}
