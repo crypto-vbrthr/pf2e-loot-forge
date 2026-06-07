@@ -1,0 +1,22 @@
+[
+  {
+    "id": "poor",
+    "multiplier": 2
+  },
+  {
+    "id": "standard",
+    "multiplier": 5
+  },
+  {
+    "id": "rich",
+    "multiplier": 8
+  },
+  {
+    "id": "boss",
+    "multiplier": 12
+  },
+  {
+    "id": "hoard",
+    "multiplier": 20
+  }
+]

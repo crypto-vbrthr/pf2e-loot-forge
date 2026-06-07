@@ -1,0 +1,50 @@
+{
+  "id": "pf2e-loot-forge",
+  "title": "PF2E Loot Forge",
+  "description": "A PF2E loot generator for Foundry VTT with compendium-based items, localized valuables, curiosities, and story treasures.",
+  "version": "0.0.4",
+  "authors": [
+    {
+      "name": "crypto-vbrthr"
+    }
+  ],
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "7"
+        }
+      }
+    ],
+    "optional": [
+      {
+        "id": "pf2e-monster-forge",
+        "type": "module"
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/loot-forge.css"
+  ],
+  "languages": [
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
+}
