@@ -1,14 +1,10 @@
 import { GENERATED_ITEM_IMAGE } from "../constants.js";
 import { BeverageGenerator } from "./beverage-generator.js";
-import { CollectibleGenerator } from "./collectible-generator.js";
-import { CraftGenerator } from "./craft-generator.js";
 import { CuriosityGenerator } from "./curiosity-generator.js";
 import { DocumentGenerator } from "./document-generator.js";
-import { InstrumentGenerator } from "./instrument-generator.js";
 import { JewelryGenerator } from "./jewelry-generator.js";
 import { PaintingGenerator } from "./painting-generator.js";
 import { StatueGenerator } from "./statue-generator.js";
-import { TextileGenerator } from "./textile-generator.js";
 
 export class GeneratedTreasureFactory {
   static generators = {
@@ -17,11 +13,7 @@ export class GeneratedTreasureFactory {
     jewelry: new JewelryGenerator(),
     beverage: new BeverageGenerator(),
     document: new DocumentGenerator(),
-    curiosity: new CuriosityGenerator(),
-    textile: new TextileGenerator(),
-    instrument: new InstrumentGenerator(),
-    collectible: new CollectibleGenerator(),
-    craftsmanship: new CraftGenerator()
+    curiosity: new CuriosityGenerator()
   };
 
   static async generate({ category, themeId, valueBudget }) {
@@ -43,11 +35,7 @@ export class GeneratedTreasureFactory {
       img: GENERATED_ITEM_IMAGE,
       flags: {
         "pf2e-loot-forge": {
-          sourceType: generated.sourceType,
-          category: generated.category,
-          theme: generated.theme,
-          quality: generated.quality,
-          generated: true
+          sourceType: generated.sourceType
         }
       },
       system: {

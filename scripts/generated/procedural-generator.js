@@ -28,10 +28,7 @@ export class ProceduralGenerator {
       description: result.description,
       valueGp,
       type: "treasure",
-      sourceType: this.sourceType,
-      category: this.category,
-      theme: themeId,
-      quality: result.qualityKey ?? null
+      sourceType: this.sourceType
     };
   }
 
@@ -40,24 +37,16 @@ export class ProceduralGenerator {
   }
 
   pick(list = [], themeId = "generic") {
-    if (!list.length) return null;
+    const themed = list.filter(entry => entry.themes?.includes(themeId));
+    const generic = list.filter(entry => !entry.themes || entry.themes.includes("generic"));
+    const pool = themed.length ? themed : (generic.length ? generic : list);
 
-    const themed = list.filter(entry => Array.isArray(entry.themes) && entry.themes.includes(themeId));
-    const generic = list.filter(entry => !Array.isArray(entry.themes) || entry.themes.includes("generic"));
-
-    let pool;
-    if (themeId === "generic") {
-      pool = generic.length ? generic : list;
-    } else {
-      pool = themed.length ? [...themed, ...themed, ...generic] : (generic.length ? generic : list);
-    }
-
+    if (!pool.length) return null;
     return pool[Math.floor(Math.random() * pool.length)];
   }
 
   pickTemplate(data) {
-    const templates = (data.templates ?? []).map(key => ({ key }));
-    return this.pick(templates)?.key ?? data.templates?.[0];
+    return this.pick((data.templates ?? []).map(key => ({ key })))?.key ?? data.templates?.[0];
   }
 
   localize(entry) {
@@ -70,11 +59,5 @@ export class ProceduralGenerator {
 
   combinedMultiplier(...entries) {
     return entries.reduce((product, entry) => product * Number(entry?.valueMultiplier ?? 1), 1);
-  }
-
-  buildDescription(baseKey, values, flair) {
-    const base = this.format(baseKey, values);
-    if (!flair) return base;
-    return `${base}<br>${this.localize(flair)}`;
   }
 }

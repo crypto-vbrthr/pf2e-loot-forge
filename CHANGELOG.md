@@ -1,39 +1,22 @@
 # Changelog
 
-## 0.1.9
-- Added editable treasure budget profiles
-- Added Treasure Profile settings menu
-- Added active treasure profile world setting
-- Added PF2E Standard, Low Magic, and High Magic budget profile data
-- Budget calculation now uses active treasure profile
-- Added 0-GP item filtering for compendium items
-- Added optional exception for cursed 0-GP items
-- Added profile editor template and styles
+## 0.2.0c
+- Localized default treasure profile names and descriptions in the in-app profile tab
+- German UI no longer shows English built-in profile descriptions
+- Keeps custom profile names/descriptions unchanged
 
-## 0.1.8
-- Widened the generation column to reduce field wrapping
-- Shortened min/max item level labels
-- Added PF2E compendium item price extraction
-- Added budget-aware item selection
-- Added treasure-profile based budget tolerance
-- Prevented extremely expensive high-level items from being selected for standard budgets
-- Estimated total value now uses actual compendium item prices when available
+## 0.2.0b
+- Hotfix: registered missing `activeTreasureProfile` world setting
+- Hotfix: registered missing `treasureProfiles` world setting
+- Hotfix: registered `allowCursedZeroValueItems` world setting if absent
+- Fixes crash when opening Loot Forge profile UI
 
-## 0.1.7
-- Expanded generated treasure component pools
-- Added new generated treasure categories: textiles, instruments, collectibles, and craftsmanship
-- Added quality tiers for generated treasures
-- Added flair description lines for generated treasures
-- Improved generic theme variety to avoid repeated dragon paintings
-- Improved themed component selection with stronger theme weighting and generic fallback
-- Added richer generated treasure metadata flags
-
-## 0.1.6
-- Fixed visibility of the mystify magic items option in the main Loot Forge UI
-- Ensured mystify magic items remains registered as a world setting
-- Fixed compendium tab scrolling so the final entries are reachable
-- Added Select All and Deselect All controls for compendium sources
-- Improved compendium panel flex layout
+## 0.2.0
+- Added in-app Treasure Profiles tab
+- Added treasure budget profile selector to generation settings
+- Added active profile persistence
+- Added basic profile management: create, duplicate, delete, rename, save, set active
+- Kept budget table editing for v0.2.1 to reduce UI risk
 
 ## 0.1.5
 - Coins are now added only as actor currency, not as treasure items

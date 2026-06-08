@@ -6,6 +6,7 @@
 
   <input class="lf-tab-radio" type="radio" name="lf-active-tab" id="lf-tab-main" checked>
   <input class="lf-tab-radio" type="radio" name="lf-active-tab" id="lf-tab-compendiums">
+  <input class="lf-tab-radio" type="radio" name="lf-active-tab" id="lf-tab-profiles">
 
   <nav class="lf-tabs">
     <label for="lf-tab-main">
@@ -15,6 +16,10 @@
     <label for="lf-tab-compendiums">
       <i class="fa-solid fa-book-atlas"></i>
       {{lf "LF.Tab.Compendiums"}}
+    </label>
+    <label for="lf-tab-profiles">
+      <i class="fa-solid fa-coins"></i>
+      {{lf "LF.Tab.TreasureProfiles"}}
     </label>
   </nav>
 
@@ -38,6 +43,15 @@
             <select name="rarity">
               {{#each rarityOptions}}
                 <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>{{lf "LF.Field.ActiveTreasureProfile"}}</label>
+            <select name="activeTreasureProfile">
+              {{#each treasureBudgetProfileOptions}}
+                <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
               {{/each}}
             </select>
           </div>
@@ -77,7 +91,7 @@
             <label class="lf-check"><input type="checkbox" name="includePermanentItems" {{#if config.includePermanentItems}}checked{{/if}}> {{lf "LF.Option.IncludePermanentItems"}}</label>
             <label class="lf-check"><input type="checkbox" name="includeValuables" {{#if config.includeValuables}}checked{{/if}}> {{lf "LF.Option.IncludeValuables"}}</label>
             <label class="lf-check"><input type="checkbox" name="includeCuriosities" {{#if config.includeCuriosities}}checked{{/if}}> {{lf "LF.Option.IncludeCuriosities"}}</label>
-            <label class="lf-check lf-prominent-check"><input type="checkbox" name="mystifyMagicItems" {{#if config.mystifyMagicItems}}checked{{/if}}> {{lf "LF.Option.MystifyMagicItems"}}</label>
+            <label class="lf-check"><input type="checkbox" name="mystifyMagicItems" {{#if config.mystifyMagicItems}}checked{{/if}}> {{lf "LF.Option.MystifyMagicItems"}}</label>
           </div>
         </div>
       </section>
@@ -178,16 +192,66 @@
     <section class="lf-panel">
       <h3>{{lf "LF.App.Compendiums"}}</h3>
       <p class="lf-muted">{{lf "LF.Compendiums.Hint"}}</p>
-      <div class="lf-pack-actions">
-        <button type="button" data-action="select-all-packs"><i class="fa-solid fa-check-double"></i> {{lf "LF.Button.SelectAll"}}</button>
-        <button type="button" data-action="deselect-all-packs"><i class="fa-solid fa-xmark"></i> {{lf "LF.Button.DeselectAll"}}</button>
-      </div>
       <div class="lf-pack-list">
         {{#each packs}}
           <label class="lf-check">
             <input type="checkbox" name="pack.{{collection}}" {{#if checked}}checked{{/if}}>
             {{label}}
           </label>
+        {{/each}}
+      </div>
+    </section>
+  </section>
+
+
+  <section class="lf-tab-panel lf-profiles-panel">
+    <section class="lf-panel lf-profile-management-panel">
+      <h3>{{lf "LF.Tab.TreasureProfiles"}}</h3>
+      <p class="lf-muted">{{lf "LF.Profile.ManagementHint"}}</p>
+
+      <div class="form-group">
+        <label>{{lf "LF.Field.ActiveTreasureProfile"}}</label>
+        <select name="activeTreasureProfile">
+          {{#each treasureBudgetProfileOptions}}
+            <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      {{#if activeTreasureProfile}}
+        <div class="lf-profile-card">
+          <div class="form-group">
+            <label>{{lf "LF.Field.Name"}}</label>
+            <input type="text" name="profileName" value="{{activeTreasureProfile.name}}">
+          </div>
+
+          <div class="form-group">
+            <label>{{lf "LF.Field.Description"}}</label>
+            <input type="text" name="profileDescription" value="{{activeTreasureProfile.description}}">
+          </div>
+
+          <div class="form-group">
+            <label>{{lf "LF.Field.BudgetMultiplier"}}</label>
+            <input type="number" name="profileBudgetMultiplier" value="{{activeTreasureProfile.budgetMultiplier}}" min="0" step="0.05">
+          </div>
+        </div>
+      {{/if}}
+
+      <div class="lf-profile-actions">
+        <button type="submit" data-action="profile-set-active"><i class="fa-solid fa-check"></i> {{lf "LF.Button.SetActiveProfile"}}</button>
+        <button type="submit" data-action="profile-save"><i class="fa-solid fa-save"></i> {{lf "LF.Button.SaveProfile"}}</button>
+        <button type="submit" data-action="profile-new"><i class="fa-solid fa-plus"></i> {{lf "LF.Button.NewProfile"}}</button>
+        <button type="submit" data-action="profile-duplicate"><i class="fa-solid fa-copy"></i> {{lf "LF.Button.DuplicateProfile"}}</button>
+        <button type="submit" data-action="profile-delete"><i class="fa-solid fa-trash"></i> {{lf "LF.Button.DeleteProfile"}}</button>
+      </div>
+
+      <div class="lf-profile-list">
+        <h4>{{lf "LF.Profile.AvailableProfiles"}}</h4>
+        {{#each treasureBudgetProfileOptions}}
+          <div class="lf-profile-list-row {{#if selected}}lf-profile-active{{/if}}">
+            <strong>{{name}}</strong>
+            <span>{{description}}</span>
+          </div>
         {{/each}}
       </div>
     </section>

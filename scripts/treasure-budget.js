@@ -1,64 +1,58 @@
-import { TreasureProfileManager } from "./treasure-profile-manager.js";
+import { MODULE_ID } from "./constants.js";
 
 export class TreasureBudget {
+  static #data = null;
+
+  static async getData() {
+    if (this.#data) return this.#data;
+
+    try {
+      const response = await fetch(`modules/${MODULE_ID}/data/templates/treasure-budgets.json`);
+      this.#data = await response.json();
+    } catch (error) {
+      console.warn("PF2E Loot Forge | Could not load treasure budgets", error);
+      this.#data = {
+        profiles: { poor: 0.5, standard: 1, rich: 1.5, boss: 2, hoard: 4 },
+        levelBudgetsGp: { "1": 4 },
+        partySizeBaseline: 4
+      };
+    }
+
+    return this.#data;
+  }
+
   static async calculate(config = {}) {
-    const profile = config.treasureBudgetProfile ?? await TreasureProfileManager.getActiveProfile();
-    const budgets = this.#resolveBudgets(profile);
+    const data = await this.getData();
     const level = Math.max(-1, Math.min(25, Number(config.level ?? 1)));
-    const partySize = Math.max(1, Number(config.partySize ?? 4));
-    const treasureProfile = config.treasureProfile ?? "standard";
+    const partySize = Math.max(1, Number(config.partySize ?? data.partySizeBaseline ?? 4));
+    const profile = config.treasureProfile ?? "standard";
 
-    const base = Number(budgets[String(level)] ?? budgets["1"] ?? 4);
-    const treasureProfileMultiplier = Number({
-      poor: 0.5,
-      standard: 1,
-      rich: 1.5,
-      boss: 2,
-      hoard: 4
-    }[treasureProfile] ?? 1);
+    const base = Number(data.levelBudgetsGp[String(level)] ?? data.levelBudgetsGp["1"] ?? 4);
+    const profileMultiplier = Number(data.profiles?.[profile] ?? 1);
+    const partyMultiplier = partySize / Number(data.partySizeBaseline ?? 4);
 
-    const profileMultiplier = Number(profile.budgetMultiplier ?? 1);
-    const partyMultiplier = partySize / 4;
-    const targetGp = Math.max(1, Math.round(base * treasureProfileMultiplier * profileMultiplier * partyMultiplier));
+    const targetGp = Math.max(1, Math.round(base * profileMultiplier * partyMultiplier));
 
     return {
       level,
       partySize,
-      profile: treasureProfile,
-      budgetProfileId: profile.id,
-      budgetProfileName: profile.name,
+      profile,
       baseGp: base,
-      profileMultiplier: treasureProfileMultiplier * profileMultiplier,
+      profileMultiplier,
       partyMultiplier,
       targetGp
     };
   }
 
-  static splitBudget(targetGp, themeProfile = {}, treasureBudgetProfile = null) {
-    const weights = {
-      ...(treasureBudgetProfile?.categoryWeights ?? {}),
-      ...(themeProfile?.weights ?? {})
-    };
-
+  static splitBudget(targetGp, themeProfile = {}) {
+    const weights = themeProfile.weights ?? {};
     const totalWeight = Object.values(weights).reduce((sum, value) => sum + Number(value), 0) || 1;
-    const split = {};
 
+    const split = {};
     for (const [category, weight] of Object.entries(weights)) {
       split[category] = Math.round((targetGp * Number(weight) / totalWeight) * 100) / 100;
     }
 
     return split;
-  }
-
-  static #resolveBudgets(profile) {
-    if (profile.budgetsGp) return profile.budgetsGp;
-
-    // Derived profiles may only define a multiplier; use PF2E standard as fallback.
-    return {
-      "-1": 1, "0": 2, "1": 4, "2": 7, "3": 12, "4": 20, "5": 30, "6": 45, "7": 65, "8": 90,
-      "9": 125, "10": 175, "11": 250, "12": 350, "13": 500, "14": 700, "15": 1000,
-      "16": 1400, "17": 2000, "18": 2800, "19": 4000, "20": 5600, "21": 8000,
-      "22": 11200, "23": 16000, "24": 22400, "25": 32000
-    };
   }
 }

@@ -1,27 +1,6 @@
 {
   "templates": [
-    "LF.Generated.Statue.Template.Simple",
-    "LF.Generated.Statue.Template.Bust",
-    "LF.Generated.Statue.Template.Relief",
-    "LF.Generated.Statue.Template.Mask"
-  ],
-  "qualities": [
-    {
-      "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.55
-    },
-    {
-      "key": "LF.Generated.Quality.Fine",
-      "valueMultiplier": 1.0
-    },
-    {
-      "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.55
-    },
-    {
-      "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.25
-    }
+    "LF.Generated.Statue.Template.Simple"
   ],
   "materials": [
     {
@@ -63,37 +42,26 @@
     {
       "key": "LF.Generated.Material.Marble",
       "valueMultiplier": 1.2
-    },
-    {
-      "key": "LF.Generated.Material.Ivory",
-      "valueMultiplier": 1.4
-    },
-    {
-      "key": "LF.Generated.Material.Crystal",
-      "valueMultiplier": 1.6
     }
   ],
   "subjects": [
     {
       "key": "LF.Generated.StatueSubject.Saint",
       "themes": [
-        "temple",
-        "generic"
+        "temple"
       ]
     },
     {
       "key": "LF.Generated.StatueSubject.General",
       "themes": [
         "military",
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.StatueSubject.Dragon",
       "themes": [
-        "dragon-hoard",
-        "generic"
+        "dragon-hoard"
       ]
     },
     {
@@ -108,146 +76,59 @@
       "key": "LF.Generated.StatueSubject.Fox",
       "themes": [
         "elf-ruin",
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.StatueSubject.DwarfSmith",
       "themes": [
-        "dwarf-ruin",
-        "generic"
+        "dwarf-ruin"
       ]
     },
     {
       "key": "LF.Generated.StatueSubject.Serpent",
       "themes": [
         "wizard",
-        "alchemist",
-        "generic"
+        "alchemist"
       ]
     },
     {
       "key": "LF.Generated.StatueSubject.Mermaid",
       "themes": [
-        "pirate",
-        "generic"
+        "pirate"
       ]
     },
     {
       "key": "LF.Generated.StatueSubject.Griffin",
       "themes": [
         "noble",
-        "military",
-        "generic"
+        "military"
       ]
     },
     {
       "key": "LF.Generated.StatueSubject.Raven",
       "themes": [
         "undead",
-        "wizard",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.StatueSubject.Lion",
-      "themes": [
-        "noble",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.StatueSubject.Owl",
-      "themes": [
-        "wizard",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.StatueSubject.Ancestor",
-      "themes": [
-        "undead",
-        "dwarf-ruin",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.StatueSubject.Sailor",
-      "themes": [
-        "pirate",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.StatueSubject.Minotaur",
-      "themes": [
-        "generic"
+        "wizard"
       ]
     }
   ],
   "conditions": [
     {
-      "key": "LF.Generated.Condition.SootStained",
-      "valueMultiplier": 0.9
-    },
-    {
-      "key": "LF.Generated.Condition.Faded",
-      "valueMultiplier": 0.8
-    },
-    {
       "key": "LF.Generated.Condition.Pristine",
-      "valueMultiplier": 1.25
-    },
-    {
-      "key": "LF.Generated.Condition.WaterStained",
-      "valueMultiplier": 0.7
-    },
-    {
-      "key": "LF.Generated.Condition.CandleSmoke",
-      "valueMultiplier": 0.9
+      "valueMultiplier": 1.3
     },
     {
       "key": "LF.Generated.Condition.Cracked",
-      "valueMultiplier": 0.65
-    },
-    {
-      "key": "LF.Generated.Condition.Torn",
-      "valueMultiplier": 0.5
-    },
-    {
-      "key": "LF.Generated.Condition.AcidSpotted",
       "valueMultiplier": 0.7
     },
     {
-      "key": "LF.Generated.Condition.Greasy",
-      "valueMultiplier": 0.4
-    },
-    {
       "key": "LF.Generated.Condition.Dusty",
-      "valueMultiplier": 0.75
+      "valueMultiplier": 0.8
     },
     {
-      "key": "LF.Generated.Condition.Burnished",
-      "valueMultiplier": 1.05
-    },
-    {
-      "key": "LF.Generated.Condition.Restored",
-      "valueMultiplier": 1.15
-    }
-  ],
-  "flairs": [
-    {
-      "key": "LF.Generated.Flair.WornBase"
-    },
-    {
-      "key": "LF.Generated.Flair.TinyInscription"
-    },
-    {
-      "key": "LF.Generated.Flair.MissingChip"
-    },
-    {
-      "key": "LF.Generated.Flair.PolishedEdges"
+      "key": "LF.Generated.Condition.Faded",
+      "valueMultiplier": 0.9
     }
   ]
 }

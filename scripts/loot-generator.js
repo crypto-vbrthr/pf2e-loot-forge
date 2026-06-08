@@ -3,7 +3,6 @@ import { CompendiumScanner } from "./compendium-scanner.js";
 import { ItemFactory } from "./item-factory.js";
 import { ThemeManager } from "./theme-manager.js";
 import { TreasureBudget } from "./treasure-budget.js";
-import { TreasureProfileManager } from "./treasure-profile-manager.js";
 import { weightedPick } from "./weighted-picker.js";
 
 export class LootGenerator {
@@ -39,9 +38,8 @@ export class LootGenerator {
   static async #normalizeOptions(options) {
     const level = Number(options.level ?? 1);
     const themeProfile = options.themeProfile ?? await ThemeManager.getTheme(options.theme ?? "generic");
-    const treasureBudgetProfile = await TreasureProfileManager.getActiveProfile();
-    const budget = await TreasureBudget.calculate({ ...options, level, treasureBudgetProfile });
-    let budgetSplit = TreasureBudget.splitBudget(budget.targetGp, themeProfile, treasureBudgetProfile);
+    const budget = await TreasureBudget.calculate({ ...options, level });
+    let budgetSplit = TreasureBudget.splitBudget(budget.targetGp, themeProfile);
     budgetSplit = this.#applyLootStyleToBudget(budgetSplit, Number(options.lootStyle ?? 50));
     const preferredCategories = this.#categoriesFromTheme(themeProfile, options);
 
@@ -67,8 +65,7 @@ export class LootGenerator {
       includePermanentItems: Boolean(options.includePermanentItems ?? true),
       includeValuables: Boolean(options.includeValuables ?? game.settings.get(MODULE_ID, "includeGeneratedValuables")),
       includeCuriosities: Boolean(options.includeCuriosities ?? true),
-      compendiums: options.compendiums ?? game.settings.get(MODULE_ID, "enabledCompendiums"),
-      allowCursedZeroValueItems: Boolean(options.allowCursedZeroValueItems ?? game.settings.get(MODULE_ID, "allowCursedZeroValueItems"))
+      compendiums: options.compendiums ?? game.settings.get(MODULE_ID, "enabledCompendiums")
     };
   }
 
@@ -115,64 +112,31 @@ export class LootGenerator {
     if (!items.length) return [];
 
     const itemBudget = this.#itemBudget(config);
-    const maxItems = this.#maxItems(config);
-    const tolerance = this.#budgetTolerance(config);
-    const hardCap = Math.max(1, itemBudget * tolerance);
-
-    const affordable = items.filter(item => {
-      const value = this.#roughItemValue(item);
-      return value <= hardCap;
-    });
-
-    const pool = affordable.length ? affordable : items.filter(item => this.#roughItemValue(item) <= hardCap * 2);
-    const shuffled = foundry.utils.deepClone(pool.length ? pool : items)
-      .sort(() => Math.random() - 0.5);
-
+    const shuffled = foundry.utils.deepClone(items).sort(() => Math.random() - 0.5);
     const selected = [];
-    let remaining = Math.max(1, itemBudget);
+    let roughSpent = 0;
 
     for (const item of shuffled) {
-      const value = this.#roughItemValue(item);
-
-      if (selected.length > 0 && value > remaining * tolerance) continue;
-      if (selected.length === 0 && value > itemBudget * tolerance) continue;
-
+      const roughValue = this.#roughItemValue(item);
+      if (selected.length > 0 && roughSpent + roughValue > itemBudget * 1.35) continue;
       selected.push(item);
-      remaining -= value;
+      roughSpent += roughValue;
 
-      if (remaining <= itemBudget * 0.15) break;
-      if (selected.length >= maxItems) break;
+      if (roughSpent >= itemBudget * 0.75) break;
+      if (selected.length >= this.#maxItems(config)) break;
     }
 
-    if (selected.length) return selected;
-
-    const fallback = shuffled
-      .sort((a, b) => this.#roughItemValue(a) - this.#roughItemValue(b))
-      .find(item => this.#roughItemValue(item) <= hardCap);
-
-    return fallback ? [fallback] : [];
-  }
-
-  static #budgetTolerance(config) {
-    return {
-      poor: 1.05,
-      standard: 1.2,
-      rich: 1.35,
-      boss: 1.5,
-      hoard: 2
-    }[config.treasureProfile] ?? 1.2;
+    return selected.length ? selected : shuffled.slice(0, Math.min(1, shuffled.length));
   }
 
   static #itemBudget(config) {
     const split = config.budgetSplit ?? {};
-    const budget = Number(split.weapons ?? 0)
+    return Number(split.weapons ?? 0)
       + Number(split.armor ?? 0)
       + Number(split.consumables ?? 0)
       + Number(split.permanent ?? 0)
       + Number(split.magic ?? 0)
       + Number(split.alchemy ?? 0);
-
-    return Math.max(1, budget);
   }
 
   static #maxItems(config) {
@@ -180,9 +144,6 @@ export class LootGenerator {
   }
 
   static #roughItemValue(item) {
-    const priceGp = Number(item.priceGp ?? 0);
-    if (priceGp > 0) return priceGp;
-
     const level = Number(item.level ?? 0);
     if (level <= 0) return 1;
     return Math.max(1, Math.round(Math.pow(level + 1, 2) * 0.75));

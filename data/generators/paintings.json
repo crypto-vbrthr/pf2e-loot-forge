@@ -1,25 +1,6 @@
 {
   "templates": [
-    "LF.Generated.Painting.Template.Scene",
-    "LF.Generated.Painting.Template.Portrait"
-  ],
-  "qualities": [
-    {
-      "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.55
-    },
-    {
-      "key": "LF.Generated.Quality.Fine",
-      "valueMultiplier": 1.0
-    },
-    {
-      "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.55
-    },
-    {
-      "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.25
-    }
+    "LF.Generated.Painting.Template.Scene"
   ],
   "subjects": [
     {
@@ -30,212 +11,75 @@
       ]
     },
     {
-      "key": "LF.Generated.Subject.Griffin",
-      "themes": [
-        "noble",
-        "military",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Wolf",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Fox",
-      "themes": [
-        "elf-ruin",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Bear",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Raven",
-      "themes": [
-        "undead",
-        "wizard",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Stag",
-      "themes": [
-        "elf-ruin",
-        "generic"
-      ]
-    },
-    {
       "key": "LF.Generated.Subject.DwarfKing",
       "themes": [
         "dwarf-ruin",
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.Subject.ElvenQueen",
       "themes": [
         "elf-ruin",
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.Subject.SeaBattle",
       "themes": [
         "pirate",
-        "military",
-        "generic"
+        "military"
       ]
     },
     {
       "key": "LF.Generated.Subject.Saint",
       "themes": [
-        "temple",
-        "generic"
+        "temple"
       ]
     },
     {
       "key": "LF.Generated.Subject.ForgottenCity",
       "themes": [
         "wizard",
-        "elf-ruin",
-        "generic"
+        "elf-ruin"
       ]
     },
     {
       "key": "LF.Generated.Subject.NobleFamily",
       "themes": [
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.Subject.Battlefield",
       "themes": [
         "military",
-        "undead",
-        "generic"
+        "undead"
       ]
     },
     {
       "key": "LF.Generated.Subject.Alchemist",
       "themes": [
-        "alchemist",
-        "generic"
+        "alchemist"
       ]
     },
     {
       "key": "LF.Generated.Subject.MaskedBall",
       "themes": [
         "noble",
-        "cultist",
-        "generic"
+        "cultist"
       ]
     },
     {
       "key": "LF.Generated.Subject.GoblinFeast",
       "themes": [
-        "goblin",
-        "generic"
+        "goblin"
       ]
     },
     {
       "key": "LF.Generated.Subject.Necropolis",
       "themes": [
-        "undead",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Marketplace",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Coronation",
-      "themes": [
-        "noble",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Wedding",
-      "themes": [
-        "noble",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Hunt",
-      "themes": [
-        "noble",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Harbor",
-      "themes": [
-        "pirate",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Library",
-      "themes": [
-        "wizard",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Mine",
-      "themes": [
-        "dwarf-ruin",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Waterfall",
-      "themes": [
-        "elf-ruin",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Cathedral",
-      "themes": [
-        "temple",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Siege",
-      "themes": [
-        "military",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Tavern",
-      "themes": [
-        "bandit",
-        "pirate",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Subject.Astronomer",
-      "themes": [
-        "wizard",
-        "generic"
+        "undead"
       ]
     }
   ],
@@ -243,137 +87,74 @@
     {
       "key": "LF.Generated.Background.Volcano",
       "themes": [
-        "dragon-hoard",
-        "generic"
+        "dragon-hoard"
       ]
     },
     {
       "key": "LF.Generated.Background.MountainFortress",
       "themes": [
-        "dwarf-ruin",
-        "generic"
+        "dwarf-ruin"
       ]
     },
     {
       "key": "LF.Generated.Background.MoonlitGarden",
       "themes": [
         "elf-ruin",
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.Background.StormSea",
       "themes": [
-        "pirate",
-        "generic"
+        "pirate"
       ]
     },
     {
       "key": "LF.Generated.Background.GoldenHalo",
       "themes": [
-        "temple",
-        "generic"
+        "temple"
       ]
     },
     {
       "key": "LF.Generated.Background.StarrySky",
       "themes": [
-        "wizard",
-        "generic"
+        "wizard"
       ]
     },
     {
       "key": "LF.Generated.Background.MarbleHall",
       "themes": [
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.Background.RedSunset",
       "themes": [
-        "military",
-        "generic"
+        "military"
       ]
     },
     {
       "key": "LF.Generated.Background.Laboratory",
       "themes": [
-        "alchemist",
-        "generic"
+        "alchemist"
       ]
     },
     {
       "key": "LF.Generated.Background.DarkHall",
       "themes": [
-        "cultist",
-        "generic"
+        "cultist"
       ]
     },
     {
       "key": "LF.Generated.Background.CaveFire",
       "themes": [
-        "goblin",
-        "generic"
+        "goblin"
       ]
     },
     {
       "key": "LF.Generated.Background.BlackMoon",
       "themes": [
-        "undead",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.AutumnForest",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.BusyMarket",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.RuinedBridge",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.SnowPass",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.CandlelitRoom",
-      "themes": [
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.RoyalBalcony",
-      "themes": [
-        "noble",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.HiddenCove",
-      "themes": [
-        "pirate",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.Background.AncientLibrary",
-      "themes": [
-        "wizard",
-        "generic"
+        "undead"
       ]
     }
   ],
@@ -388,7 +169,7 @@
     },
     {
       "key": "LF.Generated.Condition.Pristine",
-      "valueMultiplier": 1.25
+      "valueMultiplier": 1.4
     },
     {
       "key": "LF.Generated.Condition.WaterStained",
@@ -400,7 +181,7 @@
     },
     {
       "key": "LF.Generated.Condition.Cracked",
-      "valueMultiplier": 0.65
+      "valueMultiplier": 0.6
     },
     {
       "key": "LF.Generated.Condition.Torn",
@@ -417,34 +198,6 @@
     {
       "key": "LF.Generated.Condition.Dusty",
       "valueMultiplier": 0.75
-    },
-    {
-      "key": "LF.Generated.Condition.Burnished",
-      "valueMultiplier": 1.05
-    },
-    {
-      "key": "LF.Generated.Condition.Restored",
-      "valueMultiplier": 1.15
-    }
-  ],
-  "flairs": [
-    {
-      "key": "LF.Generated.Flair.GoldLeaf"
-    },
-    {
-      "key": "LF.Generated.Flair.RarePigments"
-    },
-    {
-      "key": "LF.Generated.Flair.HiddenSignature"
-    },
-    {
-      "key": "LF.Generated.Flair.FrameDamage"
-    },
-    {
-      "key": "LF.Generated.Flair.SymbolInCorner"
-    },
-    {
-      "key": "LF.Generated.Flair.UnusualPerspective"
     }
   ]
 }

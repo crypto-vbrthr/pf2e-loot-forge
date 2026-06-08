@@ -2,110 +2,49 @@
   "templates": [
     "LF.Generated.Document.Template.Subject"
   ],
-  "qualities": [
-    {
-      "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.2
-    },
-    {
-      "key": "LF.Generated.Quality.Fine",
-      "valueMultiplier": 0.6
-    },
-    {
-      "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.1
-    },
-    {
-      "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 1.6
-    }
-  ],
   "kinds": [
     {
-      "key": "LF.Generated.DocumentKind.Letter",
-      "themes": [
-        "generic"
-      ]
+      "key": "LF.Generated.DocumentKind.Letter"
     },
     {
-      "key": "LF.Generated.DocumentKind.Contract",
-      "themes": [
-        "generic"
-      ]
+      "key": "LF.Generated.DocumentKind.Contract"
     },
     {
       "key": "LF.Generated.DocumentKind.MarchingOrders",
       "themes": [
-        "military",
-        "generic"
+        "military"
       ]
     },
     {
-      "key": "LF.Generated.DocumentKind.JournalPage",
-      "themes": [
-        "generic"
-      ]
+      "key": "LF.Generated.DocumentKind.JournalPage"
     },
     {
       "key": "LF.Generated.DocumentKind.Map",
       "themes": [
         "pirate",
         "dwarf-ruin",
-        "elf-ruin",
-        "generic"
+        "elf-ruin"
       ]
     },
     {
       "key": "LF.Generated.DocumentKind.RitualFragment",
       "themes": [
         "cultist",
-        "wizard",
-        "generic"
+        "wizard"
       ]
     },
     {
       "key": "LF.Generated.DocumentKind.Inventory",
       "themes": [
         "temple",
-        "alchemist",
-        "generic"
+        "alchemist"
       ]
     },
     {
       "key": "LF.Generated.DocumentKind.Genealogy",
       "themes": [
         "noble",
-        "undead",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.DocumentKind.Poem",
-      "themes": [
-        "elf-ruin",
-        "noble",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.DocumentKind.Recipe",
-      "themes": [
-        "alchemist",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.DocumentKind.ShipManifest",
-      "themes": [
-        "pirate",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.DocumentKind.PrayerBook",
-      "themes": [
-        "temple",
-        "generic"
+        "undead"
       ]
     }
   ],
@@ -114,154 +53,75 @@
       "key": "LF.Generated.DocumentSubject.IronDelivery",
       "themes": [
         "dwarf-ruin",
-        "military",
-        "generic"
+        "military"
       ]
     },
     {
-      "key": "LF.Generated.DocumentSubject.MissingBrother",
-      "themes": [
-        "generic"
-      ]
+      "key": "LF.Generated.DocumentSubject.MissingBrother"
     },
     {
       "key": "LF.Generated.DocumentSubject.NorthBorder",
       "themes": [
-        "military",
-        "generic"
+        "military"
       ]
     },
     {
       "key": "LF.Generated.DocumentSubject.StrangeDreams",
       "themes": [
         "wizard",
-        "cultist",
-        "generic"
+        "cultist"
       ]
     },
     {
       "key": "LF.Generated.DocumentSubject.HiddenVault",
       "themes": [
         "dragon-hoard",
-        "dwarf-ruin",
-        "generic"
+        "dwarf-ruin"
       ]
     },
     {
       "key": "LF.Generated.DocumentSubject.UnpaidDebt",
       "themes": [
         "bandit",
-        "noble",
-        "generic"
+        "noble"
       ]
     },
     {
       "key": "LF.Generated.DocumentSubject.ForbiddenPrayer",
       "themes": [
         "cultist",
-        "temple",
-        "generic"
+        "temple"
       ]
     },
     {
       "key": "LF.Generated.DocumentSubject.Shipwreck",
       "themes": [
-        "pirate",
-        "generic"
+        "pirate"
       ]
     },
     {
       "key": "LF.Generated.DocumentSubject.GraveNames",
       "themes": [
-        "undead",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.DocumentSubject.LostHeir",
-      "themes": [
-        "noble",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.DocumentSubject.OldRecipe",
-      "themes": [
-        "alchemist",
-        "generic"
-      ]
-    },
-    {
-      "key": "LF.Generated.DocumentSubject.BorderDispute",
-      "themes": [
-        "military",
-        "noble",
-        "generic"
+        "undead"
       ]
     }
   ],
   "conditions": [
     {
-      "key": "LF.Generated.Condition.SootStained",
-      "valueMultiplier": 0.9
-    },
-    {
-      "key": "LF.Generated.Condition.Faded",
-      "valueMultiplier": 0.8
-    },
-    {
-      "key": "LF.Generated.Condition.Pristine",
-      "valueMultiplier": 1.25
-    },
-    {
-      "key": "LF.Generated.Condition.WaterStained",
-      "valueMultiplier": 0.7
-    },
-    {
-      "key": "LF.Generated.Condition.CandleSmoke",
-      "valueMultiplier": 0.9
-    },
-    {
-      "key": "LF.Generated.Condition.Cracked",
-      "valueMultiplier": 0.65
-    },
-    {
-      "key": "LF.Generated.Condition.Torn",
+      "key": "LF.Generated.Condition.Burned",
       "valueMultiplier": 0.5
     },
     {
-      "key": "LF.Generated.Condition.AcidSpotted",
-      "valueMultiplier": 0.7
+      "key": "LF.Generated.Condition.WaterStained",
+      "valueMultiplier": 0.6
     },
     {
-      "key": "LF.Generated.Condition.Greasy",
+      "key": "LF.Generated.Condition.Pristine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Condition.Torn",
       "valueMultiplier": 0.4
-    },
-    {
-      "key": "LF.Generated.Condition.Dusty",
-      "valueMultiplier": 0.75
-    },
-    {
-      "key": "LF.Generated.Condition.Burnished",
-      "valueMultiplier": 1.05
-    },
-    {
-      "key": "LF.Generated.Condition.Restored",
-      "valueMultiplier": 1.15
-    }
-  ],
-  "flairs": [
-    {
-      "key": "LF.Generated.Flair.BrokenSeal"
-    },
-    {
-      "key": "LF.Generated.Flair.MarginalNotes"
-    },
-    {
-      "key": "LF.Generated.Flair.SmudgedInk"
-    },
-    {
-      "key": "LF.Generated.Flair.FoldedManyTimes"
     }
   ]
 }

@@ -1,76 +1,22 @@
-{
-  "schemaVersion": 1,
-  "activeProfile": "pf2e-standard",
-  "profiles": [
-    {
-      "id": "pf2e-standard",
-      "name": "PF2E Standard",
-      "description": "Baseline treasure budget profile used by Loot Forge. Values are editable in world settings and intended as a practical treasure engine baseline.",
-      "budgetsGp": {
-        "-1": 1,
-        "0": 2,
-        "1": 4,
-        "2": 7,
-        "3": 12,
-        "4": 20,
-        "5": 30,
-        "6": 45,
-        "7": 65,
-        "8": 90,
-        "9": 125,
-        "10": 175,
-        "11": 250,
-        "12": 350,
-        "13": 500,
-        "14": 700,
-        "15": 1000,
-        "16": 1400,
-        "17": 2000,
-        "18": 2800,
-        "19": 4000,
-        "20": 5600,
-        "21": 8000,
-        "22": 11200,
-        "23": 16000,
-        "24": 22400,
-        "25": 32000
-      },
-      "categoryWeights": {
-        "coins": 25,
-        "consumables": 15,
-        "permanent": 30,
-        "art": 15,
-        "valuables": 10,
-        "curiosities": 5
-      }
-    },
-    {
-      "id": "low-magic",
-      "name": "Low Magic",
-      "description": "Lower magic item pressure, more mundane treasure.",
-      "budgetMultiplier": 0.75,
-      "categoryWeights": {
-        "coins": 35,
-        "consumables": 10,
-        "permanent": 15,
-        "art": 20,
-        "valuables": 15,
-        "curiosities": 5
-      }
-    },
-    {
-      "id": "high-magic",
-      "name": "High Magic",
-      "description": "More permanent and consumable magic, fewer purely decorative valuables.",
-      "budgetMultiplier": 1.25,
-      "categoryWeights": {
-        "coins": 15,
-        "consumables": 25,
-        "permanent": 40,
-        "art": 8,
-        "valuables": 7,
-        "curiosities": 5
-      }
-    }
-  ]
-}
+[
+  {
+    "id": "poor",
+    "multiplier": 2
+  },
+  {
+    "id": "standard",
+    "multiplier": 5
+  },
+  {
+    "id": "rich",
+    "multiplier": 8
+  },
+  {
+    "id": "boss",
+    "multiplier": 12
+  },
+  {
+    "id": "hoard",
+    "multiplier": 20
+  }
+]
