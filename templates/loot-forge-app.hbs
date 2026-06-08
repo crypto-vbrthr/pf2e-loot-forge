@@ -19,59 +19,66 @@
   </nav>
 
   <section class="lf-tab-panel lf-main-panel">
-    <div class="lf-main-layout">
+    <div class="lf-main-layout lf-three-column-layout">
       <section class="lf-column lf-generation">
         <h3>{{lf "LF.App.GenerationSettings"}}</h3>
 
-        <div class="form-group"><label>{{lf "LF.Field.Level"}}</label><input type="number" name="level" value="{{config.level}}" min="0" max="25"></div>
-        <div class="form-group"><label>{{lf "LF.Field.PartySize"}}</label><input type="number" name="partySize" value="{{config.partySize}}" min="1" max="8"></div>
-        <div class="form-group"><label>{{lf "LF.Field.ItemLevelMin"}}</label><input type="number" name="itemLevelMin" value="{{config.itemLevelMin}}" min="0" max="25"></div>
-        <div class="form-group"><label>{{lf "LF.Field.ItemLevelMax"}}</label><input type="number" name="itemLevelMax" value="{{config.itemLevelMax}}" min="0" max="25"></div>
-        <p class="lf-form-hint">{{lf "LF.Hint.ItemLevelAutoRange"}}</p>
+        <div class="lf-scroll-column">
+          <div class="form-group"><label>{{lf "LF.Field.Level"}}</label><input type="number" name="level" value="{{config.level}}" min="0" max="25"></div>
+          <div class="form-group"><label>{{lf "LF.Field.PartySize"}}</label><input type="number" name="partySize" value="{{config.partySize}}" min="1" max="8"></div>
 
-        <div class="form-group">
-          <label>{{lf "LF.Field.Rarity"}}</label>
-          <select name="rarity">
-            {{#each rarityOptions}}
-              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
-            {{/each}}
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>{{lf "LF.Field.TreasureProfile"}}</label>
-          <select name="treasureProfile">
-            {{#each treasureProfileOptions}}
-              <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
-            {{/each}}
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>{{lf "LF.Field.Theme"}}</label>
-          <select name="theme">
-            {{#each themes}}
-              <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
-            {{/each}}
-          </select>
-        </div>
-        <div class="form-group"><label>{{lf "LF.Field.Environment"}}</label><input type="text" name="environment" value="{{config.environment}}"></div>
-
-        <div class="form-group lf-style-control">
-          <label>{{lf "LF.Field.LootStyle"}}</label>
-          <div class="lf-style-labels">
-            <span>{{lf "LF.Style.Atmospheric"}}</span>
-            <span>{{lf "LF.Style.Practical"}}</span>
+          <div class="lf-two-field-row">
+            <div class="form-group"><label>{{lf "LF.Field.ItemLevelMin"}}</label><input type="number" name="itemLevelMin" value="{{config.itemLevelMin}}" min="0" max="25"></div>
+            <div class="form-group"><label>{{lf "LF.Field.ItemLevelMax"}}</label><input type="number" name="itemLevelMax" value="{{config.itemLevelMax}}" min="0" max="25"></div>
           </div>
-          <input type="range" name="lootStyle" value="{{config.lootStyle}}" min="0" max="100" step="5">
-        </div>
+          <p class="lf-form-hint">{{lf "LF.Hint.ItemLevelAutoRange"}}</p>
 
-        <div class="lf-check-grid">
-          <label class="lf-check"><input type="checkbox" name="includeCombatGear" {{#if config.includeCombatGear}}checked{{/if}}> {{lf "LF.Option.IncludeCombatGear"}}</label>
-          <label class="lf-check"><input type="checkbox" name="includeConsumables" {{#if config.includeConsumables}}checked{{/if}}> {{lf "LF.Option.IncludeConsumables"}}</label>
-          <label class="lf-check"><input type="checkbox" name="includePermanentItems" {{#if config.includePermanentItems}}checked{{/if}}> {{lf "LF.Option.IncludePermanentItems"}}</label>
-          <label class="lf-check"><input type="checkbox" name="includeValuables" {{#if config.includeValuables}}checked{{/if}}> {{lf "LF.Option.IncludeValuables"}}</label>
-          <label class="lf-check"><input type="checkbox" name="includeCuriosities" {{#if config.includeCuriosities}}checked{{/if}}> {{lf "LF.Option.IncludeCuriosities"}}</label>
+          <div class="form-group">
+            <label>{{lf "LF.Field.Rarity"}}</label>
+            <select name="rarity">
+              {{#each rarityOptions}}
+                <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>{{lf "LF.Field.TreasureProfile"}}</label>
+            <select name="treasureProfile">
+              {{#each treasureProfileOptions}}
+                <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>{{lf "LF.Field.Theme"}}</label>
+            <select name="theme">
+              {{#each themes}}
+                <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+
+          <div class="form-group"><label>{{lf "LF.Field.Environment"}}</label><input type="text" name="environment" value="{{config.environment}}"></div>
+
+          <div class="form-group lf-style-control">
+            <label>{{lf "LF.Field.LootStyle"}}</label>
+            <div class="lf-style-labels">
+              <span>{{lf "LF.Style.Atmospheric"}}</span>
+              <span>{{lf "LF.Style.Practical"}}</span>
+            </div>
+            <input type="range" name="lootStyle" value="{{config.lootStyle}}" min="0" max="100" step="5">
+          </div>
+
+          <div class="lf-check-grid">
+            <label class="lf-check"><input type="checkbox" name="includeCombatGear" {{#if config.includeCombatGear}}checked{{/if}}> {{lf "LF.Option.IncludeCombatGear"}}</label>
+            <label class="lf-check"><input type="checkbox" name="includeConsumables" {{#if config.includeConsumables}}checked{{/if}}> {{lf "LF.Option.IncludeConsumables"}}</label>
+            <label class="lf-check"><input type="checkbox" name="includePermanentItems" {{#if config.includePermanentItems}}checked{{/if}}> {{lf "LF.Option.IncludePermanentItems"}}</label>
+            <label class="lf-check"><input type="checkbox" name="includeValuables" {{#if config.includeValuables}}checked{{/if}}> {{lf "LF.Option.IncludeValuables"}}</label>
+            <label class="lf-check"><input type="checkbox" name="includeCuriosities" {{#if config.includeCuriosities}}checked{{/if}}> {{lf "LF.Option.IncludeCuriosities"}}</label>
+            <label class="lf-check lf-prominent-check"><input type="checkbox" name="mystifyMagicItems" {{#if config.mystifyMagicItems}}checked{{/if}}> {{lf "LF.Option.MystifyMagicItems"}}</label>
+          </div>
         </div>
       </section>
 
@@ -80,48 +87,88 @@
       <section class="lf-column lf-preview">
         <h3>{{lf "LF.App.Result"}}</h3>
 
-        {{#if hasResult}}
-          <div class="lf-summary">
-            <p><strong>{{lf "LF.Result.Theme"}}:</strong> {{result.summary.theme}}</p>
-            <p><strong>{{lf "LF.Result.Candidates"}}:</strong> {{result.summary.candidates}}</p>
-            <p><strong>{{lf "LF.Result.Coins"}}:</strong> {{result.coins.gp}} {{lf "LF.Currency.GP"}}</p>
-            <p><strong>{{lf "LF.Result.TargetBudget"}}:</strong> {{result.budget.targetGp}} {{lf "LF.Currency.GP"}}</p>
-            <p><strong>{{lf "LF.Result.TotalValue"}}:</strong> {{result.totalValueGp}} {{lf "LF.Currency.GP"}}</p>
-            <p><strong>{{lf "LF.Result.BudgetDelta"}}:</strong> {{result.budgetDeltaGp}} {{lf "LF.Currency.GP"}}</p>
-          </div>
+        <div class="lf-scroll-column">
+          {{#if hasResult}}
+            <div class="lf-summary lf-compact-summary">
+              <p><strong>{{lf "LF.Result.Theme"}}:</strong> {{result.summary.theme}}</p>
+              <p><strong>{{lf "LF.Result.TargetBudget"}}:</strong> {{result.budget.targetGp}} {{lf "LF.Currency.GP"}}</p>
+              <p><strong>{{lf "LF.Result.TotalValue"}}:</strong> {{result.totalValueGp}} {{lf "LF.Currency.GP"}}</p>
+              <p><strong>{{lf "LF.Result.BudgetDelta"}}:</strong> {{result.budgetDeltaGp}} {{lf "LF.Currency.GP"}}</p>
+              <p><strong>{{lf "LF.Result.Candidates"}}:</strong> {{result.summary.candidates}}</p>
+            </div>
 
-          <h4>{{lf "LF.Result.PF2EItems"}}</h4>
-          <ul class="lf-preview-list">
-            {{#each result.selectedRefs}}
-              <li>{{name}} <span class="lf-muted">({{lfKey typeLabelKey}}, {{lf "LF.Field.Level"}} {{level}})</span></li>
-            {{/each}}
-          </ul>
+            <section class="lf-preview-section">
+              <h4>{{lf "LF.Result.Coins"}}</h4>
+              <div class="lf-coin-editor lf-compact-coins">
+                <label>{{lf "LF.Currency.CP"}} <input type="number" name="coinCp" value="{{result.coins.cp}}" min="0"></label>
+                <label>{{lf "LF.Currency.SP"}} <input type="number" name="coinSp" value="{{result.coins.sp}}" min="0"></label>
+                <label>{{lf "LF.Currency.GP"}} <input type="number" name="coinGp" value="{{result.coins.gp}}" min="0"></label>
+                <label>{{lf "LF.Currency.PP"}} <input type="number" name="coinPp" value="{{result.coins.pp}}" min="0"></label>
+              </div>
+            </section>
 
-          <h4>{{lf "LF.Result.GeneratedItems"}}</h4>
-          <ul class="lf-preview-list">
-            {{#each result.generatedItems}}
-              <li>{{name}} <span class="lf-muted">({{system.price.value.gp}} {{lf "LF.Currency.GP"}})</span></li>
-            {{/each}}
-          </ul>
-        {{else}}
-          <p class="lf-muted">{{lf "LF.Result.Empty"}}</p>
-        {{/if}}
+            <section class="lf-preview-section">
+              <h4>{{lf "LF.Result.PF2EItems"}}</h4>
+              <ul class="lf-preview-list">
+                {{#each result.selectedRefs}}
+                  <li class="lf-preview-row">
+                    <span>{{name}} <span class="lf-muted">({{lfKey typeLabelKey}}, {{lf "LF.Field.Level"}} {{level}})</span></span>
+                    <button type="submit" class="lf-icon-button" data-action="remove-pf2e:{{@index}}" title="{{lf "LF.Button.Remove"}}"><i class="fa-solid fa-trash"></i></button>
+                  </li>
+                {{/each}}
+              </ul>
+            </section>
+          {{else}}
+            <p class="lf-muted">{{lf "LF.Result.Empty"}}</p>
+          {{/if}}
+        </div>
+      </section>
 
-        <div class="lf-target-box">
-          <h3>{{lf "LF.App.Target"}}</h3>
-          <div class="form-group">
-            <label>{{lf "LF.Field.TargetActor"}}</label>
-            <select name="targetActorId">
-              <option value="">{{lf "LF.Target.None"}}</option>
-              {{#each actors}}
-                <option value="{{id}}" {{#if selected}}selected{{/if}}>{{#if isLoot}}🪙 {{/if}}{{name}} — {{typeLabel}}</option>
+      <div class="lf-vertical-separator"></div>
+
+      <section class="lf-column lf-treasures">
+        <h3>{{lf "LF.Result.GeneratedItems"}}</h3>
+
+        <div class="lf-scroll-column">
+          {{#if hasResult}}
+            <ul class="lf-preview-list">
+              {{#each result.generatedItems}}
+                <li class="lf-generated-row lf-compact-generated-row">
+                  <div class="lf-generated-main">
+                    <strong>{{name}}</strong>
+                    <label class="lf-value-editor">
+                      {{lf "LF.Field.ValueGp"}}
+                      <input type="number" name="generatedValue.{{@index}}" value="{{system.price.value.gp}}" min="0">
+                      {{lf "LF.Currency.GP"}}
+                    </label>
+                  </div>
+                  <div class="lf-row-actions">
+                    <button type="submit" class="lf-icon-button" data-action="reroll-generated:{{@index}}" title="{{lf "LF.Button.Reroll"}}"><i class="fa-solid fa-rotate"></i></button>
+                    <button type="submit" class="lf-icon-button" data-action="remove-generated:{{@index}}" title="{{lf "LF.Button.Remove"}}"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                </li>
               {{/each}}
-            </select>
-          </div>
-          <div class="form-group">
-            <label>{{lf "LF.Field.NewLootActorName"}}</label>
-            <input type="text" name="newLootActorName" value="{{config.newLootActorName}}">
-          </div>
+            </ul>
+
+            <div class="lf-target-box">
+              <h3>{{lf "LF.App.Target"}}</h3>
+              <div class="form-group">
+                <label>{{lf "LF.Field.TargetActor"}}</label>
+                <select name="targetActorId">
+                  <option value="">{{lf "LF.Target.None"}}</option>
+                  {{#each actors}}
+                    <option value="{{id}}" {{#if selected}}selected{{/if}}>{{#if isLoot}}🪙 {{/if}}{{name}} — {{typeLabel}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <div class="form-group">
+                <label>{{lf "LF.Field.NewLootActorName"}}</label>
+                <input type="text" name="newLootActorName" value="{{config.newLootActorName}}">
+              </div>
+            </div>
+          {{else}}
+            <p class="lf-muted">{{lf "LF.Result.Empty"}}</p>
+          {{/if}}
         </div>
       </section>
     </div>
@@ -131,6 +178,10 @@
     <section class="lf-panel">
       <h3>{{lf "LF.App.Compendiums"}}</h3>
       <p class="lf-muted">{{lf "LF.Compendiums.Hint"}}</p>
+      <div class="lf-pack-actions">
+        <button type="button" data-action="select-all-packs"><i class="fa-solid fa-check-double"></i> {{lf "LF.Button.SelectAll"}}</button>
+        <button type="button" data-action="deselect-all-packs"><i class="fa-solid fa-xmark"></i> {{lf "LF.Button.DeselectAll"}}</button>
+      </div>
       <div class="lf-pack-list">
         {{#each packs}}
           <label class="lf-check">
@@ -142,7 +193,7 @@
     </section>
   </section>
 
-  <footer class="lf-actions">
+  <footer class="lf-actions lf-sticky-actions">
     <button type="submit" data-action="generate"><i class="fa-solid fa-dice"></i> {{lf "LF.Button.Generate"}}</button>
     <button type="submit" data-action="apply" {{#unless hasResult}}disabled{{/unless}}><i class="fa-solid fa-box-open"></i> {{lf "LF.Button.ApplyToActor"}}</button>
     <button type="submit" data-action="create-loot-actor" {{#unless hasResult}}disabled{{/unless}}><i class="fa-solid fa-coins"></i> {{lf "LF.Button.CreateLootActor"}}</button>

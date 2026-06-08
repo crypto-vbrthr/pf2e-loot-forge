@@ -406,5 +406,14 @@
   "LF.Generated.CuriosityFeature.CoastalScratches": "scratched coastlines",
   "LF.Generated.CuriosityFeature.TooHeavy": "far too much weight",
   "LF.Generated.CuriosityFeature.MovingMist": "moving mist",
-  "LF.Generated.CuriosityFeature.TeethMarks": "clear tooth marks"
+  "LF.Generated.CuriosityFeature.TeethMarks": "clear tooth marks",
+  "LF.Button.Reroll": "Reroll",
+  "LF.Button.Remove": "Remove",
+  "LF.Field.ValueGp": "Value",
+  "LF.Option.MystifyMagicItems": "Mystify magic items",
+  "LF.Settings.MystifyMagicItems.Name": "Mystify Magic Items",
+  "LF.Settings.MystifyMagicItems.Hint": "When enabled, magical compendium items are marked as unidentified where possible.",
+  "LF.Notification.CurrencyAdded": "Coins added as currency.",
+  "LF.Button.SelectAll": "Select all",
+  "LF.Button.DeselectAll": "Deselect all"
 }

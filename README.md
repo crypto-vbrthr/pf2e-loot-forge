@@ -2,7 +2,7 @@
 
 PF2E Loot Forge is a Foundry VTT module for generating Pathfinder 2e loot.
 
-## v0.1.2
+## v0.1.5
 
 - Actor Directory button
 - ApplicationV2 loot generator window
@@ -42,7 +42,7 @@ const inventory = await lootApi.generateInventoryForCreature({
 ```
 
 
-## v0.1.2 Budget Note
+## v0.1.5 Budget Note
 
 This version introduces a first playable treasure budget foundation. The numbers are intentionally isolated in:
 
@@ -52,20 +52,20 @@ data/templates/treasure-budgets.json
 
 so they can be adjusted later without rewriting generator logic.
 
-## v0.1.2 Notes
+## v0.1.5 Notes
 
 Changing the loot level now automatically adjusts min/max item level to `level - 2` and `level + 1`.
 
-## v0.1.2
+## v0.1.5
 
 This release expands generated treasure variety and adds a loot style slider for atmospheric vs practical treasure generation.
 
-## v0.1.2
+## v0.1.5
 
 Fixes form state preservation after generating loot.
 
 
-## v0.1.2 Procedural Treasure Architecture
+## v0.1.5 Procedural Treasure Architecture
 
 Generated treasures now use the architecture:
 
@@ -75,3 +75,20 @@ data/generators/
 ```
 
 Generated treasure is built from templates and localized components instead of fixed object lists.
+
+## v0.1.5 Treasure Editor
+
+The loot preview can now be edited before applying it to an actor or creating a loot actor.
+
+## v0.1.5 Layout
+
+The main interface now uses a wider three-column layout with independent scroll areas.
+
+## v0.1.5
+
+Coins are now written only to actor currency. Magical items can be mystified by default.
+
+
+## v0.1.6
+
+Hotfix for mystify magic items option visibility and compendium source scrolling.

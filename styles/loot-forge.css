@@ -1,18 +1,38 @@
-.lf-app { padding: 1rem; }
-.lf-header h2 { margin: 0; }
-.lf-header p, .lf-muted { opacity: 0.75; }
+.lf-app {
+  padding: 0.75rem 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-.lf-tab-radio { display: none; }
+.lf-header {
+  flex: 0 0 auto;
+}
+
+.lf-header h2 {
+  margin: 0;
+}
+
+.lf-header p,
+.lf-muted {
+  opacity: 0.75;
+}
+
+.lf-tab-radio {
+  display: none;
+}
 
 .lf-tabs {
+  flex: 0 0 auto;
   display: flex;
   gap: 0.5rem;
-  margin: 0.75rem 0 1rem;
+  margin: 0.6rem 0 0.75rem;
   border-bottom: 1px solid var(--color-border-light-primary);
 }
 
 .lf-tabs label {
-  padding: 0.45rem 0.75rem;
+  padding: 0.4rem 0.7rem;
   border: 1px solid transparent;
   border-bottom: none;
   border-radius: 6px 6px 0 0;
@@ -27,22 +47,46 @@
   opacity: 1;
 }
 
-.lf-tab-panel { display: none; }
+.lf-tab-panel {
+  display: none;
+  min-height: 0;
+}
 
 #lf-tab-main:checked ~ .lf-main-panel,
 #lf-tab-compendiums:checked ~ .lf-compendium-panel {
   display: block;
 }
 
-.lf-main-layout {
+.lf-main-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.lf-three-column-layout {
+  height: 100%;
+  min-height: 0;
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) 1px minmax(320px, 1.1fr);
-  gap: 1rem;
-  align-items: start;
+  grid-template-columns: minmax(250px, 0.85fr) 1px minmax(300px, 1fr) 1px minmax(330px, 1.15fr);
+  gap: 0.85rem;
+  align-items: stretch;
 }
 
 .lf-column {
   min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lf-column h3 {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+.lf-scroll-column {
+  min-height: 0;
+  overflow: auto;
+  padding-right: 0.25rem;
 }
 
 .lf-vertical-separator {
@@ -60,11 +104,23 @@
 }
 
 .lf-target-box {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+}
+
+.lf-two-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.lf-form-hint {
+  margin: -0.25rem 0 0.5rem;
+  font-size: 0.85em;
+  opacity: 0.72;
 }
 
 .lf-pack-list {
-  max-height: 480px;
+  max-height: 560px;
   overflow: auto;
   padding-right: 0.25rem;
 }
@@ -78,46 +134,6 @@
   margin-top: 0.5rem;
 }
 
-.lf-summary {
-  border: 1px solid var(--color-border-light-primary);
-  border-radius: 6px;
-  padding: 0.5rem 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.lf-summary p {
-  margin: 0.15rem 0;
-}
-
-.lf-preview-list {
-  margin-top: 0.25rem;
-}
-
-.lf-actions {
-  margin-top: 0.75rem;
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.pf2e-loot-forge-directory-wrapper { padding: 0.25rem; }
-.pf2e-loot-forge-directory-button { width: 100%; margin-top: 0.25rem; }
-
-@media (max-width: 760px) {
-  .lf-main-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .lf-vertical-separator {
-    width: auto;
-    height: 1px;
-    min-height: 1px;
-  }
-}
-
-.lf-form-hint { margin: -0.25rem 0 0.5rem; font-size: 0.85em; opacity: 0.72; }
-
 .lf-style-labels {
   display: flex;
   justify-content: space-between;
@@ -127,4 +143,186 @@
 
 .lf-style-control input[type="range"] {
   width: 100%;
+}
+
+.lf-summary {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.lf-compact-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.1rem 0.75rem;
+}
+
+.lf-summary p {
+  margin: 0.1rem 0;
+}
+
+.lf-preview-section {
+  margin-top: 0.75rem;
+}
+
+.lf-preview-section h4,
+.lf-treasures h4 {
+  margin-bottom: 0.25rem;
+}
+
+.lf-preview-list {
+  margin-top: 0.25rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.lf-coin-editor {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(58px, 1fr));
+  gap: 0.35rem;
+  align-items: end;
+  margin: 0.35rem 0;
+}
+
+.lf-coin-editor label,
+.lf-value-editor {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.lf-coin-editor input,
+.lf-value-editor input {
+  width: 4.25rem;
+}
+
+.lf-preview-row,
+.lf-generated-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+  padding: 0.35rem 0;
+}
+
+.lf-compact-generated-row {
+  align-items: flex-start;
+}
+
+.lf-generated-main {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.lf-generated-main strong {
+  overflow-wrap: anywhere;
+}
+
+.lf-row-actions {
+  display: flex;
+  gap: 0.25rem;
+  flex: 0 0 auto;
+}
+
+.lf-icon-button {
+  width: 2rem;
+  min-width: 2rem;
+  padding: 0.2rem;
+}
+
+.lf-actions {
+  flex: 0 0 auto;
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.lf-sticky-actions {
+  border-top: 1px solid var(--color-border-light-primary);
+  padding-top: 0.6rem;
+}
+
+.pf2e-loot-forge-directory-wrapper {
+  padding: 0.25rem;
+}
+
+.pf2e-loot-forge-directory-button {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 980px) {
+  .lf-app {
+    overflow: auto;
+  }
+
+  .lf-three-column-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .lf-vertical-separator {
+    width: auto;
+    height: 1px;
+    min-height: 1px;
+  }
+
+  .lf-scroll-column {
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+
+/* v0.1.6 hotfix: compendium tab scrolling and visible mystify option */
+.lf-compendium-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+}
+
+#lf-tab-compendiums:checked ~ .lf-compendium-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.lf-compendium-panel .lf-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+}
+
+.lf-compendium-panel .lf-pack-list,
+.lf-pack-list-settings {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
+  padding-bottom: 3rem;
+}
+
+.lf-pack-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.lf-pack-actions button {
+  flex: 0 0 auto;
+}
+
+.lf-prominent-check {
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
 }

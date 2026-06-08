@@ -1,6 +1,10 @@
 <form>
   <p>{{lf "LF.Settings.CompendiumSources.Description"}}</p>
-  <div class="lf-pack-list">
+  <div class="lf-pack-actions">
+    <button type="button" onclick="this.closest('form').querySelectorAll('input[name^=\\'pack.\\']').forEach(i => i.checked = true)"><i class="fa-solid fa-check-double"></i> {{lf "LF.Button.SelectAll"}}</button>
+    <button type="button" onclick="this.closest('form').querySelectorAll('input[name^=\\'pack.\\']').forEach(i => i.checked = false)"><i class="fa-solid fa-xmark"></i> {{lf "LF.Button.DeselectAll"}}</button>
+  </div>
+  <div class="lf-pack-list lf-pack-list-settings">
     {{#each packs}}
       <label class="lf-check">
         <input type="checkbox" name="pack.{{collection}}" {{#if checked}}checked{{/if}}>

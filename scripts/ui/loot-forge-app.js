@@ -4,13 +4,14 @@ import { LootForgeAPI } from "../api.js";
 import { CompendiumScanner } from "../compendium-scanner.js";
 import { lfLocalize } from "../localization-helper.js";
 import { ThemeManager } from "../theme-manager.js";
+import { GeneratedTreasureFactory } from "../generated/generated-treasure-factory.js";
 
 export class LootForgeApp extends foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
   static DEFAULT_OPTIONS = {
     id: "pf2e-loot-forge-app",
     tag: "form",
     window: { title: "PF2E Loot Forge", icon: "fa-solid fa-gem", resizable: true },
-    position: { width: 820, height: "auto" },
+    position: { width: 1180, height: 760 },
     form: { handler: LootForgeApp.#onSubmit, submitOnChange: false, closeOnSubmit: false }
   };
 
@@ -21,6 +22,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
   constructor(options = {}) {
     super(options);
     this.result = null;
+    this.editableLoot = null;
     this.lastConfig = null;
     this.targetActorId = options.targetActorId ?? null;
   }
@@ -76,8 +78,8 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       packs,
       themes,
       actors,
-      result: this.result,
-      hasResult: Boolean(this.result)
+      result: this.editableLoot ?? this.result,
+      hasResult: Boolean(this.editableLoot ?? this.result)
     };
   }
 
@@ -98,7 +100,8 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       includeConsumables: true,
       includePermanentItems: true,
       includeValuables: true,
-      includeCuriosities: true
+      includeCuriosities: true,
+      mystifyMagicItems: game.settings.get(MODULE_ID, "mystifyMagicItems")
     }, this.lastConfig ?? {}, { inplace: false });
   }
 
@@ -123,6 +126,92 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
     levelInput.addEventListener("change", updateRange);
     levelInput.addEventListener("input", updateRange);
+
+    const selectAllPacksButton = element.querySelector("[data-action='select-all-packs']");
+    const deselectAllPacksButton = element.querySelector("[data-action='deselect-all-packs']");
+    const packCheckboxes = () => Array.from(element.querySelectorAll("input[name^='pack.']"));
+
+    selectAllPacksButton?.addEventListener("click", event => {
+      event.preventDefault();
+      packCheckboxes().forEach(input => input.checked = true);
+    });
+
+    deselectAllPacksButton?.addEventListener("click", event => {
+      event.preventDefault();
+      packCheckboxes().forEach(input => input.checked = false);
+    });
+  }
+
+
+  static #syncEditsFromForm(app, data) {
+    if (!app.editableLoot) return;
+
+    app.editableLoot.coins = {
+      cp: Number(data.coinCp ?? app.editableLoot.coins?.cp ?? 0),
+      sp: Number(data.coinSp ?? app.editableLoot.coins?.sp ?? 0),
+      gp: Number(data.coinGp ?? app.editableLoot.coins?.gp ?? 0),
+      pp: Number(data.coinPp ?? app.editableLoot.coins?.pp ?? 0)
+    };
+
+    const generatedItems = app.editableLoot.generatedItems ?? [];
+    for (let index = 0; index < generatedItems.length; index++) {
+      const value = data[`generatedValue.${index}`];
+      if (value === undefined) continue;
+
+      generatedItems[index].system ??= {};
+      generatedItems[index].system.price ??= {};
+      generatedItems[index].system.price.value ??= {};
+      generatedItems[index].system.price.value.gp = Math.max(0, Number(value ?? 0));
+    }
+
+    app.editableLoot.totalValueGp = LootForgeApp.#estimateTotalValue(app.editableLoot);
+    app.editableLoot.budgetDeltaGp = Math.round((app.editableLoot.totalValueGp - (app.editableLoot.budget?.targetGp ?? 0)) * 100) / 100;
+  }
+
+  static #estimateTotalValue(loot) {
+    const coins = loot?.coins ?? {};
+    const coinGp = Number(coins.gp ?? 0) + Number(coins.sp ?? 0) / 10 + Number(coins.cp ?? 0) / 100 + Number(coins.pp ?? 0) * 10;
+    const generatedGp = (loot?.generatedItems ?? []).reduce((sum, item) => sum + Number(item.system?.price?.value?.gp ?? 0), 0);
+    const roughPf2eGp = (loot?.selectedRefs ?? []).reduce((sum, item) => {
+      const level = Number(item.level ?? 0);
+      return sum + Math.max(1, Math.round(Math.pow(level + 1, 2) * 0.75));
+    }, 0);
+
+    return Math.round((coinGp + generatedGp + roughPf2eGp) * 100) / 100;
+  }
+
+  static async #rerollGeneratedItem(app, index) {
+    const item = app.editableLoot?.generatedItems?.[index];
+    if (!item) return;
+
+    const sourceType = item.flags?.["pf2e-loot-forge"]?.sourceType ?? "curiosity";
+    const currentValue = Number(item.system?.price?.value?.gp ?? 0);
+    const themeId = app.editableLoot?.themeProfile?.id ?? app.lastConfig?.theme ?? "generic";
+
+    const replacement = await GeneratedTreasureFactory.generate({
+      category: sourceType,
+      themeId,
+      valueBudget: currentValue
+    });
+
+    app.editableLoot.generatedItems[index] = replacement;
+    app.editableLoot.totalValueGp = LootForgeApp.#estimateTotalValue(app.editableLoot);
+    app.editableLoot.budgetDeltaGp = Math.round((app.editableLoot.totalValueGp - (app.editableLoot.budget?.targetGp ?? 0)) * 100) / 100;
+  }
+
+  static #removeGeneratedItem(app, index) {
+    if (!app.editableLoot?.generatedItems) return;
+    app.editableLoot.generatedItems.splice(index, 1);
+    app.editableLoot.totalValueGp = LootForgeApp.#estimateTotalValue(app.editableLoot);
+    app.editableLoot.budgetDeltaGp = Math.round((app.editableLoot.totalValueGp - (app.editableLoot.budget?.targetGp ?? 0)) * 100) / 100;
+  }
+
+  static #removePf2eItem(app, index) {
+    if (!app.editableLoot) return;
+    app.editableLoot.selectedRefs?.splice(index, 1);
+    app.editableLoot.pf2eItems?.splice(index, 1);
+    app.editableLoot.totalValueGp = LootForgeApp.#estimateTotalValue(app.editableLoot);
+    app.editableLoot.budgetDeltaGp = Math.round((app.editableLoot.totalValueGp - (app.editableLoot.budget?.targetGp ?? 0)) * 100) / 100;
   }
 
   static async #onSubmit(event, form, formData) {
@@ -135,6 +224,28 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     const config = LootForgeApp.#configFromFormData(data);
     app.lastConfig = foundry.utils.deepClone(config);
     app.targetActorId = data.targetActorId ?? null;
+    LootForgeApp.#syncEditsFromForm(app, data);
+
+    if (action?.startsWith("reroll-generated:")) {
+      const index = Number(action.split(":")[1]);
+      await LootForgeApp.#rerollGeneratedItem(app, index);
+      app.render({ force: true });
+      return;
+    }
+
+    if (action?.startsWith("remove-generated:")) {
+      const index = Number(action.split(":")[1]);
+      LootForgeApp.#removeGeneratedItem(app, index);
+      app.render({ force: true });
+      return;
+    }
+
+    if (action?.startsWith("remove-pf2e:")) {
+      const index = Number(action.split(":")[1]);
+      LootForgeApp.#removePf2eItem(app, index);
+      app.render({ force: true });
+      return;
+    }
 
     if (action === "apply") {
       if (!app.result) {
@@ -148,7 +259,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
         return;
       }
 
-      await LootForgeAPI.addLootToActor(actor, app.result);
+      await LootForgeAPI.addLootToActor(actor, app.editableLoot ?? app.result, { mystifyMagicItems: config.mystifyMagicItems });
       return;
     }
 
@@ -171,6 +282,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
     config.compendiums = enabledCompendiums;
     app.result = await LootGenerator.generate(config);
+    app.editableLoot = foundry.utils.deepClone(app.result);
     app.lastConfig = foundry.utils.deepClone(config);
     app.targetActorId = data.targetActorId ?? null;
     app.render({ force: true });
@@ -193,7 +305,8 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       includeConsumables: Boolean(data.includeConsumables),
       includePermanentItems: Boolean(data.includePermanentItems),
       includeValuables: Boolean(data.includeValuables),
-      includeCuriosities: Boolean(data.includeCuriosities)
+      includeCuriosities: Boolean(data.includeCuriosities),
+      mystifyMagicItems: Boolean(data.mystifyMagicItems)
     };
   }
 }

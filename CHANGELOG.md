@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.6
+- Fixed visibility of the mystify magic items option in the main Loot Forge UI
+- Ensured mystify magic items remains registered as a world setting
+- Fixed compendium tab scrolling so the final entries are reachable
+- Added Select All and Deselect All controls for compendium sources
+- Improved compendium panel flex layout
+
+## 0.1.5
+- Coins are now added only as actor currency, not as treasure items
+- Removed duplicate coin treasure entries when applying loot
+- Added option to mystify magical compendium items
+- Magic item mystification is enabled by default
+- Added world setting and UI checkbox for magic item mystification
+
+## 0.1.4
+- Reworked main layout into three columns
+- Increased application window size
+- Split generation, PF2E preview/coins, and generated treasures into separate columns
+- Added independent scroll areas
+- Added compact summary and compact generated treasure rows
+- Kept action buttons visible in a bottom action bar
+- Reduced vertical pressure in the preview editor
+
+## 0.1.3
+- Added editable loot preview workflow
+- Coins can now be edited in the preview
+- Generated treasure values can now be edited before applying loot
+- Generated treasure entries can be rerolled individually by source type
+- Generated treasure entries can be removed individually
+- PF2E compendium items can be removed individually from the preview
+- Preview total and budget delta are recalculated after edits
+
 ## 0.1.2
 - Added procedural generated treasure architecture
 - Added shared `ProceduralGenerator` base class

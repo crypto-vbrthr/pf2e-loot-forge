@@ -36,6 +36,16 @@ export function registerSettings() {
     default: true
   });
 
+
+  game.settings.register(MODULE_ID, "mystifyMagicItems", {
+    name: lfLocalize("LF.Settings.MystifyMagicItems.Name"),
+    hint: lfLocalize("LF.Settings.MystifyMagicItems.Hint"),
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true
+  });
+
   game.settings.registerMenu(MODULE_ID, "compendiumSources", {
     name: lfLocalize("LF.Settings.CompendiumSources.Name"),
     label: lfLocalize("LF.Settings.CompendiumSources.Label"),

@@ -406,5 +406,14 @@
   "LF.Generated.CuriosityFeature.CoastalScratches": "eingeritzten Küstenlinien",
   "LF.Generated.CuriosityFeature.TooHeavy": "viel zu hohem Gewicht",
   "LF.Generated.CuriosityFeature.MovingMist": "beweglichem Nebel",
-  "LF.Generated.CuriosityFeature.TeethMarks": "deutlichen Zahnspuren"
+  "LF.Generated.CuriosityFeature.TeethMarks": "deutlichen Zahnspuren",
+  "LF.Button.Reroll": "Neu würfeln",
+  "LF.Button.Remove": "Entfernen",
+  "LF.Field.ValueGp": "Wert",
+  "LF.Option.MystifyMagicItems": "Magische Gegenstände mystifizieren",
+  "LF.Settings.MystifyMagicItems.Name": "Magische Gegenstände mystifizieren",
+  "LF.Settings.MystifyMagicItems.Hint": "Wenn aktiviert, werden magische Kompendiumsgegenstände beim Einfügen möglichst als nicht identifiziert markiert.",
+  "LF.Notification.CurrencyAdded": "Münzen als Währung hinzugefügt.",
+  "LF.Button.SelectAll": "Alle auswählen",
+  "LF.Button.DeselectAll": "Alle abwählen"
 }

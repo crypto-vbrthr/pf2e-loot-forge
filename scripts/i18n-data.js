@@ -407,7 +407,16 @@ export const LF_TRANSLATIONS = {
   "LF.Generated.CuriosityFeature.CoastalScratches": "eingeritzten Küstenlinien",
   "LF.Generated.CuriosityFeature.TooHeavy": "viel zu hohem Gewicht",
   "LF.Generated.CuriosityFeature.MovingMist": "beweglichem Nebel",
-  "LF.Generated.CuriosityFeature.TeethMarks": "deutlichen Zahnspuren"
+  "LF.Generated.CuriosityFeature.TeethMarks": "deutlichen Zahnspuren",
+  "LF.Button.Reroll": "Neu würfeln",
+  "LF.Button.Remove": "Entfernen",
+  "LF.Field.ValueGp": "Wert",
+  "LF.Option.MystifyMagicItems": "Magische Gegenstände mystifizieren",
+  "LF.Settings.MystifyMagicItems.Name": "Magische Gegenstände mystifizieren",
+  "LF.Settings.MystifyMagicItems.Hint": "Wenn aktiviert, werden magische Kompendiumsgegenstände beim Einfügen möglichst als nicht identifiziert markiert.",
+  "LF.Notification.CurrencyAdded": "Münzen als Währung hinzugefügt.",
+  "LF.Button.SelectAll": "Alle auswählen",
+  "LF.Button.DeselectAll": "Alle abwählen"
 },
   en: {
   "LF.Controls.Open": "Loot Forge",
@@ -817,6 +826,15 @@ export const LF_TRANSLATIONS = {
   "LF.Generated.CuriosityFeature.CoastalScratches": "scratched coastlines",
   "LF.Generated.CuriosityFeature.TooHeavy": "far too much weight",
   "LF.Generated.CuriosityFeature.MovingMist": "moving mist",
-  "LF.Generated.CuriosityFeature.TeethMarks": "clear tooth marks"
+  "LF.Generated.CuriosityFeature.TeethMarks": "clear tooth marks",
+  "LF.Button.Reroll": "Reroll",
+  "LF.Button.Remove": "Remove",
+  "LF.Field.ValueGp": "Value",
+  "LF.Option.MystifyMagicItems": "Mystify magic items",
+  "LF.Settings.MystifyMagicItems.Name": "Mystify Magic Items",
+  "LF.Settings.MystifyMagicItems.Hint": "When enabled, magical compendium items are marked as unidentified where possible.",
+  "LF.Notification.CurrencyAdded": "Coins added as currency.",
+  "LF.Button.SelectAll": "Select all",
+  "LF.Button.DeselectAll": "Deselect all"
 }
 };
