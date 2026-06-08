@@ -1,22 +1,19 @@
 # Changelog
 
-## 0.2.0c
-- Localized default treasure profile names and descriptions in the in-app profile tab
-- German UI no longer shows English built-in profile descriptions
-- Keeps custom profile names/descriptions unchanged
+## 0.2.7
+- Layout recovery release
+- Widened the generation column again
+- Improved min/max item level field alignment
+- Kept Actor sidebar launcher from the stable safe build
+- No treasure profile changes
+- No loot logic changes
+- Intended as a stable UI baseline for a Git tag
 
-## 0.2.0b
-- Hotfix: registered missing `activeTreasureProfile` world setting
-- Hotfix: registered missing `treasureProfiles` world setting
-- Hotfix: registered `allowCursedZeroValueItems` world setting if absent
-- Fixes crash when opening Loot Forge profile UI
-
-## 0.2.0
-- Added in-app Treasure Profiles tab
-- Added treasure budget profile selector to generation settings
-- Added active profile persistence
-- Added basic profile management: create, duplicate, delete, rename, save, set active
-- Kept budget table editing for v0.2.1 to reduce UI risk
+## 0.2.6
+- Safe rollback build from the last known functioning project base
+- Restores valid Loot Forge app code
+- Adds robust Actor sidebar launcher fallback only
+- Profile UI patches from v0.2.3-v0.2.5 are intentionally not included
 
 ## 0.1.5
 - Coins are now added only as actor currency, not as treasure items

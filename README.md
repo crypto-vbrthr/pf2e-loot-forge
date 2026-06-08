@@ -2,7 +2,7 @@
 
 PF2E Loot Forge is a Foundry VTT module for generating Pathfinder 2e loot.
 
-## v0.2.0
+## v0.1.5
 
 - Actor Directory button
 - ApplicationV2 loot generator window
@@ -88,6 +88,6 @@ The main interface now uses a wider three-column layout with independent scroll 
 
 Coins are now written only to actor currency. Magical items can be mystified by default.
 
-## v0.2.0 Treasure Profiles
+## v0.2.7 Layout Recovery
 
-Adds a visible Treasure Profiles tab with basic profile management. Budget table editing follows in v0.2.1.
+Wider generation column and safer field alignment. No profile or loot logic changes.
