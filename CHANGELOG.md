@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.9
+- Restored and expanded generated treasure variety
+- Added larger generic pools for paintings and other treasure categories
+- Added textiles, instruments, collectibles, and craftsmanship generated treasure categories
+- Replaced deterministic category cycling with random category selection
+- Improved generic theme picking so dragon paintings no longer dominate standard treasure
+- Added quality tiers and flair descriptions for generated treasures
+- No profile UI changes
+
 ## 0.2.8
 - Restored budget-aware PF2E compendium item filtering
 - Uses actual compendium item prices when available

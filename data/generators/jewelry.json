@@ -1,6 +1,25 @@
 {
   "templates": [
-    "LF.Generated.Jewelry.Template.Detail"
+    "LF.Generated.Jewelry.Template.Detail",
+    "LF.Generated.Jewelry.Template.Gem"
+  ],
+  "qualities": [
+    {
+      "key": "LF.Generated.Quality.Simple",
+      "valueMultiplier": 0.65
+    },
+    {
+      "key": "LF.Generated.Quality.Fine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Quality.Exquisite",
+      "valueMultiplier": 1.5
+    },
+    {
+      "key": "LF.Generated.Quality.Masterwork",
+      "valueMultiplier": 2.1
+    }
   ],
   "materials": [
     {
@@ -20,44 +39,53 @@
       "valueMultiplier": 2.2
     },
     {
-      "key": "LF.Generated.Material.Iron",
-      "valueMultiplier": 0.3
-    },
-    {
       "key": "LF.Generated.Material.Bronze",
       "valueMultiplier": 0.6
+    },
+    {
+      "key": "LF.Generated.Material.MithralFiligree",
+      "valueMultiplier": 2.4
     }
   ],
   "kinds": [
     {
-      "key": "LF.Generated.JewelryKind.Ring"
-    },
-    {
-      "key": "LF.Generated.JewelryKind.Brooch"
-    },
-    {
-      "key": "LF.Generated.JewelryKind.Chain"
-    },
-    {
-      "key": "LF.Generated.JewelryKind.Earring"
-    },
-    {
-      "key": "LF.Generated.JewelryKind.Button",
+      "key": "LF.Generated.JewelryKind.Ring",
       "themes": [
-        "goblin"
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Brooch",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Chain",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Earring",
+      "themes": [
+        "pirate",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryKind.Diadem",
       "themes": [
         "noble",
-        "elf-ruin"
+        "elf-ruin",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryKind.Medal",
       "themes": [
-        "military"
+        "military",
+        "generic"
       ]
     },
     {
@@ -65,7 +93,22 @@
       "themes": [
         "temple",
         "cultist",
-        "wizard"
+        "wizard",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Armlet",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Hairpin",
+      "themes": [
+        "noble",
+        "elf-ruin",
+        "generic"
       ]
     }
   ],
@@ -74,63 +117,89 @@
       "key": "LF.Generated.JewelryDetail.FadedInitials",
       "themes": [
         "undead",
-        "noble"
+        "noble",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryDetail.RubyEye",
       "themes": [
-        "dragon-hoard"
+        "dragon-hoard",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryDetail.HolyCharm",
       "themes": [
-        "temple"
+        "temple",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryDetail.TinyAnchor",
       "themes": [
-        "pirate"
-      ]
-    },
-    {
-      "key": "LF.Generated.JewelryDetail.ShinyWorthless",
-      "themes": [
-        "goblin"
+        "pirate",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryDetail.Moonstones",
       "themes": [
         "elf-ruin",
-        "noble"
+        "noble",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryDetail.OldCampaign",
       "themes": [
-        "military"
+        "military",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryDetail.HiddenSigil",
       "themes": [
-        "cultist"
+        "cultist",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.JewelryDetail.AcidEtching",
       "themes": [
-        "alchemist"
+        "alchemist",
+        "generic"
       ]
     },
     {
-      "key": "LF.Generated.JewelryDetail.MovingInk",
+      "key": "LF.Generated.JewelryDetail.BlackPearl",
       "themes": [
-        "wizard"
+        "pirate",
+        "noble",
+        "generic"
       ]
+    },
+    {
+      "key": "LF.Generated.JewelryDetail.TinyRunes",
+      "themes": [
+        "dwarf-ruin",
+        "wizard",
+        "generic"
+      ]
+    }
+  ],
+  "flairs": [
+    {
+      "key": "LF.Generated.Flair.InsideInitials"
+    },
+    {
+      "key": "LF.Generated.Flair.HiddenClasp"
+    },
+    {
+      "key": "LF.Generated.Flair.FaintPerfume"
+    },
+    {
+      "key": "LF.Generated.Flair.CarefulRepair"
     }
   ]
 }

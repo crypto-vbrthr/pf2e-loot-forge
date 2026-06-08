@@ -11,7 +11,6 @@ export class ProceduralGenerator {
 
   async loadData() {
     if (this.data) return this.data;
-
     const response = await fetch(`modules/${MODULE_ID}/${this.dataPath}`);
     this.data = await response.json();
     return this.data;
@@ -20,15 +19,17 @@ export class ProceduralGenerator {
   async generate({ themeId = "generic", valueBudget = 0 } = {}) {
     const data = await this.loadData();
     const result = this.build(data, themeId);
-    const valueMultiplier = result.valueMultiplier ?? 1;
-    const valueGp = Math.max(0, Math.round(Number(valueBudget ?? 0) * valueMultiplier));
+    const valueGp = Math.max(0, Math.round(Number(valueBudget ?? 0) * Number(result.valueMultiplier ?? 1)));
 
     return {
       name: result.name,
       description: result.description,
       valueGp,
       type: "treasure",
-      sourceType: this.sourceType
+      sourceType: this.sourceType,
+      category: this.category,
+      theme: themeId,
+      quality: result.qualityKey ?? null
     };
   }
 
@@ -37,16 +38,24 @@ export class ProceduralGenerator {
   }
 
   pick(list = [], themeId = "generic") {
-    const themed = list.filter(entry => entry.themes?.includes(themeId));
-    const generic = list.filter(entry => !entry.themes || entry.themes.includes("generic"));
-    const pool = themed.length ? themed : (generic.length ? generic : list);
+    if (!list.length) return null;
 
-    if (!pool.length) return null;
+    const generic = list.filter(entry => !Array.isArray(entry.themes) || entry.themes.includes("generic"));
+    const themed = list.filter(entry => Array.isArray(entry.themes) && entry.themes.includes(themeId));
+
+    let pool;
+    if (themeId === "generic") {
+      pool = generic.length ? generic : list;
+    } else {
+      pool = themed.length ? [...themed, ...themed, ...generic] : (generic.length ? generic : list);
+    }
+
     return pool[Math.floor(Math.random() * pool.length)];
   }
 
   pickTemplate(data) {
-    return this.pick((data.templates ?? []).map(key => ({ key })))?.key ?? data.templates?.[0];
+    const templates = (data.templates ?? []).map(key => ({ key }));
+    return this.pick(templates)?.key ?? data.templates?.[0];
   }
 
   localize(entry) {
@@ -59,5 +68,11 @@ export class ProceduralGenerator {
 
   combinedMultiplier(...entries) {
     return entries.reduce((product, entry) => product * Number(entry?.valueMultiplier ?? 1), 1);
+  }
+
+  buildDescription(baseKey, values, flair) {
+    const base = this.format(baseKey, values);
+    if (!flair) return base;
+    return `${base}<br>${this.localize(flair)}`;
   }
 }

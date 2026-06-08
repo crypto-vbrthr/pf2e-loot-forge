@@ -45,10 +45,10 @@ export class ItemFactory {
         + Number(config.budgetSplit?.religious ?? 0);
 
       const valuableCount = this.#countForStyle(config, "valuable");
-      const categories = ["painting", "statue", "jewelry", "beverage"];
+      const categories = ["painting", "statue", "jewelry", "beverage", "textile", "instrument", "collectible", "craftsmanship"];
 
       for (let i = 0; i < valuableCount; i++) {
-        const category = categories[i % categories.length];
+        const category = categories[Math.floor(Math.random() * categories.length)];
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,
@@ -63,10 +63,10 @@ export class ItemFactory {
         + Number(config.budgetSplit?.documents ?? 0);
 
       const curiosityCount = this.#countForStyle(config, "curiosity");
-      const categories = ["curiosity", "document"];
+      const categories = ["curiosity", "document", "collectible"];
 
       for (let i = 0; i < curiosityCount; i++) {
-        const category = categories[i % categories.length];
+        const category = categories[Math.floor(Math.random() * categories.length)];
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,

@@ -2,64 +2,122 @@
   "templates": [
     "LF.Generated.Curiosity.Template.Feature"
   ],
+  "qualities": [
+    {
+      "key": "LF.Generated.Quality.Simple",
+      "valueMultiplier": 0.65
+    },
+    {
+      "key": "LF.Generated.Quality.Fine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Quality.Exquisite",
+      "valueMultiplier": 1.5
+    },
+    {
+      "key": "LF.Generated.Quality.Masterwork",
+      "valueMultiplier": 2.1
+    }
+  ],
   "objects": [
     {
       "key": "LF.Generated.CuriosityObject.BrassBeetle",
       "themes": [
         "alchemist",
-        "wizard"
+        "wizard",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityObject.BlackCandle",
       "themes": [
         "cultist",
-        "undead"
+        "undead",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityObject.LeafKey",
       "themes": [
-        "elf-ruin"
+        "elf-ruin",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityObject.ScaleBox",
       "themes": [
-        "dragon-hoard"
+        "dragon-hoard",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityObject.SoldierDice",
       "themes": [
-        "military"
+        "military",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityObject.PerfumeVial",
       "themes": [
-        "noble"
+        "noble",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityObject.SharkskinMap",
       "themes": [
-        "pirate"
+        "pirate",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityObject.TinyAnvil",
       "themes": [
-        "dwarf-ruin"
+        "dwarf-ruin",
+        "generic"
       ]
     },
     {
-      "key": "LF.Generated.CuriosityObject.FogBottle"
+      "key": "LF.Generated.CuriosityObject.FogBottle",
+      "themes": [
+        "generic"
+      ]
     },
     {
-      "key": "LF.Generated.CuriosityObject.ChewedDollLeg",
+      "key": "LF.Generated.CuriosityObject.FossilShell",
       "themes": [
-        "goblin"
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.GlassEye",
+      "themes": [
+        "undead",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.MiniatureDoor",
+      "themes": [
+        "wizard",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.SingingStone",
+      "themes": [
+        "elf-ruin",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityObject.LockedLocket",
+      "themes": [
+        "noble",
+        "undead",
+        "generic"
       ]
     }
   ],
@@ -67,74 +125,139 @@
     {
       "key": "LF.Generated.CuriosityFeature.ClockworkLegs",
       "themes": [
-        "alchemist"
+        "alchemist",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityFeature.NoWick",
       "themes": [
         "cultist",
-        "undead"
-      ]
-    },
-    {
-      "key": "LF.Generated.CuriosityFeature.GrowingTeeth",
-      "themes": [
-        "elf-ruin"
+        "undead",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityFeature.ScaleInlay",
       "themes": [
-        "dragon-hoard"
+        "dragon-hoard",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityFeature.SwordPips",
       "themes": [
-        "military"
+        "military",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityFeature.FloralScent",
       "themes": [
-        "noble"
+        "noble",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityFeature.CoastalScratches",
       "themes": [
-        "pirate"
+        "pirate",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.CuriosityFeature.TooHeavy",
       "themes": [
-        "dwarf-ruin"
+        "dwarf-ruin",
+        "generic"
       ]
     },
     {
-      "key": "LF.Generated.CuriosityFeature.MovingMist"
+      "key": "LF.Generated.CuriosityFeature.MovingMist",
+      "themes": [
+        "generic"
+      ]
     },
     {
-      "key": "LF.Generated.CuriosityFeature.TeethMarks",
+      "key": "LF.Generated.CuriosityFeature.WarmToTouch",
       "themes": [
-        "goblin"
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.FaintChime",
+      "themes": [
+        "elf-ruin",
+        "wizard",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.HiddenDrawer",
+      "themes": [
+        "noble",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.ChangingShadow",
+      "themes": [
+        "wizard",
+        "cultist",
+        "generic"
       ]
     }
   ],
   "conditions": [
     {
-      "key": "LF.Generated.Condition.Dusty",
+      "key": "LF.Generated.Condition.Faded",
       "valueMultiplier": 0.8
     },
     {
       "key": "LF.Generated.Condition.Pristine",
-      "valueMultiplier": 1.2
+      "valueMultiplier": 1.25
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.WaterStained",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.CandleSmoke",
+      "valueMultiplier": 0.9
     },
     {
       "key": "LF.Generated.Condition.Cracked",
-      "valueMultiplier": 0.7
+      "valueMultiplier": 0.65
+    },
+    {
+      "key": "LF.Generated.Condition.Torn",
+      "valueMultiplier": 0.5
+    }
+  ],
+  "flairs": [
+    {
+      "key": "LF.Generated.Flair.WrappedInCloth"
+    },
+    {
+      "key": "LF.Generated.Flair.SmellsOfRain"
+    },
+    {
+      "key": "LF.Generated.Flair.SoftClicking"
+    },
+    {
+      "key": "LF.Generated.Flair.UnknownMaker"
     }
   ]
 }
