@@ -413,5 +413,7 @@
   "LF.Option.MystifyMagicItems": "Mystify magic items",
   "LF.Settings.MystifyMagicItems.Name": "Mystify Magic Items",
   "LF.Settings.MystifyMagicItems.Hint": "When enabled, magical compendium items are marked as unidentified where possible.",
-  "LF.Notification.CurrencyAdded": "Coins added as currency."
+  "LF.Notification.CurrencyAdded": "Coins added as currency.",
+  "LF.Settings.AllowCursedZeroValueItems.Name": "Allow 0-GP cursed items",
+  "LF.Settings.AllowCursedZeroValueItems.Hint": "When disabled, Loot Forge ignores 0-GP compendium items. Cursed items may only appear when this option is enabled."
 }

@@ -25,10 +25,13 @@ export class CompendiumScanner {
         const level = Number(entry.system?.level?.value ?? 0);
         const rarity = entry.system?.traits?.rarity ?? "common";
         const category = this.#categoryForEntry(entry);
+        const priceGp = this.#priceToGp(entry.system?.price?.value);
+        const isCursed = this.#isCursed(entry);
 
         if (level < config.itemLevelMin || level > config.itemLevelMax) continue;
         if (!this.#rarityAllowed(rarity, config.rarity)) continue;
         if (!this.#typeAllowed(entry.type, config)) continue;
+        if (priceGp <= 0 && !(config.allowCursedZeroValueItems && isCursed)) continue;
         if (config.preferredCategories?.length && !config.preferredCategories.includes(category)) continue;
 
         results.push({
@@ -39,6 +42,8 @@ export class CompendiumScanner {
           typeLabelKey: this.#typeLabelKey(entry.type),
           category,
           categoryLabelKey: this.#categoryLabelKey(category),
+          priceGp,
+          isCursed,
           level,
           rarity,
           pack: pack.collection
@@ -76,6 +81,32 @@ export class CompendiumScanner {
     if (type === "treasure") return true;
     return false;
   }
+
+
+  static #priceToGp(price = {}) {
+    if (!price) return 0;
+    if (typeof price === "number") return Number(price) || 0;
+
+    const cp = Number(price.cp ?? 0);
+    const sp = Number(price.sp ?? 0);
+    const gp = Number(price.gp ?? 0);
+    const pp = Number(price.pp ?? 0);
+
+    return Math.round((gp + sp / 10 + cp / 100 + pp * 10) * 100) / 100;
+  }
+
+  static #isCursed(entry) {
+    const traits = entry.system?.traits?.value ?? entry.system?.traits?.otherTags ?? [];
+    const traitList = Array.isArray(traits) ? traits.map(t => String(t).toLowerCase()) : [];
+    const name = String(entry.name ?? "").toLowerCase();
+
+    return traitList.includes("cursed")
+      || traitList.includes("curse")
+      || name.includes("cursed")
+      || name.includes("curse")
+      || name.includes("verflucht");
+  }
+
 
   static #categoryForEntry(entry) {
     if (entry.type === "weapon") return LOOT_CATEGORIES.WEAPONS;

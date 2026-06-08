@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.8
+- Restored budget-aware PF2E compendium item filtering
+- Uses actual compendium item prices when available
+- Prevents very expensive items from exceeding the item budget under standard profiles
+- Filters 0-GP compendium items by default
+- Adds optional setting to allow 0-GP cursed items
+- No profile UI changes
+
 ## 0.2.7
 - Layout recovery release
 - Widened the generation column again

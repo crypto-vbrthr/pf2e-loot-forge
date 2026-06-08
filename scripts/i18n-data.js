@@ -414,7 +414,9 @@ export const LF_TRANSLATIONS = {
   "LF.Option.MystifyMagicItems": "Magische Gegenstände mystifizieren",
   "LF.Settings.MystifyMagicItems.Name": "Magische Gegenstände mystifizieren",
   "LF.Settings.MystifyMagicItems.Hint": "Wenn aktiviert, werden magische Kompendiumsgegenstände beim Einfügen möglichst als nicht identifiziert markiert.",
-  "LF.Notification.CurrencyAdded": "Münzen als Währung hinzugefügt."
+  "LF.Notification.CurrencyAdded": "Münzen als Währung hinzugefügt.",
+  "LF.Settings.AllowCursedZeroValueItems.Name": "0-GM-verfluchte Gegenstände erlauben",
+  "LF.Settings.AllowCursedZeroValueItems.Hint": "Wenn deaktiviert, ignoriert Loot Forge 0-GM-Kompendiumsgegenstände. Verfluchte Gegenstände dürfen nur mit aktivierter Option erscheinen."
 },
   en: {
   "LF.Controls.Open": "Loot Forge",
@@ -831,6 +833,8 @@ export const LF_TRANSLATIONS = {
   "LF.Option.MystifyMagicItems": "Mystify magic items",
   "LF.Settings.MystifyMagicItems.Name": "Mystify Magic Items",
   "LF.Settings.MystifyMagicItems.Hint": "When enabled, magical compendium items are marked as unidentified where possible.",
-  "LF.Notification.CurrencyAdded": "Coins added as currency."
+  "LF.Notification.CurrencyAdded": "Coins added as currency.",
+  "LF.Settings.AllowCursedZeroValueItems.Name": "Allow 0-GP cursed items",
+  "LF.Settings.AllowCursedZeroValueItems.Hint": "When disabled, Loot Forge ignores 0-GP compendium items. Cursed items may only appear when this option is enabled."
 }
 };

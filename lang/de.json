@@ -413,5 +413,7 @@
   "LF.Option.MystifyMagicItems": "Magische Gegenstände mystifizieren",
   "LF.Settings.MystifyMagicItems.Name": "Magische Gegenstände mystifizieren",
   "LF.Settings.MystifyMagicItems.Hint": "Wenn aktiviert, werden magische Kompendiumsgegenstände beim Einfügen möglichst als nicht identifiziert markiert.",
-  "LF.Notification.CurrencyAdded": "Münzen als Währung hinzugefügt."
+  "LF.Notification.CurrencyAdded": "Münzen als Währung hinzugefügt.",
+  "LF.Settings.AllowCursedZeroValueItems.Name": "0-GM-verfluchte Gegenstände erlauben",
+  "LF.Settings.AllowCursedZeroValueItems.Hint": "Wenn deaktiviert, ignoriert Loot Forge 0-GM-Kompendiumsgegenstände. Verfluchte Gegenstände dürfen nur mit aktivierter Option erscheinen."
 }

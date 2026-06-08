@@ -46,7 +46,17 @@ export function registerSettings() {
     default: true
   });
 
-  game.settings.registerMenu(MODULE_ID, "compendiumSources", {
+  
+  game.settings.register(MODULE_ID, "allowCursedZeroValueItems", {
+    name: lfLocalize("LF.Settings.AllowCursedZeroValueItems.Name"),
+    hint: lfLocalize("LF.Settings.AllowCursedZeroValueItems.Hint"),
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false
+  });
+
+game.settings.registerMenu(MODULE_ID, "compendiumSources", {
     name: lfLocalize("LF.Settings.CompendiumSources.Name"),
     label: lfLocalize("LF.Settings.CompendiumSources.Label"),
     hint: lfLocalize("LF.Settings.CompendiumSources.Hint"),
