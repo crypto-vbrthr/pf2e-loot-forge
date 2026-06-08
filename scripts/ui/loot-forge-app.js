@@ -11,7 +11,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     id: "pf2e-loot-forge-app",
     tag: "form",
     window: { title: "PF2E Loot Forge", icon: "fa-solid fa-gem", resizable: true },
-    position: { width: 1180, height: 760 },
+    position: { width: 1240, height: 760 },
     form: { handler: LootForgeApp.#onSubmit, submitOnChange: false, closeOnSubmit: false }
   };
 

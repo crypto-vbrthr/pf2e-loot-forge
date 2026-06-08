@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.9
+- Added editable treasure budget profiles
+- Added Treasure Profile settings menu
+- Added active treasure profile world setting
+- Added PF2E Standard, Low Magic, and High Magic budget profile data
+- Budget calculation now uses active treasure profile
+- Added 0-GP item filtering for compendium items
+- Added optional exception for cursed 0-GP items
+- Added profile editor template and styles
+
+## 0.1.8
+- Widened the generation column to reduce field wrapping
+- Shortened min/max item level labels
+- Added PF2E compendium item price extraction
+- Added budget-aware item selection
+- Added treasure-profile based budget tolerance
+- Prevented extremely expensive high-level items from being selected for standard budgets
+- Estimated total value now uses actual compendium item prices when available
+
 ## 0.1.7
 - Expanded generated treasure component pools
 - Added new generated treasure categories: textiles, instruments, collectibles, and craftsmanship

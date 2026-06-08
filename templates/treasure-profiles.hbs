@@ -1,0 +1,54 @@
+<form class="lf-profile-config">
+  <div class="form-group">
+    <label>{{lf "LF.Settings.ActiveTreasureProfile.Name"}}</label>
+    <select name="activeProfile">
+      {{#each profiles}}
+        <option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <p class="notes">{{lf "LF.Settings.TreasureProfiles.EditorHint"}}</p>
+
+  {{#each profiles}}
+    <section class="lf-profile-card">
+      <h3>{{name}}</h3>
+
+      <div class="form-group">
+        <label>{{lf "LF.Field.Name"}}</label>
+        <input type="text" name="profile.{{id}}.name" value="{{name}}">
+      </div>
+
+      <div class="form-group">
+        <label>{{lf "LF.Field.Description"}}</label>
+        <input type="text" name="profile.{{id}}.description" value="{{description}}">
+      </div>
+
+      <div class="form-group">
+        <label>{{lf "LF.Field.BudgetMultiplier"}}</label>
+        <input type="number" step="0.05" min="0" name="profile.{{id}}.budgetMultiplier" value="{{budgetMultiplier}}">
+      </div>
+
+      {{#if budgetsGp}}
+        <div class="lf-budget-table">
+          <div class="lf-budget-row lf-budget-head">
+            <span>{{lf "LF.Field.Level"}}</span>
+            <span>{{lf "LF.Field.BudgetGp"}}</span>
+          </div>
+          {{#each budgets}}
+            <div class="lf-budget-row">
+              <span>{{level}}</span>
+              <input type="number" min="0" step="1" name="profile.{{../id}}.budgetsGp.{{level}}" value="{{value}}">
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        <p class="notes">{{lf "LF.Settings.TreasureProfiles.MultiplierOnly"}}</p>
+      {{/if}}
+    </section>
+  {{/each}}
+
+  <footer class="sheet-footer flexrow">
+    <button type="submit"><i class="fa-solid fa-save"></i> {{lf "LF.Button.Save"}}</button>
+  </footer>
+</form>

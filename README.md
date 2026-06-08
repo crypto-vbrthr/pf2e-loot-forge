@@ -2,7 +2,7 @@
 
 PF2E Loot Forge is a Foundry VTT module for generating Pathfinder 2e loot.
 
-## v0.1.7
+## v0.1.9
 
 - Actor Directory button
 - ApplicationV2 loot generator window
@@ -96,3 +96,11 @@ Hotfix for mystify magic items option visibility and compendium source scrolling
 ## v0.1.7 Generated Treasure Expansion
 
 Expanded the procedural treasure system with new categories, quality tiers, flair descriptions, and broader generic pools.
+
+## v0.1.8 Loot Quality & Budgeting
+
+PF2E compendium items are now filtered by price against the item budget, with profile-specific tolerance.
+
+## v0.1.9 Treasure Profiles
+
+Adds editable treasure budget profiles and filters 0-GP compendium items unless cursed items are explicitly allowed.
