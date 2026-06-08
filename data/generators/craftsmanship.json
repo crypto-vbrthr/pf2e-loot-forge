@@ -1,0 +1,197 @@
+{
+  "templates": [
+    "LF.Generated.Craft.Template.Simple"
+  ],
+  "qualities": [
+    {
+      "key": "LF.Generated.Quality.Simple",
+      "valueMultiplier": 0.55
+    },
+    {
+      "key": "LF.Generated.Quality.Fine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Quality.Exquisite",
+      "valueMultiplier": 1.55
+    },
+    {
+      "key": "LF.Generated.Quality.Masterwork",
+      "valueMultiplier": 2.25
+    }
+  ],
+  "materials": [
+    {
+      "key": "LF.Generated.Material.Iron",
+      "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Material.Steel",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Material.Bronze",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Material.Wood",
+      "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Material.Silver",
+      "valueMultiplier": 1.2
+    }
+  ],
+  "kinds": [
+    {
+      "key": "LF.Generated.CraftKind.MasterHammer",
+      "themes": [
+        "dwarf-ruin",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftKind.Toolbox",
+      "themes": [
+        "dwarf-ruin",
+        "alchemist",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftKind.Carving",
+      "themes": [
+        "elf-ruin",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftKind.MiniatureModel",
+      "themes": [
+        "military",
+        "noble",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftKind.EngravedCompass",
+      "themes": [
+        "pirate",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftKind.CeremonialChisel",
+      "themes": [
+        "dwarf-ruin",
+        "temple",
+        "generic"
+      ]
+    }
+  ],
+  "details": [
+    {
+      "key": "LF.Generated.CraftDetail.RunicEngraving",
+      "themes": [
+        "dwarf-ruin",
+        "wizard"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftDetail.FloralPattern",
+      "themes": [
+        "elf-ruin",
+        "noble"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftDetail.ClanMark",
+      "themes": [
+        "dwarf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftDetail.ShipName",
+      "themes": [
+        "pirate"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftDetail.TempleSeal",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.CraftDetail.HiddenMeasuringMarks",
+      "themes": [
+        "alchemist",
+        "generic"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Faded",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Condition.Pristine",
+      "valueMultiplier": 1.25
+    },
+    {
+      "key": "LF.Generated.Condition.WaterStained",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.CandleSmoke",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Cracked",
+      "valueMultiplier": 0.65
+    },
+    {
+      "key": "LF.Generated.Condition.Torn",
+      "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
+    }
+  ],
+  "flairs": [
+    {
+      "key": "LF.Generated.Flair.WorkshopSmell"
+    },
+    {
+      "key": "LF.Generated.Flair.BalancedWeight"
+    },
+    {
+      "key": "LF.Generated.Flair.WellUsed"
+    },
+    {
+      "key": "LF.Generated.Flair.MakerPride"
+    }
+  ]
+}

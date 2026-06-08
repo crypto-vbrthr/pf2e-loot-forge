@@ -1,69 +1,117 @@
 {
   "templates": [
-    "LF.Generated.Beverage.Template.Bottle"
+    "LF.Generated.Beverage.Template.Bottle",
+    "LF.Generated.Beverage.Template.Decanter"
+  ],
+  "qualities": [
+    {
+      "key": "LF.Generated.Quality.Simple",
+      "valueMultiplier": 0.55
+    },
+    {
+      "key": "LF.Generated.Quality.Fine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Quality.Exquisite",
+      "valueMultiplier": 1.55
+    },
+    {
+      "key": "LF.Generated.Quality.Masterwork",
+      "valueMultiplier": 2.25
+    }
   ],
   "names": [
     {
       "key": "LF.Generated.Beverage.Lavabrand",
       "themes": [
-        "dwarf-ruin"
+        "dwarf-ruin",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Beverage.MushroomLiquor",
       "themes": [
-        "goblin"
+        "goblin",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Beverage.Sunwine",
       "themes": [
-        "noble"
+        "noble",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Beverage.SaltRum",
       "themes": [
-        "pirate"
+        "pirate",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Beverage.MonasteryCordial",
       "themes": [
-        "temple"
+        "temple",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Beverage.BlueReagent",
       "themes": [
-        "alchemist"
+        "alchemist",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Beverage.FuneralWine",
       "themes": [
-        "undead"
+        "undead",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Beverage.StarAbsinthe",
       "themes": [
         "wizard",
-        "cultist"
+        "cultist",
+        "generic"
       ]
     },
     {
-      "key": "LF.Generated.Beverage.AmberBrandy"
+      "key": "LF.Generated.Beverage.AmberBrandy",
+      "themes": [
+        "generic"
+      ]
     },
     {
-      "key": "LF.Generated.Beverage.SpicedMead"
+      "key": "LF.Generated.Beverage.SpicedMead",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.HoneyedPort",
+      "themes": [
+        "noble",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Beverage.SmokedAle",
+      "themes": [
+        "dwarf-ruin",
+        "generic"
+      ]
     }
   ],
   "origins": [
     {
       "key": "LF.Generated.Origin.DongunHold",
       "themes": [
-        "dwarf-ruin"
+        "dwarf-ruin",
+        "generic"
       ]
     },
     {
@@ -75,25 +123,29 @@
     {
       "key": "LF.Generated.Origin.Cheliax",
       "themes": [
-        "noble"
+        "noble",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Origin.Shackles",
       "themes": [
-        "pirate"
+        "pirate",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Origin.OldMonastery",
       "themes": [
-        "temple"
+        "temple",
+        "generic"
       ]
     },
     {
       "key": "LF.Generated.Origin.AlchemyGuild",
       "themes": [
-        "alchemist"
+        "alchemist",
+        "generic"
       ]
     },
     {
@@ -105,14 +157,34 @@
     {
       "key": "LF.Generated.Origin.ArcaneSalon",
       "themes": [
-        "wizard"
+        "wizard",
+        "generic"
       ]
     },
     {
-      "key": "LF.Generated.Origin.Andoran"
+      "key": "LF.Generated.Origin.Andoran",
+      "themes": [
+        "generic"
+      ]
     },
     {
-      "key": "LF.Generated.Origin.Nex"
+      "key": "LF.Generated.Origin.Nex",
+      "themes": [
+        "wizard",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Qadira",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Absalom",
+      "themes": [
+        "generic"
+      ]
     }
   ],
   "seals": [
@@ -131,6 +203,20 @@
     {
       "key": "LF.Generated.Seal.None",
       "valueMultiplier": 0.7
+    }
+  ],
+  "flairs": [
+    {
+      "key": "LF.Generated.Flair.HandwrittenLabel"
+    },
+    {
+      "key": "LF.Generated.Flair.FloatingSediment"
+    },
+    {
+      "key": "LF.Generated.Flair.UnusualBottleShape"
+    },
+    {
+      "key": "LF.Generated.Flair.WaxStamp"
     }
   ]
 }

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.7
+- Expanded generated treasure component pools
+- Added new generated treasure categories: textiles, instruments, collectibles, and craftsmanship
+- Added quality tiers for generated treasures
+- Added flair description lines for generated treasures
+- Improved generic theme variety to avoid repeated dragon paintings
+- Improved themed component selection with stronger theme weighting and generic fallback
+- Added richer generated treasure metadata flags
+
 ## 0.1.6
 - Fixed visibility of the mystify magic items option in the main Loot Forge UI
 - Ensured mystify magic items remains registered as a world setting

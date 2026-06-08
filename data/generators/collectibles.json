@@ -1,0 +1,177 @@
+{
+  "templates": [
+    "LF.Generated.Collectible.Template.Simple"
+  ],
+  "qualities": [
+    {
+      "key": "LF.Generated.Quality.Simple",
+      "valueMultiplier": 0.55
+    },
+    {
+      "key": "LF.Generated.Quality.Fine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Quality.Exquisite",
+      "valueMultiplier": 1.55
+    },
+    {
+      "key": "LF.Generated.Quality.Masterwork",
+      "valueMultiplier": 2.25
+    }
+  ],
+  "kinds": [
+    {
+      "key": "LF.Generated.CollectibleKind.CoinCollection",
+      "themes": [
+        "dragon-hoard",
+        "noble",
+        "pirate",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CollectibleKind.FossilBox",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CollectibleKind.ButterflyCase",
+      "themes": [
+        "noble",
+        "elf-ruin",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CollectibleKind.SealSet",
+      "themes": [
+        "noble",
+        "military",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CollectibleKind.GamePieces",
+      "themes": [
+        "noble",
+        "dwarf-ruin",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CollectibleKind.MiniatureRelics",
+      "themes": [
+        "temple",
+        "generic"
+      ]
+    }
+  ],
+  "origins": [
+    {
+      "key": "LF.Generated.Origin.Andoran",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Absalom",
+      "themes": [
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Cheliax",
+      "themes": [
+        "noble",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Shackles",
+      "themes": [
+        "pirate",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.DongunHold",
+      "themes": [
+        "dwarf-ruin",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.Nex",
+      "themes": [
+        "wizard",
+        "generic"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Faded",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Condition.Pristine",
+      "valueMultiplier": 1.25
+    },
+    {
+      "key": "LF.Generated.Condition.WaterStained",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.CandleSmoke",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Cracked",
+      "valueMultiplier": 0.65
+    },
+    {
+      "key": "LF.Generated.Condition.Torn",
+      "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
+    }
+  ],
+  "flairs": [
+    {
+      "key": "LF.Generated.Flair.OnePieceMissing"
+    },
+    {
+      "key": "LF.Generated.Flair.CataloguedLabels"
+    },
+    {
+      "key": "LF.Generated.Flair.WrongBox"
+    },
+    {
+      "key": "LF.Generated.Flair.CollectorsMark"
+    }
+  ]
+}

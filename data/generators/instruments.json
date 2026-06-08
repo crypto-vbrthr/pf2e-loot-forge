@@ -1,0 +1,187 @@
+{
+  "templates": [
+    "LF.Generated.Instrument.Template.Simple"
+  ],
+  "qualities": [
+    {
+      "key": "LF.Generated.Quality.Simple",
+      "valueMultiplier": 0.55
+    },
+    {
+      "key": "LF.Generated.Quality.Fine",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Quality.Exquisite",
+      "valueMultiplier": 1.55
+    },
+    {
+      "key": "LF.Generated.Quality.Masterwork",
+      "valueMultiplier": 2.25
+    }
+  ],
+  "materials": [
+    {
+      "key": "LF.Generated.Material.Silver",
+      "valueMultiplier": 1.4
+    },
+    {
+      "key": "LF.Generated.Material.Wood",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Material.Ivory",
+      "valueMultiplier": 1.6
+    },
+    {
+      "key": "LF.Generated.Material.Bronze",
+      "valueMultiplier": 1.0
+    },
+    {
+      "key": "LF.Generated.Material.Crystal",
+      "valueMultiplier": 1.8
+    }
+  ],
+  "kinds": [
+    {
+      "key": "LF.Generated.InstrumentKind.Flute",
+      "themes": [
+        "elf-ruin",
+        "noble",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.InstrumentKind.Lute",
+      "themes": [
+        "noble",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.InstrumentKind.Drum",
+      "themes": [
+        "goblin",
+        "dwarf-ruin",
+        "military",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.InstrumentKind.Harp",
+      "themes": [
+        "elf-ruin",
+        "noble",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.InstrumentKind.Horn",
+      "themes": [
+        "military",
+        "dwarf-ruin",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.InstrumentKind.Bell",
+      "themes": [
+        "temple",
+        "generic"
+      ]
+    }
+  ],
+  "details": [
+    {
+      "key": "LF.Generated.InstrumentDetail.SilverInlay",
+      "valueMultiplier": 1.3
+    },
+    {
+      "key": "LF.Generated.InstrumentDetail.MotherOfPearl",
+      "valueMultiplier": 1.4
+    },
+    {
+      "key": "LF.Generated.InstrumentDetail.BattleNotches",
+      "themes": [
+        "military",
+        "goblin"
+      ]
+    },
+    {
+      "key": "LF.Generated.InstrumentDetail.ElvenRunes",
+      "themes": [
+        "elf-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.InstrumentDetail.DwarvenMakersMark",
+      "themes": [
+        "dwarf-ruin"
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Faded",
+      "valueMultiplier": 0.8
+    },
+    {
+      "key": "LF.Generated.Condition.Pristine",
+      "valueMultiplier": 1.25
+    },
+    {
+      "key": "LF.Generated.Condition.WaterStained",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.CandleSmoke",
+      "valueMultiplier": 0.9
+    },
+    {
+      "key": "LF.Generated.Condition.Cracked",
+      "valueMultiplier": 0.65
+    },
+    {
+      "key": "LF.Generated.Condition.Torn",
+      "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
+    }
+  ],
+  "flairs": [
+    {
+      "key": "LF.Generated.Flair.OutOfTune"
+    },
+    {
+      "key": "LF.Generated.Flair.SoftChime"
+    },
+    {
+      "key": "LF.Generated.Flair.HiddenCompartment"
+    },
+    {
+      "key": "LF.Generated.Flair.WornByUse"
+    }
+  ]
+}
