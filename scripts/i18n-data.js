@@ -582,7 +582,20 @@ export const LF_TRANSLATIONS = {
   "LF.Generated.Flair.WorkshopSmell": "Es riecht noch schwach nach Werkstatt und Öl.",
   "LF.Generated.Flair.BalancedWeight": "Das Gewicht ist erstaunlich gut ausbalanciert.",
   "LF.Generated.Flair.WellUsed": "Es wurde häufig benutzt, aber gut gepflegt.",
-  "LF.Generated.Flair.MakerPride": "Die Verarbeitung wirkt stolz und sorgfältig."
+  "LF.Generated.Flair.MakerPride": "Die Verarbeitung wirkt stolz und sorgfältig.",
+  "LF.Environment.Generic": "Generisch",
+  "LF.Environment.Forest": "Wald",
+  "LF.Environment.Mountains": "Gebirge",
+  "LF.Environment.Cave": "Höhle",
+  "LF.Environment.Swamp": "Sumpf",
+  "LF.Environment.Desert": "Wüste",
+  "LF.Environment.Coast": "Küste",
+  "LF.Environment.Underwater": "Unterwasser",
+  "LF.Environment.Jungle": "Dschungel",
+  "LF.Environment.Arctic": "Arktis",
+  "LF.Environment.Underground": "Unterreich",
+  "LF.Environment.Volcanic": "Vulkanisch",
+  "LF.Environment.RuinedCity": "Ruinenstadt"
 },
   en: {
   "LF.Controls.Open": "Loot Forge",
@@ -1167,6 +1180,19 @@ export const LF_TRANSLATIONS = {
   "LF.Generated.Flair.WorkshopSmell": "Es riecht noch schwach nach Werkstatt und Öl.",
   "LF.Generated.Flair.BalancedWeight": "Das Gewicht ist erstaunlich gut ausbalanciert.",
   "LF.Generated.Flair.WellUsed": "Es wurde häufig benutzt, aber gut gepflegt.",
-  "LF.Generated.Flair.MakerPride": "Die Verarbeitung wirkt stolz und sorgfältig."
+  "LF.Generated.Flair.MakerPride": "Die Verarbeitung wirkt stolz und sorgfältig.",
+  "LF.Environment.Generic": "Generic",
+  "LF.Environment.Forest": "Forest",
+  "LF.Environment.Mountains": "Mountains",
+  "LF.Environment.Cave": "Cave",
+  "LF.Environment.Swamp": "Swamp",
+  "LF.Environment.Desert": "Desert",
+  "LF.Environment.Coast": "Coast",
+  "LF.Environment.Underwater": "Underwater",
+  "LF.Environment.Jungle": "Jungle",
+  "LF.Environment.Arctic": "Arctic",
+  "LF.Environment.Underground": "Underground",
+  "LF.Environment.Volcanic": "Volcanic",
+  "LF.Environment.RuinedCity": "Ruined City"
 }
 };

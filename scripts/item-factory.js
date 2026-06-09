@@ -1,3 +1,4 @@
+import { EnvironmentManager } from "./environment-manager.js";
 import { COIN_IMAGE } from "./constants.js";
 import { GeneratedTreasureFactory } from "./generated/generated-treasure-factory.js";
 import { lfFormat, lfLocalize } from "./localization-helper.js";
@@ -37,6 +38,8 @@ export class ItemFactory {
   static async createGeneratedValuables(config) {
     const items = [];
     const themeId = config.themeProfile?.id ?? "generic";
+    const environment = await EnvironmentManager.getEnvironment(config.environment ?? "generic");
+    const environmentCategoryWeights = environment.categoryWeights ?? {};
 
     if (config.includeValuables) {
       const valueBudget =
@@ -48,7 +51,7 @@ export class ItemFactory {
       const categories = ["painting", "statue", "jewelry", "beverage", "textile", "instrument", "collectible", "craftsmanship"];
 
       for (let i = 0; i < valuableCount; i++) {
-        const category = categories[Math.floor(Math.random() * categories.length)];
+        const category = EnvironmentManager.weightedPick(categories, environmentCategoryWeights);
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,
@@ -66,7 +69,7 @@ export class ItemFactory {
       const categories = ["curiosity", "document", "collectible"];
 
       for (let i = 0; i < curiosityCount; i++) {
-        const category = categories[Math.floor(Math.random() * categories.length)];
+        const category = EnvironmentManager.weightedPick(categories, environmentCategoryWeights);
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,

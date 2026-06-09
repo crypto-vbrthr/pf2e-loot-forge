@@ -581,5 +581,18 @@
   "LF.Generated.Flair.WorkshopSmell": "Es riecht noch schwach nach Werkstatt und Öl.",
   "LF.Generated.Flair.BalancedWeight": "Das Gewicht ist erstaunlich gut ausbalanciert.",
   "LF.Generated.Flair.WellUsed": "Es wurde häufig benutzt, aber gut gepflegt.",
-  "LF.Generated.Flair.MakerPride": "Die Verarbeitung wirkt stolz und sorgfältig."
+  "LF.Generated.Flair.MakerPride": "Die Verarbeitung wirkt stolz und sorgfältig.",
+  "LF.Environment.Generic": "Generisch",
+  "LF.Environment.Forest": "Wald",
+  "LF.Environment.Mountains": "Gebirge",
+  "LF.Environment.Cave": "Höhle",
+  "LF.Environment.Swamp": "Sumpf",
+  "LF.Environment.Desert": "Wüste",
+  "LF.Environment.Coast": "Küste",
+  "LF.Environment.Underwater": "Unterwasser",
+  "LF.Environment.Jungle": "Dschungel",
+  "LF.Environment.Arctic": "Arktis",
+  "LF.Environment.Underground": "Unterreich",
+  "LF.Environment.Volcanic": "Vulkanisch",
+  "LF.Environment.RuinedCity": "Ruinenstadt"
 }

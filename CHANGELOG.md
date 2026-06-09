@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0b
+- Hotfix: defines `environmentOptions` in LootForgeApp context preparation
+- Fixes crash when opening Loot Forge after v0.3.0a environment dropdown changes
+- No loot logic changes
+
+## 0.3.0a
+- Added environment modifiers data file
+- Added EnvironmentManager
+- Environment field is now a localized dropdown
+- Environment now influences generated treasure category weighting
+- Coast, cave, forest, swamp, desert, underwater, arctic, underground, volcanic, jungle, mountains, and ruined city environments added
+- No profile UI changes
+- No Actor sidebar launcher changes
+
 ## 0.2.9
 - Restored and expanded generated treasure variety
 - Added larger generic pools for paintings and other treasure categories

@@ -4,6 +4,7 @@ import { LootForgeAPI } from "../api.js";
 import { CompendiumScanner } from "../compendium-scanner.js";
 import { lfLocalize } from "../localization-helper.js";
 import { ThemeManager } from "../theme-manager.js";
+import { EnvironmentManager } from "../environment-manager.js";
 import { GeneratedTreasureFactory } from "../generated/generated-treasure-factory.js";
 
 export class LootForgeApp extends foundry.applications.api.HandlebarsApplicationMixin(foundry.applications.api.ApplicationV2) {
@@ -71,12 +72,15 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       selected: value === config.treasureProfile
     }));
 
+    const environmentOptions = await EnvironmentManager.getOptions(config.environment ?? "generic");
+
     return {
       config,
       rarityOptions,
       treasureProfileOptions,
       packs,
       themes,
+      environmentOptions,
       actors,
       result: this.editableLoot ?? this.result,
       hasResult: Boolean(this.editableLoot ?? this.result)

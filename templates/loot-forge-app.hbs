@@ -60,7 +60,14 @@
             </select>
           </div>
 
-          <div class="form-group"><label>{{lf "LF.Field.Environment"}}</label><input type="text" name="environment" value="{{config.environment}}"></div>
+          <div class="form-group">
+            <label>{{lf "LF.Field.Environment"}}</label>
+            <select name="environment">
+              {{#each environmentOptions}}
+                <option value="{{id}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
+          </div>
 
           <div class="form-group lf-style-control">
             <label>{{lf "LF.Field.LootStyle"}}</label>
