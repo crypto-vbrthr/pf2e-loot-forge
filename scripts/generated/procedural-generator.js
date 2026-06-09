@@ -1,5 +1,6 @@
 import { MODULE_ID } from "../constants.js";
 import { lfFormat, lfLocalize } from "../localization-helper.js";
+import { EnvironmentManager } from "../environment-manager.js";
 
 export class ProceduralGenerator {
   constructor({ category, dataPath, sourceType }) {
@@ -18,7 +19,8 @@ export class ProceduralGenerator {
 
   async generate({ themeId = "generic", valueBudget = 0 } = {}) {
     const data = await this.loadData();
-    const result = this.build(data, themeId);
+    const environment = await EnvironmentManager.getEnvironment(arguments[0]?.environmentId ?? arguments[0]?.environment ?? "generic");
+    const result = this.build(data, themeId, environment);
     const valueGp = Math.max(0, Math.round(Number(valueBudget ?? 0) * Number(result.valueMultiplier ?? 1)));
 
     return {
@@ -36,6 +38,11 @@ export class ProceduralGenerator {
   build(_data, _themeId) {
     throw new Error(`${this.constructor.name} must implement build(data, themeId).`);
   }
+
+
+conditionPool(data, environment) {
+  return EnvironmentManager.mergeConditions(data.conditions ?? [], environment);
+}
 
   pick(list = [], themeId = "generic") {
     if (!list.length) return null;

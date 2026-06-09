@@ -1,7 +1,8 @@
 {
   "generic": {
     "labelKey": "LF.Environment.Generic",
-    "categoryWeights": {}
+    "categoryWeights": {},
+    "conditionAdditions": []
   },
   "forest": {
     "labelKey": "LF.Environment.Forest",
@@ -12,7 +13,25 @@
       "craftsmanship": 1.2,
       "painting": 1.1,
       "instrument": 1.1
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.RootCovered",
+        "valueMultiplier": 0.85
+      },
+      {
+        "key": "LF.Generated.Condition.MossCovered",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.InsectGnawed",
+        "valueMultiplier": 0.65
+      },
+      {
+        "key": "LF.Generated.Condition.PollenDusty",
+        "valueMultiplier": 0.95
+      }
+    ]
   },
   "mountains": {
     "labelKey": "LF.Environment.Mountains",
@@ -22,7 +41,21 @@
       "jewelry": 1.2,
       "document": 1.1,
       "beverage": 0.9
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.WindWorn",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.FrostCracked",
+        "valueMultiplier": 0.75
+      },
+      {
+        "key": "LF.Generated.Condition.StoneDusted",
+        "valueMultiplier": 0.85
+      }
+    ]
   },
   "cave": {
     "labelKey": "LF.Environment.Cave",
@@ -33,7 +66,21 @@
       "document": 0.8,
       "textile": 0.7,
       "painting": 0.8
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.MineralEncrusted",
+        "valueMultiplier": 0.9
+      },
+      {
+        "key": "LF.Generated.Condition.DampSpotted",
+        "valueMultiplier": 0.75
+      },
+      {
+        "key": "LF.Generated.Condition.BatGuanoStained",
+        "valueMultiplier": 0.55
+      }
+    ]
   },
   "swamp": {
     "labelKey": "LF.Environment.Swamp",
@@ -44,7 +91,25 @@
       "beverage": 1.2,
       "statue": 1.1,
       "jewelry": 0.9
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.WaterDamaged",
+        "valueMultiplier": 0.65
+      },
+      {
+        "key": "LF.Generated.Condition.Mildewed",
+        "valueMultiplier": 0.6
+      },
+      {
+        "key": "LF.Generated.Condition.MossCovered",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.Warped",
+        "valueMultiplier": 0.65
+      }
+    ]
   },
   "desert": {
     "labelKey": "LF.Environment.Desert",
@@ -55,7 +120,25 @@
       "beverage": 0.7,
       "painting": 0.9,
       "curiosity": 1.1
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.SandScoured",
+        "valueMultiplier": 0.75
+      },
+      {
+        "key": "LF.Generated.Condition.SunBleached",
+        "valueMultiplier": 0.7
+      },
+      {
+        "key": "LF.Generated.Condition.DryCracked",
+        "valueMultiplier": 0.65
+      },
+      {
+        "key": "LF.Generated.Condition.DustCrusted",
+        "valueMultiplier": 0.8
+      }
+    ]
   },
   "coast": {
     "labelKey": "LF.Environment.Coast",
@@ -66,7 +149,25 @@
       "instrument": 1.1,
       "collectible": 1.2,
       "painting": 0.8
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.SaltCrusted",
+        "valueMultiplier": 0.85
+      },
+      {
+        "key": "LF.Generated.Condition.SeaWorn",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.AlgaeCovered",
+        "valueMultiplier": 0.65
+      },
+      {
+        "key": "LF.Generated.Condition.WaterDamaged",
+        "valueMultiplier": 0.65
+      }
+    ]
   },
   "underwater": {
     "labelKey": "LF.Environment.Underwater",
@@ -78,7 +179,25 @@
       "textile": 0.3,
       "beverage": 0.5,
       "collectible": 1.3
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.CoralGrown",
+        "valueMultiplier": 1.05
+      },
+      {
+        "key": "LF.Generated.Condition.AlgaeCovered",
+        "valueMultiplier": 0.65
+      },
+      {
+        "key": "LF.Generated.Condition.SeaWorn",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.SaltCrusted",
+        "valueMultiplier": 0.85
+      }
+    ]
   },
   "jungle": {
     "labelKey": "LF.Environment.Jungle",
@@ -89,7 +208,25 @@
       "textile": 0.9,
       "jewelry": 1.1,
       "collectible": 1.3
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.RootCovered",
+        "valueMultiplier": 0.85
+      },
+      {
+        "key": "LF.Generated.Condition.MossCovered",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.InsectGnawed",
+        "valueMultiplier": 0.65
+      },
+      {
+        "key": "LF.Generated.Condition.HumidityWarped",
+        "valueMultiplier": 0.7
+      }
+    ]
   },
   "arctic": {
     "labelKey": "LF.Environment.Arctic",
@@ -100,7 +237,25 @@
       "beverage": 0.8,
       "curiosity": 1.1,
       "instrument": 0.9
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.FrostCracked",
+        "valueMultiplier": 0.75
+      },
+      {
+        "key": "LF.Generated.Condition.IceRimed",
+        "valueMultiplier": 0.85
+      },
+      {
+        "key": "LF.Generated.Condition.PerfectlyPreserved",
+        "valueMultiplier": 1.25
+      },
+      {
+        "key": "LF.Generated.Condition.ColdDiscolored",
+        "valueMultiplier": 0.8
+      }
+    ]
   },
   "underground": {
     "labelKey": "LF.Environment.Underground",
@@ -111,7 +266,21 @@
       "document": 0.9,
       "beverage": 0.8,
       "curiosity": 1.2
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.MineralEncrusted",
+        "valueMultiplier": 0.9
+      },
+      {
+        "key": "LF.Generated.Condition.DampSpotted",
+        "valueMultiplier": 0.75
+      },
+      {
+        "key": "LF.Generated.Condition.StoneDusted",
+        "valueMultiplier": 0.85
+      }
+    ]
   },
   "volcanic": {
     "labelKey": "LF.Environment.Volcanic",
@@ -123,7 +292,25 @@
       "textile": 0.5,
       "document": 0.7,
       "curiosity": 1.4
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.SmokeBlackened",
+        "valueMultiplier": 0.85
+      },
+      {
+        "key": "LF.Generated.Condition.HeatCracked",
+        "valueMultiplier": 0.7
+      },
+      {
+        "key": "LF.Generated.Condition.AshCovered",
+        "valueMultiplier": 0.75
+      },
+      {
+        "key": "LF.Generated.Condition.PartlyMelted",
+        "valueMultiplier": 0.55
+      }
+    ]
   },
   "ruined-city": {
     "labelKey": "LF.Environment.RuinedCity",
@@ -135,6 +322,24 @@
       "jewelry": 1.1,
       "curiosity": 1.2,
       "beverage": 0.8
-    }
+    },
+    "conditionAdditions": [
+      {
+        "key": "LF.Generated.Condition.RubbleScratched",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.SootStained",
+        "valueMultiplier": 0.85
+      },
+      {
+        "key": "LF.Generated.Condition.DustCrusted",
+        "valueMultiplier": 0.8
+      },
+      {
+        "key": "LF.Generated.Condition.CarefullyRecovered",
+        "valueMultiplier": 1.1
+      }
+    ]
   }
 }

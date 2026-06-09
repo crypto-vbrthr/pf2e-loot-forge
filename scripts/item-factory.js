@@ -55,6 +55,7 @@ export class ItemFactory {
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,
+          environmentId: config.environment ?? "generic",
           valueBudget: valueBudget / valuableCount
         }));
       }
@@ -73,6 +74,7 @@ export class ItemFactory {
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,
+          environmentId: config.environment ?? "generic",
           valueBudget: curiosityBudget / curiosityCount
         }));
       }

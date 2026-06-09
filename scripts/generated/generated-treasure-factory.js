@@ -24,16 +24,16 @@ export class GeneratedTreasureFactory {
     craftsmanship: new CraftGenerator()
   };
 
-  static async generate({ category, themeId, valueBudget }) {
+  static async generate({ category, themeId, environmentId, valueBudget }) {
     const generator = this.generators[category] ?? this.generators.curiosity;
-    const generated = await generator.generate({ themeId, valueBudget });
+    const generated = await generator.generate({ themeId, environmentId, valueBudget });
     return this.toTreasureItem(generated);
   }
 
-  static async generateAny({ allowedCategories = [], themeId, valueBudget }) {
+  static async generateAny({ allowedCategories = [], themeId, environmentId, valueBudget }) {
     const categories = allowedCategories.length ? allowedCategories : Object.keys(this.generators);
     const category = categories[Math.floor(Math.random() * categories.length)];
-    return this.generate({ category, themeId, valueBudget });
+    return this.generate({ category, themeId, environmentId, valueBudget });
   }
 
   static toTreasureItem(generated) {

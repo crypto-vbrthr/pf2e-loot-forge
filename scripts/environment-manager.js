@@ -33,6 +33,14 @@ export class EnvironmentManager {
     return data[id] ?? data.generic ?? { categoryWeights: {} };
   }
 
+
+static mergeConditions(baseConditions = [], environment = {}) {
+  const additions = environment?.conditionAdditions ?? [];
+  if (!Array.isArray(additions) || !additions.length) return baseConditions;
+
+  return [...baseConditions, ...additions, ...additions];
+}
+
   static weightedPick(categories = [], weights = {}) {
     if (!categories.length) return null;
 
