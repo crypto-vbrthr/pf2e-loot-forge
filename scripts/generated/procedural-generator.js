@@ -1,6 +1,5 @@
 import { MODULE_ID } from "../constants.js";
 import { lfFormat, lfLocalize } from "../localization-helper.js";
-import { EnvironmentManager } from "../environment-manager.js";
 
 export class ProceduralGenerator {
   constructor({ category, dataPath, sourceType }) {
@@ -12,6 +11,7 @@ export class ProceduralGenerator {
 
   async loadData() {
     if (this.data) return this.data;
+
     const response = await fetch(`modules/${MODULE_ID}/${this.dataPath}`);
     this.data = await response.json();
     return this.data;
@@ -19,9 +19,9 @@ export class ProceduralGenerator {
 
   async generate({ themeId = "generic", valueBudget = 0 } = {}) {
     const data = await this.loadData();
-    const environment = await EnvironmentManager.getEnvironment(arguments[0]?.environmentId ?? arguments[0]?.environment ?? "generic");
-    const result = this.build(data, themeId, environment);
-    const valueGp = Math.max(0, Math.round(Number(valueBudget ?? 0) * Number(result.valueMultiplier ?? 1)));
+    const result = this.build(data, themeId);
+    const valueMultiplier = result.valueMultiplier ?? 1;
+    const valueGp = Math.max(0, Math.round(Number(valueBudget ?? 0) * valueMultiplier));
 
     return {
       name: result.name,
@@ -39,16 +39,11 @@ export class ProceduralGenerator {
     throw new Error(`${this.constructor.name} must implement build(data, themeId).`);
   }
 
-
-conditionPool(data, environment) {
-  return EnvironmentManager.mergeConditions(data.conditions ?? [], environment);
-}
-
   pick(list = [], themeId = "generic") {
     if (!list.length) return null;
 
-    const generic = list.filter(entry => !Array.isArray(entry.themes) || entry.themes.includes("generic"));
     const themed = list.filter(entry => Array.isArray(entry.themes) && entry.themes.includes(themeId));
+    const generic = list.filter(entry => !Array.isArray(entry.themes) || entry.themes.includes("generic"));
 
     let pool;
     if (themeId === "generic") {

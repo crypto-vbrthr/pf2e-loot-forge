@@ -1,57 +1,61 @@
 # Changelog
 
-## 0.3.0b
-- Added environment-specific condition pools
-- Environmental conditions are merged into generated treasure condition selection
-- Added coastal, underwater, volcanic, arctic, swamp, forest, jungle, desert, cave, mountain, underground, and ruined-city condition flavor
-- No UI changes beyond v0.3.0a environment dropdown
-- No budget or profile changes
+## 0.3.0e
+- Hotfix: guarantees `combinedCategoryWeights` is defined in item-factory
+- Fixes crash during generated treasure creation
+- Keeps v0.3.0c theme identity and v0.3.0d environment dropdown
+- No content or UI changes beyond the crash fix
 
-## 0.3.0b
-- Hotfix: defines `environmentOptions` in LootForgeApp context preparation
-- Fixes crash when opening Loot Forge after v0.3.0a environment dropdown changes
+## 0.3.0d
+- Hotfix: restored Environment as localized dropdown
+- Ensures `environmentOptions` is available in LootForgeApp context
+- Keeps v0.3.0c theme identity changes
 - No loot logic changes
 
-## 0.3.0a
-- Added environment modifiers data file
-- Added EnvironmentManager
-- Environment field is now a localized dropdown
-- Environment now influences generated treasure category weighting
-- Coast, cave, forest, swamp, desert, underwater, arctic, underground, volcanic, jungle, mountains, and ruined city environments added
+## 0.3.0c
+- Added stronger theme identity for generated treasures
+- Added `data/theme-modifiers.json`
+- Added theme category weighting via ThemeIdentityManager
+- Category selection now combines theme identity and environment weighting
+- Expanded theme-specific content pools for dragon hoards, dwarven ruins, pirate hideouts, temples, wizard towers, alchemists, cultists, undead, bandits, and goblins
+- Added many localized theme-specific motifs, documents, curiosities, collectibles, and craftsmanship details
 - No profile UI changes
 - No Actor sidebar launcher changes
 
-## 0.2.9
-- Restored and expanded generated treasure variety
-- Added larger generic pools for paintings and other treasure categories
-- Added textiles, instruments, collectibles, and craftsmanship generated treasure categories
-- Replaced deterministic category cycling with random category selection
-- Improved generic theme picking so dragon paintings no longer dominate standard treasure
-- Added quality tiers and flair descriptions for generated treasures
-- No profile UI changes
+## 0.1.9
+- Added editable treasure budget profiles
+- Added Treasure Profile settings menu
+- Added active treasure profile world setting
+- Added PF2E Standard, Low Magic, and High Magic budget profile data
+- Budget calculation now uses active treasure profile
+- Added 0-GP item filtering for compendium items
+- Added optional exception for cursed 0-GP items
+- Added profile editor template and styles
 
-## 0.2.8
-- Restored budget-aware PF2E compendium item filtering
-- Uses actual compendium item prices when available
-- Prevents very expensive items from exceeding the item budget under standard profiles
-- Filters 0-GP compendium items by default
-- Adds optional setting to allow 0-GP cursed items
-- No profile UI changes
+## 0.1.8
+- Widened the generation column to reduce field wrapping
+- Shortened min/max item level labels
+- Added PF2E compendium item price extraction
+- Added budget-aware item selection
+- Added treasure-profile based budget tolerance
+- Prevented extremely expensive high-level items from being selected for standard budgets
+- Estimated total value now uses actual compendium item prices when available
 
-## 0.2.7
-- Layout recovery release
-- Widened the generation column again
-- Improved min/max item level field alignment
-- Kept Actor sidebar launcher from the stable safe build
-- No treasure profile changes
-- No loot logic changes
-- Intended as a stable UI baseline for a Git tag
+## 0.1.7
+- Expanded generated treasure component pools
+- Added new generated treasure categories: textiles, instruments, collectibles, and craftsmanship
+- Added quality tiers for generated treasures
+- Added flair description lines for generated treasures
+- Improved generic theme variety to avoid repeated dragon paintings
+- Improved themed component selection with stronger theme weighting and generic fallback
+- Added richer generated treasure metadata flags
 
-## 0.2.6
-- Safe rollback build from the last known functioning project base
-- Restores valid Loot Forge app code
-- Adds robust Actor sidebar launcher fallback only
-- Profile UI patches from v0.2.3-v0.2.5 are intentionally not included
+## 0.1.6
+- Fixed visibility of the mystify magic items option in the main Loot Forge UI
+- Ensured mystify magic items remains registered as a world setting
+- Fixed compendium tab scrolling so the final entries are reachable
+- Added Select All and Deselect All controls for compendium sources
+- Improved compendium panel flex layout
 
 ## 0.1.5
 - Coins are now added only as actor currency, not as treasure items

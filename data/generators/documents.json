@@ -5,19 +5,19 @@
   "qualities": [
     {
       "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.65
+      "valueMultiplier": 0.2
     },
     {
       "key": "LF.Generated.Quality.Fine",
-      "valueMultiplier": 1.0
+      "valueMultiplier": 0.6
     },
     {
       "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.5
+      "valueMultiplier": 1.1
     },
     {
       "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.1
+      "valueMultiplier": 1.6
     }
   ],
   "kinds": [
@@ -106,6 +106,150 @@
       "themes": [
         "temple",
         "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.TributeLedger",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ImperialDecree",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.VictoryProclamation",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ClanChronicle",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MiningPlan",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.GuildCharter",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.AncestorList",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.CaptainLog",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.TreasureMap",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PrivateerWarrant",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SmugglingLedger",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PrayerRoll",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PilgrimLedger",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SaintsLife",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ProphecyFragment",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SpellNotes",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.StarChartDocument",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SummoningProtocol",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.LabJournal",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ForbiddenLitany",
+      "themes": [
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.BurialRegister",
+      "themes": [
+        "undead"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.RansomNote",
+      "themes": [
+        "bandit"
       ]
     }
   ],
@@ -198,9 +342,91 @@
         "noble",
         "generic"
       ]
+    },
+    {
+      "key": "LF.Generated.Theme.AncientTribute",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ConqueredKingdom",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.LostMine",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.BrokenOath",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.HiddenIsland",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.Shipwreck",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SacredRelic",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.RecordedMiracle",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.AstralAlignment",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.UnstablePortal",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ForbiddenName",
+      "themes": [
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.RestlessDead",
+      "themes": [
+        "undead"
+      ]
     }
   ],
   "conditions": [
+    {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
     {
       "key": "LF.Generated.Condition.Faded",
       "valueMultiplier": 0.8
@@ -208,18 +434,6 @@
     {
       "key": "LF.Generated.Condition.Pristine",
       "valueMultiplier": 1.25
-    },
-    {
-      "key": "LF.Generated.Condition.Dusty",
-      "valueMultiplier": 0.75
-    },
-    {
-      "key": "LF.Generated.Condition.Restored",
-      "valueMultiplier": 1.15
-    },
-    {
-      "key": "LF.Generated.Condition.Burnished",
-      "valueMultiplier": 1.05
     },
     {
       "key": "LF.Generated.Condition.WaterStained",
@@ -236,6 +450,26 @@
     {
       "key": "LF.Generated.Condition.Torn",
       "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
     }
   ],
   "flairs": [

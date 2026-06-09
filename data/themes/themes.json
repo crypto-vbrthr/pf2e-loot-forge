@@ -22,9 +22,11 @@
       "coins": 20,
       "weapons": 30,
       "armor": 5,
-      "consumables": 25,
-      "art": 5,
-      "curiosities": 15
+      "consumables": 24,
+      "art": 4,
+      "curiosities": 28,
+      "valuables": 6,
+      "documents": 4
     },
     "tags": [
       "goblin",
@@ -40,11 +42,12 @@
     "name": "LF.Theme.Bandit",
     "weights": {
       "coins": 30,
-      "weapons": 25,
+      "weapons": 24,
       "armor": 10,
       "consumables": 15,
-      "valuables": 15,
-      "documents": 5
+      "valuables": 20,
+      "documents": 14,
+      "curiosities": 12
     },
     "tags": [
       "bandit",
@@ -63,9 +66,11 @@
       "coins": 15,
       "weapons": 15,
       "armor": 10,
-      "art": 15,
-      "curiosities": 25,
-      "religious": 20
+      "art": 16,
+      "curiosities": 30,
+      "religious": 20,
+      "documents": 18,
+      "valuables": 8
     },
     "tags": [
       "undead",
@@ -83,9 +88,11 @@
       "coins": 10,
       "weapons": 15,
       "consumables": 20,
-      "documents": 20,
-      "religious": 25,
-      "curiosities": 10
+      "documents": 24,
+      "religious": 30,
+      "curiosities": 25,
+      "art": 10,
+      "valuables": 6
     },
     "tags": [
       "cult",
@@ -100,12 +107,13 @@
     "id": "temple",
     "name": "LF.Theme.Temple",
     "weights": {
-      "coins": 10,
+      "coins": 6,
       "consumables": 15,
-      "art": 20,
-      "valuables": 10,
-      "documents": 15,
-      "religious": 30
+      "art": 24,
+      "valuables": 8,
+      "documents": 20,
+      "religious": 45,
+      "curiosities": 12
     },
     "tags": [
       "temple",
@@ -118,12 +126,14 @@
     "id": "wizard",
     "name": "LF.Theme.Wizard",
     "weights": {
-      "coins": 10,
+      "coins": 6,
       "consumables": 25,
       "permanent": 20,
-      "documents": 20,
-      "curiosities": 10,
-      "magic": 15
+      "documents": 30,
+      "curiosities": 28,
+      "magic": 15,
+      "valuables": 10,
+      "art": 8
     },
     "tags": [
       "wizard",
@@ -176,12 +186,14 @@
     "id": "dwarf-ruin",
     "name": "LF.Theme.DwarfRuin",
     "weights": {
-      "coins": 20,
+      "coins": 12,
       "weapons": 20,
       "armor": 15,
-      "art": 15,
-      "valuables": 20,
-      "curiosities": 10
+      "art": 18,
+      "valuables": 18,
+      "curiosities": 14,
+      "documents": 22,
+      "permanent": 8
     },
     "tags": [
       "dwarf",
@@ -216,11 +228,13 @@
     "id": "dragon-hoard",
     "name": "LF.Theme.DragonHoard",
     "weights": {
-      "coins": 40,
-      "art": 20,
-      "valuables": 25,
+      "coins": 25,
+      "art": 28,
+      "valuables": 28,
       "permanent": 10,
-      "curiosities": 5
+      "curiosities": 8,
+      "documents": 4,
+      "religious": 2
     },
     "tags": [
       "dragon",
@@ -235,12 +249,14 @@
     "id": "pirate",
     "name": "LF.Theme.Pirate",
     "weights": {
-      "coins": 30,
+      "coins": 18,
       "weapons": 20,
       "consumables": 15,
-      "valuables": 20,
-      "documents": 10,
-      "curiosities": 5
+      "valuables": 15,
+      "documents": 26,
+      "curiosities": 24,
+      "beverages": 20,
+      "art": 5
     },
     "tags": [
       "pirate",
@@ -254,10 +270,13 @@
     "name": "LF.Theme.Alchemist",
     "weights": {
       "coins": 10,
-      "consumables": 40,
+      "consumables": 25,
       "alchemy": 30,
-      "documents": 10,
-      "curiosities": 10
+      "documents": 20,
+      "curiosities": 30,
+      "beverages": 20,
+      "valuables": 10,
+      "art": 4
     },
     "tags": [
       "alchemy",

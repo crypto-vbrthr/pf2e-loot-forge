@@ -130,6 +130,20 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
     levelInput.addEventListener("change", updateRange);
     levelInput.addEventListener("input", updateRange);
+
+    const selectAllPacksButton = element.querySelector("[data-action='select-all-packs']");
+    const deselectAllPacksButton = element.querySelector("[data-action='deselect-all-packs']");
+    const packCheckboxes = () => Array.from(element.querySelectorAll("input[name^='pack.']"));
+
+    selectAllPacksButton?.addEventListener("click", event => {
+      event.preventDefault();
+      packCheckboxes().forEach(input => input.checked = true);
+    });
+
+    deselectAllPacksButton?.addEventListener("click", event => {
+      event.preventDefault();
+      packCheckboxes().forEach(input => input.checked = false);
+    });
   }
 
 

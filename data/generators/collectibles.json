@@ -5,7 +5,7 @@
   "qualities": [
     {
       "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.65
+      "valueMultiplier": 0.55
     },
     {
       "key": "LF.Generated.Quality.Fine",
@@ -13,11 +13,11 @@
     },
     {
       "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.5
+      "valueMultiplier": 1.55
     },
     {
       "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.1
+      "valueMultiplier": 2.25
     }
   ],
   "kinds": [
@@ -66,6 +66,104 @@
         "temple",
         "generic"
       ]
+    },
+    {
+      "key": "LF.Generated.Theme.ImperialCoinSet",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.GemmedMiniatures",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ConqueredKingSeals",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ClanSealSet",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MasterMarksCollection",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.OreSamples",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ForeignCoinCollection",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.NavigationTokenSet",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PortStampAlbum",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PilgrimBadges",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MinorRelics",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.VotiveCollection",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.AstralSamples",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MiniatureConstellations",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PreservedComponents",
+      "themes": [
+        "alchemist"
+      ]
     }
   ],
   "origins": [
@@ -112,24 +210,16 @@
   ],
   "conditions": [
     {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
+    {
       "key": "LF.Generated.Condition.Faded",
       "valueMultiplier": 0.8
     },
     {
       "key": "LF.Generated.Condition.Pristine",
       "valueMultiplier": 1.25
-    },
-    {
-      "key": "LF.Generated.Condition.Dusty",
-      "valueMultiplier": 0.75
-    },
-    {
-      "key": "LF.Generated.Condition.Restored",
-      "valueMultiplier": 1.15
-    },
-    {
-      "key": "LF.Generated.Condition.Burnished",
-      "valueMultiplier": 1.05
     },
     {
       "key": "LF.Generated.Condition.WaterStained",
@@ -146,6 +236,26 @@
     {
       "key": "LF.Generated.Condition.Torn",
       "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
     }
   ],
   "flairs": [

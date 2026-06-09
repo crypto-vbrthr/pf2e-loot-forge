@@ -5,7 +5,7 @@
   "qualities": [
     {
       "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.65
+      "valueMultiplier": 0.55
     },
     {
       "key": "LF.Generated.Quality.Fine",
@@ -13,11 +13,11 @@
     },
     {
       "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.5
+      "valueMultiplier": 1.55
     },
     {
       "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.1
+      "valueMultiplier": 2.25
     }
   ],
   "objects": [
@@ -86,6 +86,13 @@
       ]
     },
     {
+      "key": "LF.Generated.CuriosityObject.ChewedDollLeg",
+      "themes": [
+        "goblin",
+        "generic"
+      ]
+    },
+    {
       "key": "LF.Generated.CuriosityObject.FossilShell",
       "themes": [
         "generic"
@@ -119,6 +126,137 @@
         "undead",
         "generic"
       ]
+    },
+    {
+      "key": "LF.Generated.Theme.DragonToothReliquary",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.GildedScale",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MiniatureCrown",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.BrokenRuneTablet",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ClanBadge",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.OldMakersMark",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.WhaleTooth",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.CompassFragment",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MermaidCarving",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ExoticCoin",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.RelicCapsule",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PilgrimToken",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.HolyCandle",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.IncenseBoat",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.GlassPlanetarium",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.CrystalLens",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.FloatingNeedle",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SealedSpecimen",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.BoneCharm",
+      "themes": [
+        "cultist",
+        "undead"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.FuneralCoin",
+      "themes": [
+        "undead"
+      ]
     }
   ],
   "features": [
@@ -134,6 +272,13 @@
       "themes": [
         "cultist",
         "undead",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.CuriosityFeature.GrowingTeeth",
+      "themes": [
+        "elf-ruin",
         "generic"
       ]
     },
@@ -179,6 +324,13 @@
       ]
     },
     {
+      "key": "LF.Generated.CuriosityFeature.TeethMarks",
+      "themes": [
+        "goblin",
+        "generic"
+      ]
+    },
+    {
       "key": "LF.Generated.CuriosityFeature.WarmToTouch",
       "themes": [
         "generic"
@@ -200,15 +352,105 @@
       ]
     },
     {
+      "key": "LF.Generated.CuriosityFeature.OldBloodstain",
+      "themes": [
+        "undead",
+        "cultist",
+        "generic"
+      ]
+    },
+    {
       "key": "LF.Generated.CuriosityFeature.ChangingShadow",
       "themes": [
         "wizard",
         "cultist",
         "generic"
       ]
+    },
+    {
+      "key": "LF.Generated.Theme.JeweledSetting",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ImperialSeal",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.RunicGrooves",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PerfectBalance",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SmellsOfSalt",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.HiddenCoordinates",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.FaintBlessing",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.LiturgicalMarks",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SoftBlueGlow",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ChangingSymbols",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ForbiddenWhisper",
+      "themes": [
+        "cultist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.GraveCold",
+      "themes": [
+        "undead"
+      ]
     }
   ],
   "conditions": [
+    {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
     {
       "key": "LF.Generated.Condition.Faded",
       "valueMultiplier": 0.8
@@ -216,18 +458,6 @@
     {
       "key": "LF.Generated.Condition.Pristine",
       "valueMultiplier": 1.25
-    },
-    {
-      "key": "LF.Generated.Condition.Dusty",
-      "valueMultiplier": 0.75
-    },
-    {
-      "key": "LF.Generated.Condition.Restored",
-      "valueMultiplier": 1.15
-    },
-    {
-      "key": "LF.Generated.Condition.Burnished",
-      "valueMultiplier": 1.05
     },
     {
       "key": "LF.Generated.Condition.WaterStained",
@@ -244,6 +474,26 @@
     {
       "key": "LF.Generated.Condition.Torn",
       "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
     }
   ],
   "flairs": [

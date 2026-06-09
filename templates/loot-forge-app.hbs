@@ -84,7 +84,7 @@
             <label class="lf-check"><input type="checkbox" name="includePermanentItems" {{#if config.includePermanentItems}}checked{{/if}}> {{lf "LF.Option.IncludePermanentItems"}}</label>
             <label class="lf-check"><input type="checkbox" name="includeValuables" {{#if config.includeValuables}}checked{{/if}}> {{lf "LF.Option.IncludeValuables"}}</label>
             <label class="lf-check"><input type="checkbox" name="includeCuriosities" {{#if config.includeCuriosities}}checked{{/if}}> {{lf "LF.Option.IncludeCuriosities"}}</label>
-            <label class="lf-check"><input type="checkbox" name="mystifyMagicItems" {{#if config.mystifyMagicItems}}checked{{/if}}> {{lf "LF.Option.MystifyMagicItems"}}</label>
+            <label class="lf-check lf-prominent-check"><input type="checkbox" name="mystifyMagicItems" {{#if config.mystifyMagicItems}}checked{{/if}}> {{lf "LF.Option.MystifyMagicItems"}}</label>
           </div>
         </div>
       </section>
@@ -185,6 +185,10 @@
     <section class="lf-panel">
       <h3>{{lf "LF.App.Compendiums"}}</h3>
       <p class="lf-muted">{{lf "LF.Compendiums.Hint"}}</p>
+      <div class="lf-pack-actions">
+        <button type="button" data-action="select-all-packs"><i class="fa-solid fa-check-double"></i> {{lf "LF.Button.SelectAll"}}</button>
+        <button type="button" data-action="deselect-all-packs"><i class="fa-solid fa-xmark"></i> {{lf "LF.Button.DeselectAll"}}</button>
+      </div>
       <div class="lf-pack-list">
         {{#each packs}}
           <label class="lf-check">

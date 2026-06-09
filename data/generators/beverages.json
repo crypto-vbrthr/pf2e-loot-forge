@@ -6,7 +6,7 @@
   "qualities": [
     {
       "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.65
+      "valueMultiplier": 0.55
     },
     {
       "key": "LF.Generated.Quality.Fine",
@@ -14,11 +14,11 @@
     },
     {
       "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.5
+      "valueMultiplier": 1.55
     },
     {
       "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.1
+      "valueMultiplier": 2.25
     }
   ],
   "names": [
@@ -104,6 +104,58 @@
         "dwarf-ruin",
         "generic"
       ]
+    },
+    {
+      "key": "LF.Generated.Theme.DragonsfireBrandy",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.DeepAleReserve",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.CaptainRum",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SmugglerSpicedRum",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MonasteryCordial",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.StarAbsinthe",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.BlueReagent",
+      "themes": [
+        "alchemist"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.FuneralWine",
+      "themes": [
+        "undead"
+      ]
     }
   ],
   "origins": [
@@ -112,6 +164,12 @@
       "themes": [
         "dwarf-ruin",
         "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.GoblinStill",
+      "themes": [
+        "goblin"
       ]
     },
     {
@@ -140,6 +198,12 @@
       "themes": [
         "alchemist",
         "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Origin.ForgottenCrypt",
+      "themes": [
+        "undead"
       ]
     },
     {
@@ -172,6 +236,45 @@
       "key": "LF.Generated.Origin.Absalom",
       "themes": [
         "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ImperialCellar",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.DwarfHold",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.Shackles",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.OldMonastery",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ArcaneSalon",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.AlchemyGuild",
+      "themes": [
+        "alchemist"
       ]
     }
   ],

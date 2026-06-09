@@ -5,7 +5,7 @@
   "qualities": [
     {
       "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.65
+      "valueMultiplier": 0.55
     },
     {
       "key": "LF.Generated.Quality.Fine",
@@ -13,11 +13,11 @@
     },
     {
       "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.5
+      "valueMultiplier": 1.55
     },
     {
       "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.1
+      "valueMultiplier": 2.25
     }
   ],
   "kinds": [
@@ -112,9 +112,62 @@
       ]
     },
     {
-      "key": "LF.Generated.Subject.Marketplace",
+      "key": "LF.Generated.Theme.ImperialBanner",
       "themes": [
-        "generic"
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.DragonBanner",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ClanBanner",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.GuildPattern",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.PirateFlag",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SeaRoute",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.HolyBattle",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.Saint",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.StarChart",
+      "themes": [
+        "wizard",
+        "mage-tower"
       ]
     }
   ],
@@ -138,24 +191,16 @@
   ],
   "conditions": [
     {
+      "key": "LF.Generated.Condition.SootStained",
+      "valueMultiplier": 0.9
+    },
+    {
       "key": "LF.Generated.Condition.Faded",
       "valueMultiplier": 0.8
     },
     {
       "key": "LF.Generated.Condition.Pristine",
       "valueMultiplier": 1.25
-    },
-    {
-      "key": "LF.Generated.Condition.Dusty",
-      "valueMultiplier": 0.75
-    },
-    {
-      "key": "LF.Generated.Condition.Restored",
-      "valueMultiplier": 1.15
-    },
-    {
-      "key": "LF.Generated.Condition.Burnished",
-      "valueMultiplier": 1.05
     },
     {
       "key": "LF.Generated.Condition.WaterStained",
@@ -172,6 +217,26 @@
     {
       "key": "LF.Generated.Condition.Torn",
       "valueMultiplier": 0.5
+    },
+    {
+      "key": "LF.Generated.Condition.AcidSpotted",
+      "valueMultiplier": 0.7
+    },
+    {
+      "key": "LF.Generated.Condition.Greasy",
+      "valueMultiplier": 0.4
+    },
+    {
+      "key": "LF.Generated.Condition.Dusty",
+      "valueMultiplier": 0.75
+    },
+    {
+      "key": "LF.Generated.Condition.Burnished",
+      "valueMultiplier": 1.05
+    },
+    {
+      "key": "LF.Generated.Condition.Restored",
+      "valueMultiplier": 1.15
     }
   ],
   "flairs": [

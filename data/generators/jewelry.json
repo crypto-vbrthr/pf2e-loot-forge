@@ -6,7 +6,7 @@
   "qualities": [
     {
       "key": "LF.Generated.Quality.Simple",
-      "valueMultiplier": 0.65
+      "valueMultiplier": 0.55
     },
     {
       "key": "LF.Generated.Quality.Fine",
@@ -14,11 +14,11 @@
     },
     {
       "key": "LF.Generated.Quality.Exquisite",
-      "valueMultiplier": 1.5
+      "valueMultiplier": 1.55
     },
     {
       "key": "LF.Generated.Quality.Masterwork",
-      "valueMultiplier": 2.1
+      "valueMultiplier": 2.25
     }
   ],
   "materials": [
@@ -37,6 +37,10 @@
     {
       "key": "LF.Generated.Material.Platinum",
       "valueMultiplier": 2.2
+    },
+    {
+      "key": "LF.Generated.Material.Iron",
+      "valueMultiplier": 0.3
     },
     {
       "key": "LF.Generated.Material.Bronze",
@@ -70,6 +74,13 @@
       "key": "LF.Generated.JewelryKind.Earring",
       "themes": [
         "pirate",
+        "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.JewelryKind.Button",
+      "themes": [
+        "goblin",
         "generic"
       ]
     },
@@ -143,6 +154,13 @@
       ]
     },
     {
+      "key": "LF.Generated.JewelryDetail.ShinyWorthless",
+      "themes": [
+        "goblin",
+        "generic"
+      ]
+    },
+    {
       "key": "LF.Generated.JewelryDetail.Moonstones",
       "themes": [
         "elf-ruin",
@@ -172,6 +190,13 @@
       ]
     },
     {
+      "key": "LF.Generated.JewelryDetail.MovingInk",
+      "themes": [
+        "wizard",
+        "generic"
+      ]
+    },
+    {
       "key": "LF.Generated.JewelryDetail.BlackPearl",
       "themes": [
         "pirate",
@@ -185,6 +210,78 @@
         "dwarf-ruin",
         "wizard",
         "generic"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.DragonEyeRuby",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.CrownMotif",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ImperialInscription",
+      "themes": [
+        "dragon-hoard"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ClanRunes",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.ForgeSymbol",
+      "themes": [
+        "dwarf-ruin",
+        "dwarven-ruin"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.BlackPearl",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.TinyAnchor",
+      "themes": [
+        "pirate",
+        "pirate-hideout"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.HolyCharm",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.SaintMedallion",
+      "themes": [
+        "temple"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.Moonstones",
+      "themes": [
+        "wizard",
+        "mage-tower"
+      ]
+    },
+    {
+      "key": "LF.Generated.Theme.MovingInk",
+      "themes": [
+        "wizard",
+        "mage-tower"
       ]
     }
   ],

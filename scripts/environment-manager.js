@@ -12,7 +12,7 @@ export class EnvironmentManager {
       this.#data = await response.json();
     } catch (error) {
       console.warn("PF2E Loot Forge | Could not load environment modifiers", error);
-      this.#data = { generic: { labelKey: "LF.Environment.Generic", categoryWeights: {} } };
+      this.#data = { generic: { labelKey: "LF.Environment.Generic", categoryWeights: {}, conditionAdditions: [] } };
     }
 
     return this.#data;
@@ -30,16 +30,15 @@ export class EnvironmentManager {
 
   static async getEnvironment(id = "generic") {
     const data = await this.getData();
-    return data[id] ?? data.generic ?? { categoryWeights: {} };
+    return data[id] ?? data.generic ?? { categoryWeights: {}, conditionAdditions: [] };
   }
 
+  static mergeConditions(baseConditions = [], environment = {}) {
+    const additions = environment?.conditionAdditions ?? [];
+    if (!Array.isArray(additions) || !additions.length) return baseConditions;
 
-static mergeConditions(baseConditions = [], environment = {}) {
-  const additions = environment?.conditionAdditions ?? [];
-  if (!Array.isArray(additions) || !additions.length) return baseConditions;
-
-  return [...baseConditions, ...additions, ...additions];
-}
+    return [...baseConditions, ...additions, ...additions];
+  }
 
   static weightedPick(categories = [], weights = {}) {
     if (!categories.length) return null;

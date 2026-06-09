@@ -1,6 +1,7 @@
 import { MODULE_ID } from "./constants.js";
 import { CompendiumScanner } from "./compendium-scanner.js";
 import { lfLocalize } from "./localization-helper.js";
+import { TreasureProfileManager } from "./treasure-profile-manager.js";
 
 export function registerSettings() {
   game.settings.register(MODULE_ID, "enabledCompendiums", {
@@ -46,7 +47,25 @@ export function registerSettings() {
     default: true
   });
 
-  
+
+  game.settings.register(MODULE_ID, "treasureProfiles", {
+    name: lfLocalize("LF.Settings.TreasureProfiles.Name"),
+    hint: lfLocalize("LF.Settings.TreasureProfiles.Hint"),
+    scope: "world",
+    config: false,
+    type: Object,
+    default: {}
+  });
+
+  game.settings.register(MODULE_ID, "activeTreasureProfile", {
+    name: lfLocalize("LF.Settings.ActiveTreasureProfile.Name"),
+    hint: lfLocalize("LF.Settings.ActiveTreasureProfile.Hint"),
+    scope: "world",
+    config: false,
+    type: String,
+    default: "pf2e-standard"
+  });
+
   game.settings.register(MODULE_ID, "allowCursedZeroValueItems", {
     name: lfLocalize("LF.Settings.AllowCursedZeroValueItems.Name"),
     hint: lfLocalize("LF.Settings.AllowCursedZeroValueItems.Hint"),
@@ -56,7 +75,16 @@ export function registerSettings() {
     default: false
   });
 
-game.settings.registerMenu(MODULE_ID, "compendiumSources", {
+  game.settings.registerMenu(MODULE_ID, "treasureProfilesMenu", {
+    name: lfLocalize("LF.Settings.TreasureProfiles.MenuName"),
+    label: lfLocalize("LF.Settings.TreasureProfiles.MenuLabel"),
+    hint: lfLocalize("LF.Settings.TreasureProfiles.MenuHint"),
+    icon: "fa-solid fa-coins",
+    type: TreasureProfileConfig,
+    restricted: true
+  });
+
+  game.settings.registerMenu(MODULE_ID, "compendiumSources", {
     name: lfLocalize("LF.Settings.CompendiumSources.Name"),
     label: lfLocalize("LF.Settings.CompendiumSources.Label"),
     hint: lfLocalize("LF.Settings.CompendiumSources.Hint"),
@@ -95,5 +123,70 @@ export class LootForgeCompendiumSourcesConfig extends FormApplication {
       .filter(([key, value]) => key.startsWith("pack.") && value)
       .map(([key]) => key.replace(/^pack\./, ""));
     await game.settings.set(MODULE_ID, "enabledCompendiums", enabled);
+  }
+}
+
+
+export class TreasureProfileConfig extends FormApplication {
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      id: "pf2e-loot-forge-treasure-profiles",
+      title: lfLocalize("LF.Settings.TreasureProfiles.Title"),
+      template: `modules/${MODULE_ID}/templates/treasure-profiles.hbs`,
+      width: 760,
+      height: "auto",
+      closeOnSubmit: true
+    });
+  }
+
+  async getData() {
+    const data = await TreasureProfileManager.getWorldData();
+    const activeId = game.settings.get(MODULE_ID, "activeTreasureProfile") || data.activeProfile || "pf2e-standard";
+
+    return {
+      profiles: (data.profiles ?? []).map(profile => ({
+        ...profile,
+        selected: profile.id === activeId,
+        budgets: this.#budgetsToRows(profile)
+      }))
+    };
+  }
+
+  async _updateObject(_event, formData) {
+    const object = foundry.utils.expandObject(formData);
+    const data = await TreasureProfileManager.getWorldData();
+    const activeProfile = object.activeProfile ?? data.activeProfile ?? "pf2e-standard";
+
+    for (const profile of data.profiles ?? []) {
+      const submitted = object.profile?.[profile.id];
+      if (!submitted) continue;
+
+      profile.name = submitted.name ?? profile.name;
+      profile.description = submitted.description ?? profile.description;
+      profile.budgetMultiplier = Number(submitted.budgetMultiplier ?? profile.budgetMultiplier ?? 1);
+
+      profile.budgetsGp ??= {};
+      for (const [level, value] of Object.entries(submitted.budgetsGp ?? {})) {
+        profile.budgetsGp[level] = Math.max(0, Number(value ?? 0));
+      }
+    }
+
+    data.activeProfile = activeProfile;
+    await TreasureProfileManager.saveProfiles(data);
+    await game.settings.set(MODULE_ID, "activeTreasureProfile", activeProfile);
+  }
+
+  #budgetsToRows(profile) {
+    const budgets = profile.budgetsGp ?? {};
+    const rows = [];
+
+    for (let level = -1; level <= 25; level++) {
+      rows.push({
+        level,
+        value: Number(budgets[String(level)] ?? 0)
+      });
+    }
+
+    return rows;
   }
 }

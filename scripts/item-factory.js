@@ -1,4 +1,4 @@
-import { EnvironmentManager } from "./environment-manager.js";
+import { ThemeIdentityManager } from "./theme-identity-manager.js";
 import { COIN_IMAGE } from "./constants.js";
 import { GeneratedTreasureFactory } from "./generated/generated-treasure-factory.js";
 import { lfFormat, lfLocalize } from "./localization-helper.js";
@@ -38,8 +38,9 @@ export class ItemFactory {
   static async createGeneratedValuables(config) {
     const items = [];
     const themeId = config.themeProfile?.id ?? "generic";
-    const environment = await EnvironmentManager.getEnvironment(config.environment ?? "generic");
-    const environmentCategoryWeights = environment.categoryWeights ?? {};
+    const themeCategoryWeights = await ThemeIdentityManager.getCategoryWeights(themeId);
+    const combinedCategoryWeights = themeCategoryWeights ?? {};
+
 
     if (config.includeValuables) {
       const valueBudget =
@@ -51,11 +52,10 @@ export class ItemFactory {
       const categories = ["painting", "statue", "jewelry", "beverage", "textile", "instrument", "collectible", "craftsmanship"];
 
       for (let i = 0; i < valuableCount; i++) {
-        const category = EnvironmentManager.weightedPick(categories, environmentCategoryWeights);
+        const category = ThemeIdentityManager.weightedPick(categories, combinedCategoryWeights ?? {});
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,
-          environmentId: config.environment ?? "generic",
           valueBudget: valueBudget / valuableCount
         }));
       }
@@ -70,11 +70,10 @@ export class ItemFactory {
       const categories = ["curiosity", "document", "collectible"];
 
       for (let i = 0; i < curiosityCount; i++) {
-        const category = EnvironmentManager.weightedPick(categories, environmentCategoryWeights);
+        const category = ThemeIdentityManager.weightedPick(categories, combinedCategoryWeights ?? {});
         items.push(await GeneratedTreasureFactory.generate({
           category,
           themeId,
-          environmentId: config.environment ?? "generic",
           valueBudget: curiosityBudget / curiosityCount
         }));
       }

@@ -43,7 +43,6 @@ export class CompendiumScanner {
           category,
           categoryLabelKey: this.#categoryLabelKey(category),
           priceGp,
-          isCursed,
           level,
           rarity,
           pack: pack.collection
@@ -82,19 +81,6 @@ export class CompendiumScanner {
     return false;
   }
 
-
-  static #priceToGp(price = {}) {
-    if (!price) return 0;
-    if (typeof price === "number") return Number(price) || 0;
-
-    const cp = Number(price.cp ?? 0);
-    const sp = Number(price.sp ?? 0);
-    const gp = Number(price.gp ?? 0);
-    const pp = Number(price.pp ?? 0);
-
-    return Math.round((gp + sp / 10 + cp / 100 + pp * 10) * 100) / 100;
-  }
-
   static #isCursed(entry) {
     const traits = entry.system?.traits?.value ?? entry.system?.traits?.otherTags ?? [];
     const traitList = Array.isArray(traits) ? traits.map(t => String(t).toLowerCase()) : [];
@@ -107,6 +93,18 @@ export class CompendiumScanner {
       || name.includes("verflucht");
   }
 
+  static #priceToGp(price = {}) {
+    if (!price) return 0;
+
+    if (typeof price === "number") return price;
+
+    const cp = Number(price.cp ?? 0);
+    const sp = Number(price.sp ?? 0);
+    const gp = Number(price.gp ?? 0);
+    const pp = Number(price.pp ?? 0);
+
+    return Math.round((gp + sp / 10 + cp / 100 + pp * 10) * 100) / 100;
+  }
 
   static #categoryForEntry(entry) {
     if (entry.type === "weapon") return LOOT_CATEGORIES.WEAPONS;

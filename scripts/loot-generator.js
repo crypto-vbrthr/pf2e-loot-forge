@@ -3,6 +3,7 @@ import { CompendiumScanner } from "./compendium-scanner.js";
 import { ItemFactory } from "./item-factory.js";
 import { ThemeManager } from "./theme-manager.js";
 import { TreasureBudget } from "./treasure-budget.js";
+import { TreasureProfileManager } from "./treasure-profile-manager.js";
 import { weightedPick } from "./weighted-picker.js";
 
 export class LootGenerator {
@@ -38,8 +39,9 @@ export class LootGenerator {
   static async #normalizeOptions(options) {
     const level = Number(options.level ?? 1);
     const themeProfile = options.themeProfile ?? await ThemeManager.getTheme(options.theme ?? "generic");
-    const budget = await TreasureBudget.calculate({ ...options, level });
-    let budgetSplit = TreasureBudget.splitBudget(budget.targetGp, themeProfile);
+    const treasureBudgetProfile = await TreasureProfileManager.getActiveProfile();
+    const budget = await TreasureBudget.calculate({ ...options, level, treasureBudgetProfile });
+    let budgetSplit = TreasureBudget.splitBudget(budget.targetGp, themeProfile, treasureBudgetProfile);
     budgetSplit = this.#applyLootStyleToBudget(budgetSplit, Number(options.lootStyle ?? 50));
     const preferredCategories = this.#categoriesFromTheme(themeProfile, options);
 
@@ -66,7 +68,7 @@ export class LootGenerator {
       includeValuables: Boolean(options.includeValuables ?? game.settings.get(MODULE_ID, "includeGeneratedValuables")),
       includeCuriosities: Boolean(options.includeCuriosities ?? true),
       compendiums: options.compendiums ?? game.settings.get(MODULE_ID, "enabledCompendiums"),
-      allowCursedZeroValueItems: Boolean(options.allowCursedZeroValueItems ?? game.settings.get(MODULE_ID, "allowCursedZeroValueItems") ?? false)
+      allowCursedZeroValueItems: Boolean(options.allowCursedZeroValueItems ?? game.settings.get(MODULE_ID, "allowCursedZeroValueItems"))
     };
   }
 
@@ -113,15 +115,17 @@ export class LootGenerator {
     if (!items.length) return [];
 
     const itemBudget = this.#itemBudget(config);
-    const tolerance = this.#budgetTolerance(config);
     const maxItems = this.#maxItems(config);
+    const tolerance = this.#budgetTolerance(config);
     const hardCap = Math.max(1, itemBudget * tolerance);
 
-    const pricedItems = items.filter(item => this.#roughItemValue(item) > 0);
-    const affordable = pricedItems.filter(item => this.#roughItemValue(item) <= hardCap);
-    const pool = affordable.length ? affordable : pricedItems.filter(item => this.#roughItemValue(item) <= hardCap * 2);
+    const affordable = items.filter(item => {
+      const value = this.#roughItemValue(item);
+      return value <= hardCap;
+    });
 
-    const shuffled = foundry.utils.deepClone(pool.length ? pool : affordable)
+    const pool = affordable.length ? affordable : items.filter(item => this.#roughItemValue(item) <= hardCap * 2);
+    const shuffled = foundry.utils.deepClone(pool.length ? pool : items)
       .sort(() => Math.random() - 0.5);
 
     const selected = [];
@@ -129,7 +133,6 @@ export class LootGenerator {
 
     for (const item of shuffled) {
       const value = this.#roughItemValue(item);
-      if (value <= 0) continue;
 
       if (selected.length > 0 && value > remaining * tolerance) continue;
       if (selected.length === 0 && value > itemBudget * tolerance) continue;
@@ -143,8 +146,9 @@ export class LootGenerator {
 
     if (selected.length) return selected;
 
-    const fallback = affordable
-      .sort((a, b) => this.#roughItemValue(a) - this.#roughItemValue(b))[0];
+    const fallback = shuffled
+      .sort((a, b) => this.#roughItemValue(a) - this.#roughItemValue(b))
+      .find(item => this.#roughItemValue(item) <= hardCap);
 
     return fallback ? [fallback] : [];
   }
