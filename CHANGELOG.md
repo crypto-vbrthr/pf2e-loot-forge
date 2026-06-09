@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0g
+- Localization cleanup for all `LF.Generated.Theme.*` keys found in data and scripts
+- Added missing localization for `ShipName` and related theme details
+- Added fallback localization generation for future theme keys
+- No loot logic changes
+
+## 0.3.0f
+- Hotfix: added missing localization for `LF.Generated.Theme.BattleNotches`
+- Added a few related instrument detail localization fallbacks
+- No loot logic changes
+
 ## 0.3.0e
 - Hotfix: guarantees `combinedCategoryWeights` is defined in item-factory
 - Fixes crash during generated treasure creation
