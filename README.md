@@ -9,10 +9,7 @@ PF2E Loot Forge helps Game Masters quickly create believable treasure hoards and
 ## Main Window
 
 ![Main Window](screenshots/main1.png)
-
-## With selected target actor
-
-![Main Window](screenshots/main2.png)
+![With selected target actor](screenshots/main2.png)
 
 
 ## Features
