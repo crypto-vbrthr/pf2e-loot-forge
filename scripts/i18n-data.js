@@ -794,7 +794,12 @@ export const LF_TRANSLATIONS = {
   "LF.Generated.Theme.Shipwreck": "ein Schiffswrack",
   "LF.Generated.Theme.StarAbsinthe": "Sternenabsinth",
   "LF.Generated.Theme.TempleSeal": "Tempelsiegel",
-  "LF.Generated.Theme.TinyAnchor": "kleinem Anker"
+  "LF.Generated.Theme.TinyAnchor": "kleinem Anker",
+  "LF.TargetActor.DropHint": "Actor aus der Seitenleiste oder Token von der Szene hierher ziehen.",
+  "LF.TargetActor.SelectedByDrop": "Per Drop gewählt",
+  "LF.Notification.DropInvalid": "Der abgelegte Eintrag konnte nicht gelesen werden.",
+  "LF.Notification.DropNoActor": "Der abgelegte Eintrag enthält keinen Actor.",
+  "LF.Notification.DropActorSelected": "Ziel-Actor gesetzt: {actor}"
 },
   en: {
   "LF.Controls.Open": "Loot Forge",
@@ -1591,6 +1596,11 @@ export const LF_TRANSLATIONS = {
   "LF.Generated.Theme.Shipwreck": "shipwreck",
   "LF.Generated.Theme.StarAbsinthe": "star absinthe",
   "LF.Generated.Theme.TempleSeal": "temple seal",
-  "LF.Generated.Theme.TinyAnchor": "tiny anchor"
+  "LF.Generated.Theme.TinyAnchor": "tiny anchor",
+  "LF.TargetActor.DropHint": "Drop an actor from the sidebar or a token from the scene here.",
+  "LF.TargetActor.SelectedByDrop": "Selected by drop",
+  "LF.Notification.DropInvalid": "The dropped entry could not be read.",
+  "LF.Notification.DropNoActor": "The dropped entry does not contain an actor.",
+  "LF.Notification.DropActorSelected": "Target actor selected: {actor}"
 }
 };

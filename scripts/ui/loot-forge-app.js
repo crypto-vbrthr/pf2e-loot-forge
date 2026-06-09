@@ -60,6 +60,8 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
         return a.name.localeCompare(b.name);
       });
 
+    const droppedTargetActor = this.targetActorId ? game.actors.get(this.targetActorId) : null;
+
     const rarityOptions = ["common", "uncommon", "rare", "unique"].map(value => ({
       value,
       label: lfLocalize(`LF.Rarity.${value.charAt(0).toUpperCase()}${value.slice(1)}`),
@@ -82,6 +84,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
       themes,
       environmentOptions,
       actors,
+      droppedTargetActor,
       result: this.editableLoot ?? this.result,
       hasResult: Boolean(this.editableLoot ?? this.result)
     };
@@ -113,6 +116,54 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     super._onRender(context, options);
 
     const element = this.element;
+
+    const dropTarget = element.querySelector("[data-lf-target-actor-drop]");
+    if (dropTarget) {
+      dropTarget.addEventListener("dragover", event => {
+        event.preventDefault();
+        dropTarget.classList.add("lf-drop-target-active");
+      });
+
+      dropTarget.addEventListener("dragleave", () => {
+        dropTarget.classList.remove("lf-drop-target-active");
+      });
+
+      dropTarget.addEventListener("drop", async event => {
+        event.preventDefault();
+        dropTarget.classList.remove("lf-drop-target-active");
+
+        let data;
+        try {
+          data = JSON.parse(event.dataTransfer.getData("text/plain"));
+        } catch (_error) {
+          ui.notifications.warn(lfLocalize("LF.Notification.DropInvalid"));
+          return;
+        }
+
+        let actor = null;
+
+        if (data?.type === "Actor" || data?.documentName === "Actor") {
+          const document = data.uuid ? await fromUuid(data.uuid) : game.actors.get(data.id);
+          actor = document?.documentName === "Actor" ? document : null;
+        } else if (data?.type === "Token" || data?.type === "TokenDocument" || data?.documentName === "Token") {
+          const tokenDocument = data.uuid ? await fromUuid(data.uuid) : null;
+          actor = tokenDocument?.actor ?? null;
+        }
+
+        if (!actor) {
+          ui.notifications.warn(lfLocalize("LF.Notification.DropNoActor"));
+          return;
+        }
+
+        this.targetActorId = actor.id;
+        this.lastConfig ??= this.#getRenderConfig();
+        this.lastConfig.targetActorId = actor.id;
+
+        ui.notifications.info(lfLocalize("LF.Notification.DropActorSelected").replace("{actor}", actor.name));
+        this.render({ force: true });
+      });
+    }
+
     const levelInput = element.querySelector('input[name="level"]');
     const minInput = element.querySelector('input[name="itemLevelMin"]');
     const maxInput = element.querySelector('input[name="itemLevelMax"]');
@@ -227,7 +278,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
     const config = LootForgeApp.#configFromFormData(data);
     app.lastConfig = foundry.utils.deepClone(config);
-    app.targetActorId = data.targetActorId ?? null;
+    app.targetActorId = data.targetActorId || app.targetActorId || null;
     LootForgeApp.#syncEditsFromForm(app, data);
 
     if (action?.startsWith("reroll-generated:")) {
@@ -288,7 +339,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     app.result = await LootGenerator.generate(config);
     app.editableLoot = foundry.utils.deepClone(app.result);
     app.lastConfig = foundry.utils.deepClone(config);
-    app.targetActorId = data.targetActorId ?? null;
+    app.targetActorId = data.targetActorId || app.targetActorId || null;
     app.render({ force: true });
   }
 

@@ -1,106 +1,204 @@
 # PF2E Loot Forge
 
-PF2E Loot Forge is a Foundry VTT module for generating Pathfinder 2e loot.
+A Foundry VTT module for Pathfinder 2e Remastered that generates thematic treasure, valuables, and loot inventories for NPCs, encounters, dungeons, and rewards.
 
-## v0.1.9
+PF2E Loot Forge helps Game Masters quickly create believable treasure hoards and inventories without manually assembling dozens of items.
 
-- Actor Directory button
-- ApplicationV2 loot generator window
-- Loot preview workflow
-- Regenerate without immediately applying loot
-- Apply preview to an existing actor
-- Create a new PF2E loot actor and fill it with the preview
-- Loot actors are listed and sorted before other actors
-- Tabbed UI with compendium source settings in a separate tab
-- Compendium scanner for real PF2E Item documents
-- Generic art objects and curiosities as treasure items
-- Localized sentence-template foundation
-- Public API for Monster Forge integration
+---
+
+## Main Window
+
+![Main Window](screenshots/main1.png)
+
+## With selected target actor
+
+![Main Window](screenshots/main2.png)
 
 
-## Monster Forge Integration Draft
+## Features
 
-Loot Forge now exposes two creature-focused API methods:
+### Generated Treasure
 
-```js
-const lootApi = game.modules.get("pf2e-loot-forge")?.api;
+Generate thematic treasure based on:
 
-const loot = await lootApi.generateLootForCreature({
-  level: 5,
-  traits: ["goblin", "humanoid"],
-  role: "skirmisher",
-  environment: "cave",
-  treasureProfile: "standard"
-});
+* Party or encounter level
+* Treasure budget
+* Treasure profile
+* Theme
+* Environment
+* Rarity
 
-const inventory = await lootApi.generateInventoryForCreature({
-  level: 5,
-  traits: ["goblin", "humanoid"],
-  role: "skirmisher",
-  includeCombatGear: true
-});
-```
+Generated treasures include:
 
+* Art objects
+* Jewelry
+* Collectibles
+* Curiosities
+* Documents
+* Craftsmanship items
+* Textiles
+* Instruments
+* Beverages
+* Statues
+* Coins
+* PF2E items
 
-## v0.1.5 Budget Note
+---
 
-This version introduces a first playable treasure budget foundation. The numbers are intentionally isolated in:
+### Strong Theme Identity
 
-```text
-data/templates/treasure-budgets.json
-```
+Themes significantly influence generated treasures.
 
-so they can be adjusted later without rewriting generator logic.
+Examples:
 
-## v0.1.5 Notes
+* Dragon Hoard
+* Dwarven Ruin
+* Pirate Hideout
+* Temple
+* Mage Tower
+* Alchemist Laboratory
+* Cultist Lair
+* Undead Crypt
+* Bandit Camp
+* Goblin Den
 
-Changing the loot level now automatically adjusts min/max item level to `level - 2` and `level + 1`.
+A Dragon Hoard feels different from a Temple or Pirate Hideout, even at the same level and budget.
 
-## v0.1.5
+---
 
-This release expands generated treasure variety and adds a loot style slider for atmospheric vs practical treasure generation.
+### Environment Integration
 
-## v0.1.5
+Environments influence treasure composition and item conditions.
 
-Fixes form state preservation after generating loot.
+Examples:
 
+* Forest
+* Mountains
+* Cave
+* Swamp
+* Desert
+* Coast
+* Jungle
+* Arctic
+* Underground
+* Volcanic
+* Ruined City
 
-## v0.1.5 Procedural Treasure Architecture
+---
 
-Generated treasures now use the architecture:
+### Loot Actor Creation
 
-```text
-scripts/generated/
-data/generators/
-```
+Create a dedicated loot actor containing generated treasure.
 
-Generated treasure is built from templates and localized components instead of fixed object lists.
+Perfect for:
 
-## v0.1.5 Treasure Editor
+* Dungeon rewards
+* Treasure rooms
+* Hidden caches
+* Quest rewards
 
-The loot preview can now be edited before applying it to an actor or creating a loot actor.
+---
 
-## v0.1.5 Layout
+### Add Loot to Existing Actors
 
-The main interface now uses a wider three-column layout with independent scroll areas.
+Generate treasure directly into existing actors.
 
-## v0.1.5
+Useful for:
 
-Coins are now written only to actor currency. Magical items can be mystified by default.
+* NPC inventories
+* Merchants
+* Bosses
+* Faction leaders
+* Named enemies
 
+---
 
-## v0.1.6
+### Drag & Drop Target Selection
 
-Hotfix for mystify magic items option visibility and compendium source scrolling.
+Quickly select a target actor by dragging:
 
-## v0.1.7 Generated Treasure Expansion
+* An Actor from the Actor Directory
+* A Token from the scene
 
-Expanded the procedural treasure system with new categories, quality tiers, flair descriptions, and broader generic pools.
+directly onto the Target Actor field.
 
-## v0.1.8 Loot Quality & Budgeting
+This makes inventory generation fast even in campaigns with hundreds of NPCs.
 
-PF2E compendium items are now filtered by price against the item budget, with profile-specific tolerance.
+---
 
-## v0.1.9 Treasure Profiles
+### Localization
 
-Adds editable treasure budget profiles and filters 0-GP compendium items unless cursed items are explicitly allowed.
+Fully localized in:
+
+* English
+* German
+
+---
+
+## Usage
+
+### Create a Loot Actor
+
+1. Open Loot Forge.
+2. Configure level, theme, environment, and treasure settings.
+3. Generate a preview.
+4. Create a new loot actor.
+
+### Add Loot to an Existing Actor
+
+1. Open Loot Forge.
+2. Select a target actor.
+3. Generate treasure.
+4. Apply loot to the actor.
+
+### Drag & Drop Workflow
+
+1. Open Loot Forge.
+2. Drag an actor from the sidebar or a token from the scene onto the Target Actor field.
+3. Generate treasure.
+4. Apply loot.
+
+---
+
+## Compatibility
+
+* Foundry VTT V14
+* Pathfinder 2e Remastered
+
+---
+
+## Installation
+
+Install through Foundry VTT using the module manifest URL.
+
+Alternatively:
+
+1. Download the latest release.
+2. Extract it into your Foundry `Data/modules` directory.
+3. Enable the module in your world.
+
+---
+
+## Roadmap
+
+Planned future improvements include:
+
+* Treasure profiles
+* Merchant inventory generation
+* Settlement loot generation
+* Quest reward generation
+* Additional themes and environments
+
+---
+
+## Support
+
+Bug reports, feature requests, and contributions are welcome through GitHub Issues.
+
+---
+
+## License
+
+MIT License
+
+Copyright (c) 2026 crypto-vbrthr

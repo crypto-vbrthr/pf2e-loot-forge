@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1b
+- Hotfix: rebuilt target actor drag & drop from stable v0.3.0g base
+- Added actor/sidebar and scene token drop support without private helper methods
+- Fixes private field syntax error from v0.3.1
+- No loot logic changes
+
 ## 0.3.0g
 - Localization cleanup for all `LF.Generated.Theme.*` keys found in data and scripts
 - Added missing localization for `ShipName` and related theme details

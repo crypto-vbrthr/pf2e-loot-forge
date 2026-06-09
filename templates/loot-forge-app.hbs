@@ -159,7 +159,7 @@
 
             <div class="lf-target-box">
               <h3>{{lf "LF.App.Target"}}</h3>
-              <div class="form-group">
+              <div class="form-group lf-target-actor-drop" data-lf-target-actor-drop>
                 <label>{{lf "LF.Field.TargetActor"}}</label>
                 <select name="targetActorId">
                   <option value="">{{lf "LF.Target.None"}}</option>
@@ -167,6 +167,15 @@
                     <option value="{{id}}" {{#if selected}}selected{{/if}}>{{#if isLoot}}🪙 {{/if}}{{name}} — {{typeLabel}}</option>
                   {{/each}}
                 </select>
+                <p class="notes lf-drop-hint">
+                  <i class="fa-solid fa-hand-pointer"></i>
+                  {{lf "LF.TargetActor.DropHint"}}
+                </p>
+                {{#if droppedTargetActor}}
+                  <p class="notes lf-drop-selection">
+                    {{lf "LF.TargetActor.SelectedByDrop"}}: <strong>{{droppedTargetActor.name}}</strong>
+                  </p>
+                {{/if}}
               </div>
               <div class="form-group">
                 <label>{{lf "LF.Field.NewLootActorName"}}</label>

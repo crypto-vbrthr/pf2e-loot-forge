@@ -793,5 +793,10 @@
   "LF.Generated.Theme.Shipwreck": "ein Schiffswrack",
   "LF.Generated.Theme.StarAbsinthe": "Sternenabsinth",
   "LF.Generated.Theme.TempleSeal": "Tempelsiegel",
-  "LF.Generated.Theme.TinyAnchor": "kleinem Anker"
+  "LF.Generated.Theme.TinyAnchor": "kleinem Anker",
+  "LF.TargetActor.DropHint": "Actor aus der Seitenleiste oder Token von der Szene hierher ziehen.",
+  "LF.TargetActor.SelectedByDrop": "Per Drop gewählt",
+  "LF.Notification.DropInvalid": "Der abgelegte Eintrag konnte nicht gelesen werden.",
+  "LF.Notification.DropNoActor": "Der abgelegte Eintrag enthält keinen Actor.",
+  "LF.Notification.DropActorSelected": "Ziel-Actor gesetzt: {actor}"
 }

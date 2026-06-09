@@ -372,3 +372,22 @@
 .lf-budget-row input {
   max-width: 8rem;
 }
+
+
+.lf-target-actor-drop {
+  border: 1px dashed rgba(180, 180, 180, 0.35);
+  border-radius: 6px;
+  padding: 0.45rem;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+.lf-target-actor-drop.lf-drop-target-active {
+  border-color: var(--color-border-highlight, #f0c36d);
+  background: rgba(240, 195, 109, 0.12);
+}
+
+.lf-drop-hint,
+.lf-drop-selection {
+  margin-top: 0.35rem;
+  font-size: 0.9em;
+}

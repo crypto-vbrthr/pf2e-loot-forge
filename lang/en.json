@@ -793,5 +793,10 @@
   "LF.Generated.Theme.Shipwreck": "shipwreck",
   "LF.Generated.Theme.StarAbsinthe": "star absinthe",
   "LF.Generated.Theme.TempleSeal": "temple seal",
-  "LF.Generated.Theme.TinyAnchor": "tiny anchor"
+  "LF.Generated.Theme.TinyAnchor": "tiny anchor",
+  "LF.TargetActor.DropHint": "Drop an actor from the sidebar or a token from the scene here.",
+  "LF.TargetActor.SelectedByDrop": "Selected by drop",
+  "LF.Notification.DropInvalid": "The dropped entry could not be read.",
+  "LF.Notification.DropNoActor": "The dropped entry does not contain an actor.",
+  "LF.Notification.DropActorSelected": "Target actor selected: {actor}"
 }
