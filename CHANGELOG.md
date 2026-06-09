@@ -1,6 +1,13 @@
 # Changelog
 
 ## 0.3.0b
+- Added environment-specific condition pools
+- Environmental conditions are merged into generated treasure condition selection
+- Added coastal, underwater, volcanic, arctic, swamp, forest, jungle, desert, cave, mountain, underground, and ruined-city condition flavor
+- No UI changes beyond v0.3.0a environment dropdown
+- No budget or profile changes
+
+## 0.3.0b
 - Hotfix: defines `environmentOptions` in LootForgeApp context preparation
 - Fixes crash when opening Loot Forge after v0.3.0a environment dropdown changes
 - No loot logic changes
