@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.2a
+- Test harness hotfix: regression tests import the Foundry mocks directly
+- Tests now run correctly both through `npm test` and IDE Node test runners such as WebStorm
+- Removed dependency on the package-level `--import` preload for the test suite
+- No runtime or loot generation logic changes
+
+
+## 0.3.2
+- Added a reusable Embedded Loot Forge editor contract for other Foundry modules
+- Moved Apply to Actor and Create Loot Actor actions into the standalone host container
+- Added `game.modules.get("pf2e-loot-forge").api.createEmbeddedEditor()`
+- Added versioned embedded contract with config/state/loot/generate/destroy methods
+- Preserved standalone Actor and Token drag & drop target selection
+- Added automated contract, localization, JSON data, zero-value item, and budget-cap regression tests
+- Added zero-dependency Node.js test runner via `npm test`
+- Generation engine and generator data are unchanged in this release
+
 ## 0.3.1b
 - Hotfix: rebuilt target actor drag & drop from stable v0.3.0g base
 - Added actor/sidebar and scene token drop support without private helper methods

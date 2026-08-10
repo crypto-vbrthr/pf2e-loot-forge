@@ -157,6 +157,84 @@ Fully localized in:
 
 ---
 
+## Embedded Loot Forge API
+
+PF2E Loot Forge can be embedded inside other Foundry VTT modules. The embedded editor owns loot configuration, generation, preview editing, and compendium selection. Actions that persist the result, such as applying loot to an Actor or creating a Loot Actor, deliberately remain the responsibility of the host module.
+
+```js
+const lootForge = game.modules.get("pf2e-loot-forge")?.api;
+
+const editor = lootForge.createEmbeddedEditor({
+  initialConfig: {
+    level: 8,
+    theme: "generic",
+    environment: "generic"
+  },
+  onGenerate: state => {
+    console.log("Generated loot", state.loot);
+  }
+});
+
+await editor.render(containerElement);
+```
+
+The embedded editor contract currently has version `1`:
+
+```js
+lootForge.embeddedContractVersion; // 1
+```
+
+Available editor methods:
+
+* `render(containerElement)`
+* `refresh()`
+* `getConfig()`
+* `setConfig(partialConfig, options)`
+* `getState()`
+* `getLoot()`
+* `getGeneratedResult()`
+* `syncFromForm()`
+* `generate(optionalConfigOverride)`
+* `destroy()`
+
+The embedded editor intentionally does **not** expose `addLootToActor()` or `createLootActorWithLoot()`. A host which wants those behaviors can use the existing Loot Forge API methods explicitly after retrieving the generated loot.
+
+Example host-controlled application:
+
+```js
+editor.syncFromForm();
+const loot = editor.getLoot();
+
+await lootForge.addLootToActor(targetActor, loot, {
+  mystifyMagicItems: editor.getConfig().mystifyMagicItems
+});
+```
+
+This separation allows modules such as campaign, encounter, creature, or reward tools to reuse Loot Forge without duplicating its generation UI or forcing a specific persistence workflow.
+
+---
+
+## Automated Tests
+
+The repository includes automated regression and contract tests for:
+
+* Embedded editor / host-container responsibility boundaries
+* Public embedded API contract
+* German and English localization coverage
+* JSON generator data integrity
+* Zero-GP item filtering, including the cursed-item exception
+* Protection against wildly over-budget compendium item selection
+
+Run the full test suite with:
+
+```bash
+npm test
+```
+
+The test suite uses Node.js' built-in test runner and requires no additional test dependencies.
+
+---
+
 ## Compatibility
 
 * Foundry VTT V14

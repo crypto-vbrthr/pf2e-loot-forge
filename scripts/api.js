@@ -1,8 +1,17 @@
 import { LootGenerator } from "./loot-generator.js";
 import { lfFormat, lfLocalize } from "./localization-helper.js";
 import { ThemeManager } from "./theme-manager.js";
+import { EmbeddedLootForge } from "./ui/embedded-loot-forge.js";
 
 export class LootForgeAPI {
+  static get embeddedContractVersion() {
+    return EmbeddedLootForge.CONTRACT_VERSION;
+  }
+
+  static createEmbeddedEditor(options = {}) {
+    return new EmbeddedLootForge(options);
+  }
+
   static async generateLoot(options = {}) {
     return LootGenerator.generate(options);
   }
