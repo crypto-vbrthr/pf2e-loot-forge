@@ -803,5 +803,9 @@
   "LF.Hint.ItemForgeAvailable": "Item Forge is available. When enabled, it builds the individual rule-relevant items and atmospheric treasure objects. Loot Forge keeps ownership of budget, composition, coins, theme, and environment, and passes theme and environment as generation context.",
   "LF.Hint.ItemForgeUnavailable": "Item Forge is not active. Loot Forge will use its native compendium and treasure generation paths.",
   "LF.Settings.UseItemForgeByDefault.Name": "Use Item Forge for Items by Default",
-  "LF.Settings.UseItemForgeByDefault.Hint": "Delegate construction of individual items and treasure objects to PF2E Item Forge by default when its API is available. Budget, composition, theme, environment, and coins remain owned by Loot Forge."
+  "LF.Settings.UseItemForgeByDefault.Hint": "Delegate construction of individual items and treasure objects to PF2E Item Forge by default when its API is available. Budget, composition, theme, environment, and coins remain owned by Loot Forge.",
+  "LF.Option.UseFixedBudget": "Use fixed budget",
+  "LF.Field.FixedBudgetGp": "Fixed budget",
+  "LF.Hint.FixedBudget": "When enabled, this value replaces the target budget normally calculated from level, party size, and treasure profile. Theme, environment, loot style, and treasure profile can still influence the composition of the treasure.",
+  "LF.Hint.ItemLevelRangePurpose": "Minimum and maximum item level only limit which item levels are eligible for selection. They do not change the treasure level or its budget. When the level changes, Loot Forge initially suggests level −2 through level +1; both limits can then be adjusted freely."
 }

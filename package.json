@@ -1,6 +1,6 @@
 {
   "name": "pf2e-loot-forge",
-  "version": "0.3.3e",
+  "version": "0.3.4",
   "private": true,
   "type": "module",
   "scripts": {

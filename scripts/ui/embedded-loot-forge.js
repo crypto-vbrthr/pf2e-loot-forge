@@ -28,6 +28,7 @@ export class EmbeddedLootForge {
     this.root = null;
     this.onChange = typeof options.onChange === "function" ? options.onChange : null;
     this.onGenerate = typeof options.onGenerate === "function" ? options.onGenerate : null;
+    this.persistGenerationSettings = Boolean(options.persistGenerationSettings ?? false);
   }
 
   get hasResult() {
@@ -99,6 +100,7 @@ export class EmbeddedLootForge {
     if (!this.root) return this.getState();
     const data = this.#formDataObject();
     this.lastConfig = this.#configFromFormData(data);
+    this.#persistRememberedSettings(this.lastConfig);
     this.#syncEditsFromData(data);
     this.#emitChange();
     return this.getState();
@@ -118,6 +120,7 @@ export class EmbeddedLootForge {
       data = this.#formDataObject();
       config = this.#configFromFormData(data);
       this.lastConfig = this.#clone(config);
+      this.#persistRememberedSettings(config);
       this.#syncEditsFromData(data);
     } else {
       config = this.#getRenderConfig();
@@ -204,11 +207,15 @@ export class EmbeddedLootForge {
   }
 
   #getRenderConfig() {
-    return this.#merge({
+    const remembered = this.#getRememberedSettings();
+
+    return this.#merge(this.#merge({
       level: 1,
       partySize: 4,
       itemLevelMin: 0,
       itemLevelMax: 2,
+      useFixedBudget: false,
+      fixedBudgetGp: 0,
       rarity: game.settings.get(MODULE_ID, "defaultRarity"),
       treasureProfile: "standard",
       theme: "generic",
@@ -223,25 +230,45 @@ export class EmbeddedLootForge {
       includeCuriosities: true,
       mystifyMagicItems: game.settings.get(MODULE_ID, "mystifyMagicItems"),
       useItemForge: game.settings.get(MODULE_ID, "useItemForgeByDefault")
-    }, this.lastConfig ?? {});
+    }, remembered), this.lastConfig ?? {});
   }
 
   #wireEvents() {
     if (!this.root) return;
 
     const levelInput = this.root.querySelector('input[name="level"]');
+    const partySizeInput = this.root.querySelector('input[name="partySize"]');
     const minInput = this.root.querySelector('input[name="itemLevelMin"]');
     const maxInput = this.root.querySelector('input[name="itemLevelMax"]');
+    const useFixedBudgetInput = this.root.querySelector('input[name="useFixedBudget"]');
+    const fixedBudgetInput = this.root.querySelector('input[name="fixedBudgetGp"]');
+
+    const persistCurrentForm = () => {
+      if (!this.persistGenerationSettings) return;
+      this.#persistRememberedSettings(this.#configFromFormData(this.#formDataObject()));
+    };
 
     if (levelInput && minInput && maxInput) {
       const updateRange = () => {
         const level = Number(levelInput.value ?? 1);
         minInput.value = String(Math.max(0, level - 2));
         maxInput.value = String(Math.max(0, level + 1));
+        persistCurrentForm();
       };
       levelInput.addEventListener("change", updateRange);
       levelInput.addEventListener("input", updateRange);
     }
+
+    for (const input of [partySizeInput, minInput, maxInput, fixedBudgetInput]) {
+      input?.addEventListener("change", persistCurrentForm);
+    }
+
+    const updateFixedBudgetState = () => {
+      if (fixedBudgetInput) fixedBudgetInput.disabled = !useFixedBudgetInput?.checked;
+      persistCurrentForm();
+    };
+    useFixedBudgetInput?.addEventListener("change", updateFixedBudgetState);
+    if (fixedBudgetInput) fixedBudgetInput.disabled = !useFixedBudgetInput?.checked;
 
     this.root.addEventListener("click", async event => {
       const button = event.target.closest?.("[data-action]");
@@ -386,6 +413,8 @@ export class EmbeddedLootForge {
       partySize: Number(data.partySize ?? 4),
       itemLevelMin: Number(data.itemLevelMin ?? 0),
       itemLevelMax: Number(data.itemLevelMax ?? 2),
+      useFixedBudget: Boolean(data.useFixedBudget),
+      fixedBudgetGp: Math.max(0, Number(data.fixedBudgetGp ?? 0)),
       rarity: data.rarity ?? "common",
       treasureProfile: data.treasureProfile ?? "standard",
       theme: data.theme ?? "generic",
@@ -401,6 +430,30 @@ export class EmbeddedLootForge {
       mystifyMagicItems: Boolean(data.mystifyMagicItems),
       useItemForge: Boolean(data.useItemForge)
     };
+  }
+
+  #getRememberedSettings() {
+    if (!this.persistGenerationSettings) return {};
+
+    const value = game.settings.get(MODULE_ID, "lastGenerationSettings");
+    return value && typeof value === "object" ? this.#clone(value) : {};
+  }
+
+  #persistRememberedSettings(config) {
+    if (!this.persistGenerationSettings || !config) return;
+
+    const remembered = {
+      level: Number(config.level ?? 1),
+      partySize: Number(config.partySize ?? 4),
+      itemLevelMin: Number(config.itemLevelMin ?? 0),
+      itemLevelMax: Number(config.itemLevelMax ?? 2),
+      useFixedBudget: Boolean(config.useFixedBudget),
+      fixedBudgetGp: Math.max(0, Number(config.fixedBudgetGp ?? 0))
+    };
+
+    Promise.resolve(game.settings.set(MODULE_ID, "lastGenerationSettings", remembered)).catch(error => {
+      console.warn("PF2E Loot Forge | Could not persist generation settings", error);
+    });
   }
 
   #emitChange() {

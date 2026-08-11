@@ -19,7 +19,13 @@ export class TreasureBudget {
 
     const profileMultiplier = Number(profile.budgetMultiplier ?? 1);
     const partyMultiplier = partySize / 4;
-    const targetGp = Math.max(1, Math.round(base * treasureProfileMultiplier * profileMultiplier * partyMultiplier));
+    const useFixedBudget = Boolean(config.useFixedBudget);
+    const requestedFixedBudget = Number(config.fixedBudgetGp ?? 0);
+    const fixedBudgetGp = Number.isFinite(requestedFixedBudget) && requestedFixedBudget > 0
+      ? Math.round(requestedFixedBudget * 100) / 100
+      : 0;
+    const calculatedTargetGp = Math.max(1, Math.round(base * treasureProfileMultiplier * profileMultiplier * partyMultiplier));
+    const targetGp = useFixedBudget && fixedBudgetGp > 0 ? fixedBudgetGp : calculatedTargetGp;
 
     return {
       level,
@@ -30,6 +36,9 @@ export class TreasureBudget {
       baseGp: base,
       profileMultiplier: treasureProfileMultiplier * profileMultiplier,
       partyMultiplier,
+      mode: useFixedBudget && fixedBudgetGp > 0 ? "fixed" : "calculated",
+      fixedBudgetGp: useFixedBudget ? fixedBudgetGp : 0,
+      calculatedTargetGp,
       targetGp
     };
   }

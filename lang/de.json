@@ -803,5 +803,9 @@
   "LF.Hint.ItemForgeAvailable": "Die Item Forge ist verfügbar. Wenn aktiviert, baut sie die einzelnen regelrelevanten Gegenstände und atmosphärischen Schätze. Die Loot Forge behält Budget, Zusammensetzung, Münzen, Thema und Umgebung unter Kontrolle und übergibt Thema und Umgebung als Generierungskontext.",
   "LF.Hint.ItemForgeUnavailable": "Die Item Forge ist nicht aktiv. Die Loot Forge verwendet ihre eigene Kompendiums- und Schatzgenerierung.",
   "LF.Settings.UseItemForgeByDefault.Name": "Item Forge standardmäßig für Gegenstände verwenden",
-  "LF.Settings.UseItemForgeByDefault.Hint": "Delegiert die Konstruktion einzelner Gegenstände und Schätze standardmäßig an die PF2E Item Forge, wenn deren API verfügbar ist. Budget, Zusammensetzung, Thema, Umgebung und Münzen bleiben Aufgabe der Loot Forge."
+  "LF.Settings.UseItemForgeByDefault.Hint": "Delegiert die Konstruktion einzelner Gegenstände und Schätze standardmäßig an die PF2E Item Forge, wenn deren API verfügbar ist. Budget, Zusammensetzung, Thema, Umgebung und Münzen bleiben Aufgabe der Loot Forge.",
+  "LF.Option.UseFixedBudget": "Festes Budget verwenden",
+  "LF.Field.FixedBudgetGp": "Festes Budget",
+  "LF.Hint.FixedBudget": "Wenn aktiviert, ersetzt dieser Wert das automatisch aus Stufe, Gruppengröße und Schatzprofil berechnete Zielbudget. Thema, Umgebung, Loot-Stil und Schatzprofil können die Zusammensetzung des Schatzes weiterhin beeinflussen.",
+  "LF.Hint.ItemLevelRangePurpose": "Min. und Max. Gegenstandsstufe begrenzen ausschließlich, welche Gegenstandsstufen bei der Auswahl zulässig sind. Sie verändern weder die Stufe des Schatzes noch dessen Budget. Beim Ändern der Stufe schlägt Loot Forge zunächst Stufe −2 bis Stufe +1 vor; beide Grenzen können anschließend frei angepasst werden."
 }

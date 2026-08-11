@@ -13,6 +13,21 @@ export function registerSettings() {
     default: []
   });
 
+  game.settings.register(MODULE_ID, "lastGenerationSettings", {
+    name: "PF2E Loot Forge | Last Generation Settings",
+    scope: "client",
+    config: false,
+    type: Object,
+    default: {
+      level: 1,
+      partySize: 4,
+      itemLevelMin: 0,
+      itemLevelMax: 2,
+      useFixedBudget: false,
+      fixedBudgetGp: 0
+    }
+  });
+
   game.settings.register(MODULE_ID, "defaultRarity", {
     name: lfLocalize("LF.Settings.DefaultRarity.Name"),
     hint: lfLocalize("LF.Settings.DefaultRarity.Hint"),

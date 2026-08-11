@@ -12,6 +12,7 @@ class MockApplicationV2 {
 }
 
 const settings = new Map([
+  ["pf2e-loot-forge.lastGenerationSettings", { level: 1, partySize: 4, itemLevelMin: 0, itemLevelMax: 2, useFixedBudget: false, fixedBudgetGp: 0 }],
   ["pf2e-loot-forge.defaultRarity", "common"],
   ["pf2e-loot-forge.mystifyMagicItems", false],
   ["pf2e-loot-forge.enabledCompendiums", []],

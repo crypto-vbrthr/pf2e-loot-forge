@@ -188,6 +188,22 @@ Fully localized in:
 
 ---
 
+
+### Remembered Generation Settings
+
+The standalone Loot Forge remembers the last used level, party size, and minimum/maximum item level on each client.
+
+Embedded editors created by other modules remain host-controlled by default and do not automatically overwrite these standalone preferences.
+
+### Fixed Budget
+
+Instead of using the automatically calculated treasure budget, you can enable **Use fixed budget** and enter an exact GP value.
+
+The fixed budget replaces only the target-budget calculation. Theme, environment, loot style, category weighting, and the rest of the generation pipeline continue to work normally.
+
+Minimum and maximum item level control the eligible item-level range only. They do not change the treasure level or budget.
+
+
 ## Embedded Loot Forge API
 
 PF2E Loot Forge can be embedded inside other Foundry VTT modules. The embedded editor owns loot configuration, generation, preview editing, and compendium selection. Actions that persist the result, such as applying loot to an Actor or creating a Loot Actor, deliberately remain the responsibility of the host module.

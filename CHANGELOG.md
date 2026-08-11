@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.4
+
+- Remembers the standalone Loot Forge's last level, party size, minimum item level, and maximum item level per client.
+- Also remembers fixed-budget mode and its value.
+- Added optional fixed GP budget, overriding the automatically calculated target budget while preserving normal loot composition rules.
+- Clarified that minimum/maximum item level restrict eligible item levels and do not alter treasure level or budget.
+- Increased the standalone container size from 1240×860 to 1360×900.
+- Embedded editors remain host-controlled by default and do not automatically use/persist standalone generation defaults.
+- Added regression and contract tests for fixed budgets and persistence boundaries.
+
 ## 0.3.3e
 - Test contract cleanup after the v0.3.3d price-source fix.
 - Replaces the obsolete v0.3.3c `price-precision.test.js` expectation with the current source-boundary contract.

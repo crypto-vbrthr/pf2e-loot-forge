@@ -15,7 +15,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     id: "pf2e-loot-forge-app",
     tag: "section",
     window: { title: "PF2E Loot Forge", icon: "fa-solid fa-gem", resizable: true },
-    position: { width: 1240, height: 860 }
+    position: { width: 1360, height: 900 }
   };
 
   static PARTS = {
@@ -28,6 +28,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     this.newLootActorName = options.newLootActorName ?? "Loot Forge Treasure";
     this.editor = options.editor ?? new EmbeddedLootForge({
       initialConfig: options.initialConfig ?? {},
+      persistGenerationSettings: true,
       onChange: () => this.#syncHostControls()
     });
   }

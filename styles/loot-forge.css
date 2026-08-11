@@ -119,6 +119,39 @@
   opacity: 0.72;
 }
 
+.lf-important-hint {
+  margin-top: 0.1rem;
+  line-height: 1.35;
+  opacity: 0.88;
+}
+
+.lf-budget-override {
+  margin: 0.35rem 0 0.65rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.lf-budget-override .lf-fixed-budget-field {
+  margin: 0.4rem 0 0.25rem;
+}
+
+.lf-inline-number-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lf-inline-number-unit input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.lf-inline-number-unit span {
+  flex: 0 0 auto;
+}
+
 .lf-pack-list {
   max-height: 560px;
   overflow: auto;

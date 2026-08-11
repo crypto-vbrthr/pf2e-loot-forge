@@ -25,13 +25,28 @@
 
         <div class="lf-scroll-column">
           <div class="form-group"><label>{{lf "LF.Field.Level"}}</label><input type="number" name="level" value="{{config.level}}" min="0" max="25"></div>
-          <div class="form-group"><label>{{lf "LF.Field.PartySize"}}</label><input type="number" name="partySize" value="{{config.partySize}}" min="1" max="8"></div>
+          <div class="form-group"><label>{{lf "LF.Field.PartySize"}}</label><input type="number" name="partySize" value="{{config.partySize}}" min="1" max="12"></div>
+
+          <div class="lf-budget-override">
+            <label class="lf-check lf-prominent-check">
+              <input type="checkbox" name="useFixedBudget" {{#if config.useFixedBudget}}checked{{/if}}>
+              {{lf "LF.Option.UseFixedBudget"}}
+            </label>
+            <div class="form-group lf-fixed-budget-field">
+              <label>{{lf "LF.Field.FixedBudgetGp"}}</label>
+              <div class="lf-inline-number-unit">
+                <input type="number" name="fixedBudgetGp" value="{{config.fixedBudgetGp}}" min="0.01" step="0.01">
+                <span>{{lf "LF.Currency.GP"}}</span>
+              </div>
+            </div>
+            <p class="lf-form-hint">{{lf "LF.Hint.FixedBudget"}}</p>
+          </div>
 
           <div class="lf-two-field-row">
             <div class="form-group"><label>{{lf "LF.Field.ItemLevelMin"}}</label><input type="number" name="itemLevelMin" value="{{config.itemLevelMin}}" min="0" max="25"></div>
             <div class="form-group"><label>{{lf "LF.Field.ItemLevelMax"}}</label><input type="number" name="itemLevelMax" value="{{config.itemLevelMax}}" min="0" max="25"></div>
           </div>
-          <p class="lf-form-hint">{{lf "LF.Hint.ItemLevelAutoRange"}}</p>
+          <p class="lf-form-hint lf-important-hint">{{lf "LF.Hint.ItemLevelRangePurpose"}}</p>
 
           <div class="form-group">
             <label>{{lf "LF.Field.Rarity"}}</label>
