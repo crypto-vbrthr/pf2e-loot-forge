@@ -5,6 +5,7 @@ import { lfLocalize } from "../localization-helper.js";
 import { ThemeManager } from "../theme-manager.js";
 import { EnvironmentManager } from "../environment-manager.js";
 import { GeneratedTreasureFactory } from "../generated/generated-treasure-factory.js";
+import { ItemForgeIntegration } from "../item-forge-integration.js";
 
 let embeddedInstanceCounter = 0;
 
@@ -178,6 +179,7 @@ export class EmbeddedLootForge {
     }));
 
     const environmentOptions = await EnvironmentManager.getOptions(config.environment ?? "generic");
+    const itemForgeStatus = ItemForgeIntegration.getStatus();
 
     return {
       instanceId: this.instanceId,
@@ -187,6 +189,7 @@ export class EmbeddedLootForge {
       packs,
       themes,
       environmentOptions,
+      itemForgeStatus,
       result: this.editableLoot ?? this.result,
       hasResult: this.hasResult
     };
@@ -210,7 +213,8 @@ export class EmbeddedLootForge {
       includePermanentItems: true,
       includeValuables: true,
       includeCuriosities: true,
-      mystifyMagicItems: game.settings.get(MODULE_ID, "mystifyMagicItems")
+      mystifyMagicItems: game.settings.get(MODULE_ID, "mystifyMagicItems"),
+      useItemForge: game.settings.get(MODULE_ID, "useItemForgeByDefault")
     }, this.lastConfig ?? {});
   }
 
@@ -313,7 +317,10 @@ export class EmbeddedLootForge {
   #estimateTotalValue(loot) {
     const coins = loot?.coins ?? {};
     const coinGp = Number(coins.gp ?? 0) + Number(coins.sp ?? 0) / 10 + Number(coins.cp ?? 0) / 100 + Number(coins.pp ?? 0) * 10;
-    const generatedGp = (loot?.generatedItems ?? []).reduce((sum, item) => sum + Number(item.system?.price?.value?.gp ?? 0), 0);
+    const generatedGp = (loot?.generatedItems ?? []).reduce((sum, item) => {
+      const price = item.system?.price?.value ?? {};
+      return sum + Number(price.gp ?? 0) + Number(price.sp ?? 0) / 10 + Number(price.cp ?? 0) / 100 + Number(price.pp ?? 0) * 10;
+    }, 0);
     const roughPf2eGp = (loot?.selectedRefs ?? []).reduce((sum, item) => {
       const level = Number(item.level ?? 0);
       return sum + Math.max(1, Math.round(Math.pow(level + 1, 2) * 0.75));
@@ -327,14 +334,22 @@ export class EmbeddedLootForge {
     if (!item) return;
 
     const sourceType = item.flags?.[MODULE_ID]?.sourceType ?? "curiosity";
-    const currentValue = Number(item.system?.price?.value?.gp ?? 0);
+    const price = item.system?.price?.value ?? {};
+    const currentValue = Number(price.gp ?? 0) + Number(price.sp ?? 0) / 10 + Number(price.cp ?? 0) / 100 + Number(price.pp ?? 0) * 10;
     const themeId = this.editableLoot?.themeProfile?.id ?? this.lastConfig?.theme ?? "generic";
+    let replacement = null;
 
-    const replacement = await GeneratedTreasureFactory.generate({
-      category: sourceType,
-      themeId,
-      valueBudget: currentValue
-    });
+    if (sourceType === "item-forge-treasure" && this.lastConfig?.useItemForge && ItemForgeIntegration.getStatus().treasureAvailable) {
+      replacement = await ItemForgeIntegration.regenerateTreasure(this.lastConfig, item, { targetValue: currentValue });
+    }
+
+    if (!replacement) {
+      replacement = await GeneratedTreasureFactory.generate({
+        category: sourceType === "item-forge-treasure" ? "curiosity" : sourceType,
+        themeId,
+        valueBudget: currentValue
+      });
+    }
 
     this.editableLoot.generatedItems[index] = replacement;
     this.editableLoot.totalValueGp = this.#estimateTotalValue(this.editableLoot);
@@ -374,7 +389,8 @@ export class EmbeddedLootForge {
       includePermanentItems: Boolean(data.includePermanentItems),
       includeValuables: Boolean(data.includeValuables),
       includeCuriosities: Boolean(data.includeCuriosities),
-      mystifyMagicItems: Boolean(data.mystifyMagicItems)
+      mystifyMagicItems: Boolean(data.mystifyMagicItems),
+      useItemForge: Boolean(data.useItemForge)
     };
   }
 

@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.3.3b
+
+- Fixed Foundry VTT compatibility metadata.
+- Removed the hard `maximum` core version cap.
+- Uses generation-wide Foundry VTT v14 verification.
+- No runtime, generation, or Item Forge integration changes.
+
+## 0.3.3a
+- Extended the optional PF2E Item Forge provider to atmospheric/generated treasure
+- When Item Forge delegation is enabled, individual art objects, valuables, curiosities, books/documents, jewelry, ceremonial objects, luxury goods, tableware, gemstones, and beverages can be built by Item Forge
+- Loot Forge still owns overall budget, loot composition, coins, selected theme/environment, and actor persistence
+- Loot Forge theme IDs are translated into Item Forge treasure styles/motifs and magic themes where supported
+- Theme ID, theme tags, environment, caller, and Loot Forge category are passed as Item Forge metadata
+- Item Forge treasure re-rolls remain delegated to Item Forge and preserve their treasure category/theme context
+- Added treasure capability detection with safe fallback for older Item Forge APIs
+- Added integration tests for theme transfer, treasure delegation, and delegated re-rolls
+- Test suite: 43 tests
+
+## 0.3.3
+- Added optional PF2E Item Forge integration for rule-relevant PF2e item generation
+- Added per-request `Use Item Forge for PF2e items` control, disabled automatically when Item Forge is unavailable
+- Added world default setting for Item Forge delegation
+- Loot Forge still owns budgets, themes, environments, coins, atmospheric generated treasure, and persistence
+- Item Forge receives Loot Forge level range, rarity ceiling, selected compendiums, and theme/environment caller metadata
+- Returned Item Forge items are still subject to Loot Forge's hard budget cap and zero-GP filtering rules
+- Native Loot Forge compendium selection remains unchanged when Item Forge delegation is disabled
+- Added public `getItemForgeIntegrationStatus()` API helper
+- Added integration regression tests; full suite now covers optional provider delegation
+
 ## 0.3.2a
 - Test harness hotfix: regression tests import the Foundry mocks directly
 - Tests now run correctly both through `npm test` and IDE Node test runners such as WebStorm

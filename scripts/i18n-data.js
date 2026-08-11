@@ -799,7 +799,12 @@ export const LF_TRANSLATIONS = {
   "LF.TargetActor.SelectedByDrop": "Per Drop gewählt",
   "LF.Notification.DropInvalid": "Der abgelegte Eintrag konnte nicht gelesen werden.",
   "LF.Notification.DropNoActor": "Der abgelegte Eintrag enthält keinen Actor.",
-  "LF.Notification.DropActorSelected": "Ziel-Actor gesetzt: {actor}"
+  "LF.Notification.DropActorSelected": "Ziel-Actor gesetzt: {actor}",
+  "LF.Option.UseItemForge": "Item Forge für Gegenstände und Schätze verwenden",
+  "LF.Hint.ItemForgeAvailable": "Die Item Forge ist verfügbar. Wenn aktiviert, baut sie die einzelnen regelrelevanten Gegenstände und atmosphärischen Schätze. Die Loot Forge behält Budget, Zusammensetzung, Münzen, Thema und Umgebung unter Kontrolle und übergibt Thema und Umgebung als Generierungskontext.",
+  "LF.Hint.ItemForgeUnavailable": "Die Item Forge ist nicht aktiv. Die Loot Forge verwendet ihre eigene Kompendiums- und Schatzgenerierung.",
+  "LF.Settings.UseItemForgeByDefault.Name": "Item Forge standardmäßig für Gegenstände verwenden",
+  "LF.Settings.UseItemForgeByDefault.Hint": "Delegiert die Konstruktion einzelner Gegenstände und Schätze standardmäßig an die PF2E Item Forge, wenn deren API verfügbar ist. Budget, Zusammensetzung, Thema, Umgebung und Münzen bleiben Aufgabe der Loot Forge."
 },
   en: {
   "LF.Controls.Open": "Loot Forge",
@@ -1601,6 +1606,11 @@ export const LF_TRANSLATIONS = {
   "LF.TargetActor.SelectedByDrop": "Selected by drop",
   "LF.Notification.DropInvalid": "The dropped entry could not be read.",
   "LF.Notification.DropNoActor": "The dropped entry does not contain an actor.",
-  "LF.Notification.DropActorSelected": "Target actor selected: {actor}"
+  "LF.Notification.DropActorSelected": "Target actor selected: {actor}",
+  "LF.Option.UseItemForge": "Use Item Forge for items and treasure",
+  "LF.Hint.ItemForgeAvailable": "Item Forge is available. When enabled, it builds the individual rule-relevant items and atmospheric treasure objects. Loot Forge keeps ownership of budget, composition, coins, theme, and environment, and passes theme and environment as generation context.",
+  "LF.Hint.ItemForgeUnavailable": "Item Forge is not active. Loot Forge will use its native compendium and treasure generation paths.",
+  "LF.Settings.UseItemForgeByDefault.Name": "Use Item Forge for Items by Default",
+  "LF.Settings.UseItemForgeByDefault.Hint": "Delegate construction of individual items and treasure objects to PF2E Item Forge by default when its API is available. Budget, composition, theme, environment, and coins remain owned by Loot Forge."
 }
 };

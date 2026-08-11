@@ -47,6 +47,15 @@ export function registerSettings() {
     default: true
   });
 
+  game.settings.register(MODULE_ID, "useItemForgeByDefault", {
+    name: lfLocalize("LF.Settings.UseItemForgeByDefault.Name"),
+    hint: lfLocalize("LF.Settings.UseItemForgeByDefault.Hint"),
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: false
+  });
+
 
   game.settings.register(MODULE_ID, "treasureProfiles", {
     name: lfLocalize("LF.Settings.TreasureProfiles.Name"),

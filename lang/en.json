@@ -798,5 +798,10 @@
   "LF.TargetActor.SelectedByDrop": "Selected by drop",
   "LF.Notification.DropInvalid": "The dropped entry could not be read.",
   "LF.Notification.DropNoActor": "The dropped entry does not contain an actor.",
-  "LF.Notification.DropActorSelected": "Target actor selected: {actor}"
+  "LF.Notification.DropActorSelected": "Target actor selected: {actor}",
+  "LF.Option.UseItemForge": "Use Item Forge for items and treasure",
+  "LF.Hint.ItemForgeAvailable": "Item Forge is available. When enabled, it builds the individual rule-relevant items and atmospheric treasure objects. Loot Forge keeps ownership of budget, composition, coins, theme, and environment, and passes theme and environment as generation context.",
+  "LF.Hint.ItemForgeUnavailable": "Item Forge is not active. Loot Forge will use its native compendium and treasure generation paths.",
+  "LF.Settings.UseItemForgeByDefault.Name": "Use Item Forge for Items by Default",
+  "LF.Settings.UseItemForgeByDefault.Hint": "Delegate construction of individual items and treasure objects to PF2E Item Forge by default when its API is available. Budget, composition, theme, environment, and coins remain owned by Loot Forge."
 }

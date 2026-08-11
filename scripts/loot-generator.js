@@ -1,6 +1,7 @@
 import { LOOT_CATEGORIES, MODULE_ID } from "./constants.js";
 import { CompendiumScanner } from "./compendium-scanner.js";
 import { ItemFactory } from "./item-factory.js";
+import { ItemForgeIntegration } from "./item-forge-integration.js";
 import { ThemeManager } from "./theme-manager.js";
 import { TreasureBudget } from "./treasure-budget.js";
 import { TreasureProfileManager } from "./treasure-profile-manager.js";
@@ -9,10 +10,55 @@ import { weightedPick } from "./weighted-picker.js";
 export class LootGenerator {
   static async generate(options = {}) {
     const config = await this.#normalizeOptions(options);
-    const candidates = await CompendiumScanner.getMatchingItems(config);
-    const selectedRefs = this.#pickItems(candidates, config);
-    const pf2eItems = await CompendiumScanner.hydrateItems(selectedRefs);
-    const generatedItems = await ItemFactory.createGeneratedValuables(config);
+    let candidates = [];
+    let selectedRefs = [];
+    let pf2eItems = [];
+    let itemProvider = "loot-forge";
+    let treasureProvider = "loot-forge";
+    let itemForgeWarnings = [];
+    let itemForgeTreasureWarnings = [];
+    let itemForgeTreasureAttempts = 0;
+    let generatedItems = [];
+    const itemForgeStatus = ItemForgeIntegration.getStatus();
+
+    if (config.useItemForge && itemForgeStatus.available) {
+      const delegated = await ItemForgeIntegration.generateItems(config, {
+        itemBudget: this.#itemBudget(config),
+        maxItems: this.#maxItems(config),
+        tolerance: this.#budgetTolerance(config)
+      });
+      selectedRefs = delegated.selectedRefs ?? [];
+      pf2eItems = delegated.pf2eItems ?? [];
+      itemForgeWarnings = delegated.warnings ?? [];
+      itemProvider = "item-forge";
+      candidates = Array.from({ length: Number(delegated.attempts ?? 0) }, () => null);
+
+      if (itemForgeStatus.treasureAvailable) {
+        const delegatedTreasure = await ItemForgeIntegration.generateTreasures(config, {
+          treasureBudget: this.#treasureBudget(config),
+          maxTreasures: this.#maxTreasures(config),
+          tolerance: this.#budgetTolerance(config)
+        });
+        generatedItems = delegatedTreasure.generatedItems ?? [];
+        itemForgeTreasureWarnings = delegatedTreasure.warnings ?? [];
+        itemForgeTreasureAttempts = Number(delegatedTreasure.attempts ?? 0);
+        treasureProvider = "item-forge";
+      } else {
+        generatedItems = await ItemFactory.createGeneratedValuables(config);
+        treasureProvider = "loot-forge-fallback";
+        itemForgeTreasureWarnings = [{ code: "ITEM_FORGE_TREASURE_UNAVAILABLE" }];
+      }
+    } else {
+      candidates = await CompendiumScanner.getMatchingItems(config);
+      selectedRefs = this.#pickItems(candidates, config);
+      pf2eItems = await CompendiumScanner.hydrateItems(selectedRefs);
+      generatedItems = await ItemFactory.createGeneratedValuables(config);
+      if (config.useItemForge) {
+        itemProvider = "loot-forge-fallback";
+        treasureProvider = "loot-forge-fallback";
+      }
+    }
+
     const coins = ItemFactory.createCoins(config);
     const totalValueGp = this.#estimateTotalValueGp(coins, generatedItems, selectedRefs);
 
@@ -31,7 +77,13 @@ export class LootGenerator {
         theme: config.themeProfile?.id ?? config.theme,
         environment: config.environment,
         treasureProfile: config.treasureProfile,
-        candidates: candidates.length
+        candidates: itemProvider === "item-forge" ? selectedRefs.length : candidates.length,
+        itemProvider,
+        treasureProvider,
+        itemForgeAttempts: itemProvider === "item-forge" ? candidates.length : 0,
+        itemForgeWarnings,
+        itemForgeTreasureAttempts,
+        itemForgeTreasureWarnings
       }
     };
   }
@@ -68,7 +120,8 @@ export class LootGenerator {
       includeValuables: Boolean(options.includeValuables ?? game.settings.get(MODULE_ID, "includeGeneratedValuables")),
       includeCuriosities: Boolean(options.includeCuriosities ?? true),
       compendiums: options.compendiums ?? game.settings.get(MODULE_ID, "enabledCompendiums"),
-      allowCursedZeroValueItems: Boolean(options.allowCursedZeroValueItems ?? game.settings.get(MODULE_ID, "allowCursedZeroValueItems"))
+      allowCursedZeroValueItems: Boolean(options.allowCursedZeroValueItems ?? game.settings.get(MODULE_ID, "allowCursedZeroValueItems")),
+      useItemForge: Boolean(options.useItemForge ?? game.settings.get(MODULE_ID, "useItemForgeByDefault"))
     };
   }
 
@@ -179,6 +232,23 @@ export class LootGenerator {
     return { poor: 1, standard: 2, rich: 3, boss: 4, hoard: 6 }[config.treasureProfile] ?? 2;
   }
 
+  static #treasureBudget(config) {
+    const split = config.budgetSplit ?? {};
+    const budget = Number(split.art ?? 0)
+      + Number(split.valuables ?? 0)
+      + Number(split.religious ?? 0)
+      + Number(split.curiosities ?? 0)
+      + Number(split.documents ?? 0)
+      + Number(split.beverages ?? 0);
+    return Math.max(0, budget);
+  }
+
+  static #maxTreasures(config) {
+    const style = Number(config.lootStyle ?? 50);
+    const perGroup = style <= 25 ? 3 : style <= 60 ? 2 : 1;
+    return (config.includeValuables ? perGroup : 0) + (config.includeCuriosities ? perGroup : 0);
+  }
+
   static #roughItemValue(item) {
     const priceGp = Number(item.priceGp ?? 0);
     if (priceGp > 0) return priceGp;
@@ -190,7 +260,10 @@ export class LootGenerator {
 
   static #estimateTotalValueGp(coins, generatedItems, selectedRefs = []) {
     const coinGp = (coins.gp ?? 0) + ((coins.sp ?? 0) / 10) + ((coins.cp ?? 0) / 100) + ((coins.pp ?? 0) * 10);
-    const generatedGp = generatedItems.reduce((sum, item) => sum + Number(item.system?.price?.value?.gp ?? 0), 0);
+    const generatedGp = generatedItems.reduce((sum, item) => {
+      const price = item.system?.price?.value ?? {};
+      return sum + Number(price.gp ?? 0) + Number(price.sp ?? 0) / 10 + Number(price.cp ?? 0) / 100 + Number(price.pp ?? 0) * 10;
+    }, 0);
     const roughItemsGp = selectedRefs.reduce((sum, item) => sum + this.#roughItemValue(item), 0);
     return Math.round((coinGp + generatedGp + roughItemsGp) * 100) / 100;
   }

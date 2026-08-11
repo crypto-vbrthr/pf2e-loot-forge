@@ -5,6 +5,7 @@ import { LootForgeAPI } from "../../scripts/api.js";
 test("embedded API exposes a versioned editor factory", () => {
   assert.equal(LootForgeAPI.embeddedContractVersion, 1);
   assert.equal(typeof LootForgeAPI.createEmbeddedEditor, "function");
+  assert.equal(typeof LootForgeAPI.getItemForgeIntegrationStatus, "function");
 });
 
 test("embedded editor excludes host persistence actions", () => {

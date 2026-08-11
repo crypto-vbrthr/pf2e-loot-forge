@@ -123,6 +123,37 @@ This makes inventory generation fast even in campaigns with hundreds of NPCs.
 
 ---
 
+### Optional Item Forge Integration
+
+If **PF2E Item Forge** is installed and active, Loot Forge can delegate construction of the individual loot objects to it. The integration is optional and can be enabled per generation request or as a world default.
+
+Loot Forge continues to own the *loot composition*:
+
+* Treasure budgets and budget caps
+* How many practical items and treasure objects are requested
+* Theme and environment selection
+* Coins
+* Applying the completed loot result to actors
+
+Item Forge can take over the *individual item construction*:
+
+* Weapons and armor
+* Consumables
+* Permanent and supported magic-item families
+* Art objects and valuables
+* Curiosities and books/documents
+* Jewelry, ceremonial objects, luxury goods, tableware, gemstones, and beverages
+
+Loot Forge passes its item-level range, rarity ceiling, selected compendiums, theme, theme tags, environment, target value, and caller metadata to Item Forge. For magical items the Loot Forge theme is translated to an appropriate Item Forge magic theme where possible. For generated treasure it is translated into Item Forge treasure styles and motifs, so a pirate cache, temple treasury, dwarven ruin, dragon hoard, and similar themes remain meaningfully distinct inside Item Forge rather than being decorated after generation.
+
+The Loot Forge budget cap still applies to the returned results. Item Forge generated treasure values are normalized to GP for Loot Forge's editable preview while preserving their exact total value. Re-rolling an Item Forge treasure in the preview delegates the replacement to Item Forge again and preserves its treasure category and theme context.
+
+If Item Forge is not installed, inactive, or not selected, Loot Forge uses its existing compendium and native atmospheric treasure generation paths unchanged. If an older Item Forge API is present without treasure-generation capability, only the treasure portion falls back to Loot Forge.
+
+The integration is deliberately runtime-only: Loot Forge does not statically import Item Forge code and therefore has no hard dependency on it.
+
+---
+
 ### Localization
 
 Fully localized in:
@@ -163,6 +194,10 @@ PF2E Loot Forge can be embedded inside other Foundry VTT modules. The embedded e
 
 ```js
 const lootForge = game.modules.get("pf2e-loot-forge")?.api;
+
+// Optional provider diagnostics
+lootForge.getItemForgeIntegrationStatus();
+// => { installed, active, available, apiVersion }
 
 const editor = lootForge.createEmbeddedEditor({
   initialConfig: {
@@ -224,6 +259,8 @@ The repository includes automated regression and contract tests for:
 * JSON generator data integrity
 * Zero-GP item filtering, including the cursed-item exception
 * Protection against wildly over-budget compendium item selection
+* Optional Item Forge provider detection and API delegation
+* Item Forge source-policy, rarity, level-range, and budget-cap integration
 
 Run the full test suite with:
 

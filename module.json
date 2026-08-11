@@ -2,7 +2,7 @@
   "id": "pf2e-loot-forge",
   "title": "PF2E Loot Forge",
   "description": "A PF2E loot generator for Foundry VTT with compendium-based items, localized valuables, curiosities, and story treasures.",
-  "version": "0.3.2a",
+  "version": "0.3.3b",
   "authors": [
     {
       "name": "crypto-vbrthr"
@@ -10,8 +10,7 @@
   ],
   "compatibility": {
     "minimum": "14",
-    "verified": "14.363",
-    "maximum": "14.363"
+    "verified": "14"
   },
   "relationships": {
     "systems": [
@@ -26,7 +25,7 @@
   },
   "url": "https://github.com/crypto-vbrthr/pf2e-loot-forge",
   "manifest": "https://raw.githubusercontent.com/crypto-vbrthr/pf2e-loot-forge/main/module.json",
-  "download": "https://github.com/crypto-vbrthr/pf2e-loot-forge/releases/download/v0.3.1b/pf2e-loot-forge.zip",
+  "download": "https://github.com/crypto-vbrthr/pf2e-loot-forge/releases/download/v0.3.3b/pf2e-loot-forge.zip",
   "esmodules": [
     "scripts/main.js"
   ],

@@ -2,6 +2,7 @@ import { LootGenerator } from "./loot-generator.js";
 import { lfFormat, lfLocalize } from "./localization-helper.js";
 import { ThemeManager } from "./theme-manager.js";
 import { EmbeddedLootForge } from "./ui/embedded-loot-forge.js";
+import { ItemForgeIntegration } from "./item-forge-integration.js";
 
 export class LootForgeAPI {
   static get embeddedContractVersion() {
@@ -10,6 +11,10 @@ export class LootForgeAPI {
 
   static createEmbeddedEditor(options = {}) {
     return new EmbeddedLootForge(options);
+  }
+
+  static getItemForgeIntegrationStatus() {
+    return ItemForgeIntegration.getStatus();
   }
 
   static async generateLoot(options = {}) {

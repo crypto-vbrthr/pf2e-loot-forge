@@ -16,7 +16,8 @@ const settings = new Map([
   ["pf2e-loot-forge.mystifyMagicItems", false],
   ["pf2e-loot-forge.enabledCompendiums", []],
   ["pf2e-loot-forge.includeGeneratedValuables", true],
-  ["pf2e-loot-forge.allowCursedZeroValueItems", false]
+  ["pf2e-loot-forge.allowCursedZeroValueItems", false],
+  ["pf2e-loot-forge.useItemForgeByDefault", false]
 ]);
 
 globalThis.foundry = {
@@ -49,7 +50,8 @@ globalThis.game = {
     }
   },
   packs: [],
-  actors: []
+  actors: [],
+  modules: new Map()
 };
 
 globalThis.ui = {

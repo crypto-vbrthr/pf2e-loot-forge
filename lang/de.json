@@ -798,5 +798,10 @@
   "LF.TargetActor.SelectedByDrop": "Per Drop gewählt",
   "LF.Notification.DropInvalid": "Der abgelegte Eintrag konnte nicht gelesen werden.",
   "LF.Notification.DropNoActor": "Der abgelegte Eintrag enthält keinen Actor.",
-  "LF.Notification.DropActorSelected": "Ziel-Actor gesetzt: {actor}"
+  "LF.Notification.DropActorSelected": "Ziel-Actor gesetzt: {actor}",
+  "LF.Option.UseItemForge": "Item Forge für Gegenstände und Schätze verwenden",
+  "LF.Hint.ItemForgeAvailable": "Die Item Forge ist verfügbar. Wenn aktiviert, baut sie die einzelnen regelrelevanten Gegenstände und atmosphärischen Schätze. Die Loot Forge behält Budget, Zusammensetzung, Münzen, Thema und Umgebung unter Kontrolle und übergibt Thema und Umgebung als Generierungskontext.",
+  "LF.Hint.ItemForgeUnavailable": "Die Item Forge ist nicht aktiv. Die Loot Forge verwendet ihre eigene Kompendiums- und Schatzgenerierung.",
+  "LF.Settings.UseItemForgeByDefault.Name": "Item Forge standardmäßig für Gegenstände verwenden",
+  "LF.Settings.UseItemForgeByDefault.Hint": "Delegiert die Konstruktion einzelner Gegenstände und Schätze standardmäßig an die PF2E Item Forge, wenn deren API verfügbar ist. Budget, Zusammensetzung, Thema, Umgebung und Münzen bleiben Aufgabe der Loot Forge."
 }
