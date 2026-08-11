@@ -2,7 +2,7 @@
   "id": "pf2e-loot-forge",
   "title": "PF2E Loot Forge",
   "description": "A PF2E loot generator for Foundry VTT with compendium-based items, localized valuables, curiosities, and story treasures.",
-  "version": "0.3.3b",
+  "version": "0.3.3e",
   "authors": [
     {
       "name": "crypto-vbrthr"

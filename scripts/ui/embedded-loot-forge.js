@@ -6,6 +6,7 @@ import { ThemeManager } from "../theme-manager.js";
 import { EnvironmentManager } from "../environment-manager.js";
 import { GeneratedTreasureFactory } from "../generated/generated-treasure-factory.js";
 import { ItemForgeIntegration } from "../item-forge-integration.js";
+import { gpToCoins, priceToGp } from "../price-utils.js";
 
 let embeddedInstanceCounter = 0;
 
@@ -181,6 +182,13 @@ export class EmbeddedLootForge {
     const environmentOptions = await EnvironmentManager.getOptions(config.environment ?? "generic");
     const itemForgeStatus = ItemForgeIntegration.getStatus();
 
+    const result = this.#clone(this.editableLoot ?? this.result);
+    if (result?.generatedItems) {
+      for (const item of result.generatedItems) {
+        item.lootForgeValueGp = priceToGp(item.system?.price?.value ?? {});
+      }
+    }
+
     return {
       instanceId: this.instanceId,
       config,
@@ -190,7 +198,7 @@ export class EmbeddedLootForge {
       themes,
       environmentOptions,
       itemForgeStatus,
-      result: this.editableLoot ?? this.result,
+      result,
       hasResult: this.hasResult
     };
   }
@@ -306,8 +314,11 @@ export class EmbeddedLootForge {
 
       generatedItems[index].system ??= {};
       generatedItems[index].system.price ??= {};
-      generatedItems[index].system.price.value ??= {};
-      generatedItems[index].system.price.value.gp = Math.max(0, Number(value ?? 0));
+      const valueGp = Math.max(0, Number(value ?? 0));
+      generatedItems[index].system.price.value = gpToCoins(valueGp);
+      generatedItems[index].flags ??= {};
+      generatedItems[index].flags[MODULE_ID] ??= {};
+      generatedItems[index].flags[MODULE_ID].valueGp = valueGp;
     }
 
     this.editableLoot.totalValueGp = this.#estimateTotalValue(this.editableLoot);
@@ -318,8 +329,7 @@ export class EmbeddedLootForge {
     const coins = loot?.coins ?? {};
     const coinGp = Number(coins.gp ?? 0) + Number(coins.sp ?? 0) / 10 + Number(coins.cp ?? 0) / 100 + Number(coins.pp ?? 0) * 10;
     const generatedGp = (loot?.generatedItems ?? []).reduce((sum, item) => {
-      const price = item.system?.price?.value ?? {};
-      return sum + Number(price.gp ?? 0) + Number(price.sp ?? 0) / 10 + Number(price.cp ?? 0) / 100 + Number(price.pp ?? 0) * 10;
+      return sum + priceToGp(item.system?.price?.value ?? {});
     }, 0);
     const roughPf2eGp = (loot?.selectedRefs ?? []).reduce((sum, item) => {
       const level = Number(item.level ?? 0);
@@ -334,8 +344,7 @@ export class EmbeddedLootForge {
     if (!item) return;
 
     const sourceType = item.flags?.[MODULE_ID]?.sourceType ?? "curiosity";
-    const price = item.system?.price?.value ?? {};
-    const currentValue = Number(price.gp ?? 0) + Number(price.sp ?? 0) / 10 + Number(price.cp ?? 0) / 100 + Number(price.pp ?? 0) * 10;
+    const currentValue = priceToGp(item.system?.price?.value ?? {});
     const themeId = this.editableLoot?.themeProfile?.id ?? this.lastConfig?.theme ?? "generic";
     let replacement = null;
 

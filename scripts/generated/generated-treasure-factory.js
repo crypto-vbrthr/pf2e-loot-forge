@@ -1,4 +1,5 @@
 import { GENERATED_ITEM_IMAGE } from "../constants.js";
+import { gpToCoins } from "../price-utils.js";
 import { BeverageGenerator } from "./beverage-generator.js";
 import { CollectibleGenerator } from "./collectible-generator.js";
 import { CraftGenerator } from "./craft-generator.js";
@@ -47,12 +48,13 @@ export class GeneratedTreasureFactory {
           category: generated.category,
           theme: generated.theme,
           quality: generated.quality,
-          generated: true
+          generated: true,
+          valueGp: generated.valueGp
         }
       },
       system: {
         description: { value: `<p>${generated.description}</p>` },
-        price: { value: { gp: generated.valueGp } },
+        price: { value: gpToCoins(generated.valueGp) },
         quantity: 1,
         bulk: { value: 0 },
         stackGroup: ""

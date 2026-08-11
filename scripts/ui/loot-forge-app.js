@@ -164,7 +164,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
 
   async #createLootActor() {
     this.editor.syncFromForm();
-    const loot = this.editor.getGeneratedResult();
+    const loot = this.editor.getLoot();
 
     if (!loot) {
       ui.notifications.warn(lfLocalize("LF.Notification.NoPreview"));

@@ -1,4 +1,5 @@
 import { LOOT_CATEGORIES, MODULE_ID } from "./constants.js";
+import { priceToGp } from "./price-utils.js";
 
 export const ITEM_FORGE_MODULE_ID = "pf2e-item-forge";
 
@@ -501,14 +502,16 @@ export class ItemForgeIntegration {
   static #normalizeTreasureForLootForge(item, priceGp, request, result, config) {
     item.system ??= {};
     item.system.price ??= {};
-    // Loot Forge's preview editor is GP-based. Preserve exact total value while
-    // normalizing Item Forge's multi-denomination coin object to one GP number.
-    item.system.price.value = { gp: Math.round(Number(priceGp) * 100) / 100 };
+    // Preserve the Item Forge source price exactly. Item Forge treasure sources
+    // already use whole PF2e coin denominations. Loot Forge derives the GP
+    // equivalent for preview/budget purposes without rewriting the source.
+    item.system.price.value ??= { gp: 0 };
     item.system.price.per ??= 1;
     item.flags ??= {};
     item.flags[MODULE_ID] = {
       ...(item.flags[MODULE_ID] ?? {}),
       provider: "item-forge",
+      valueGp: Math.round(Number(priceGp ?? priceToGp(item.system.price.value)) * 100) / 100,
       sourceType: "item-forge-treasure",
       itemForge: {
         category: request.category,

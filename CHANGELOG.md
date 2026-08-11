@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.3e
+- Test contract cleanup after the v0.3.3d price-source fix.
+- Replaces the obsolete v0.3.3c `price-precision.test.js` expectation with the current source-boundary contract.
+- Actor application is explicitly tested to avoid rewriting item source prices.
+- Price serialization to whole PF2e coin denominations remains covered by `price-source-precision.test.js`.
+- No runtime or generation logic changes.
+
+## 0.3.3d
+- Fixed empty loot actors caused by late price mutation during embedded item creation.
+- Item Forge treasure sources now keep their original PF2e whole-coin price structure.
+- Native generated treasures serialize decimal GP values to exact GP/SP/CP at source creation.
+- The Loot Forge preview derives a decimal GP display value without mutating item data.
+- Creating a loot actor now uses the editor's current editable loot state.
+- No budget or treasure-selection logic changed.
+
+## 0.3.3c
+
+- Fixed fractional treasure prices being rounded when items are created on actors.
+- Loot Forge preview values remain GP-based and unchanged.
+- Fractional GP values are serialized into exact integer GP/SP/CP denominations only at the Foundry item-creation boundary (for example, 121.8 gp becomes 121 gp + 8 sp).
+- No budget, generation, theme, environment, or Item Forge generation logic changes.
+
 ## 0.3.3b
 
 - Fixed Foundry VTT compatibility metadata.

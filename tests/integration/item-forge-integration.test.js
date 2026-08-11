@@ -136,7 +136,8 @@ test("delegated treasure generation passes Loot Forge theme and environment into
   assert.equal(captured.metadata.environment, "coast");
   assert.equal(captured.metadata.itemForgeTreasureMotif, "core.motif.maritime");
   assert.deepEqual(captured.metadata.themeTags, ["pirate", "sea"]);
-  assert.equal(result.generatedItems[0].system.price.value.gp, 40.5);
+  assert.deepEqual(result.generatedItems[0].system.price.value, { gp: 40, sp: 5 });
+  assert.equal(result.generatedItems[0].flags["pf2e-loot-forge"].valueGp, 40.5);
   assert.equal(result.generatedItems[0].flags["pf2e-loot-forge"].provider, "item-forge");
   uninstallFakeApi();
 });
