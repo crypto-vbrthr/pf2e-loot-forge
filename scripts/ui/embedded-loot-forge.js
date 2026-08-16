@@ -17,7 +17,7 @@ let embeddedInstanceCounter = 0;
  * does not expose "apply to actor" or "create loot actor" operations.
  */
 export class EmbeddedLootForge {
-  static CONTRACT_VERSION = 1;
+  static CONTRACT_VERSION = 2;
 
   constructor(options = {}) {
     this.instanceId = `lf-embedded-${++embeddedInstanceCounter}`;
@@ -29,6 +29,7 @@ export class EmbeddedLootForge {
     this.onChange = typeof options.onChange === "function" ? options.onChange : null;
     this.onGenerate = typeof options.onGenerate === "function" ? options.onGenerate : null;
     this.persistGenerationSettings = Boolean(options.persistGenerationSettings ?? false);
+    this.persistSourceSelection = Boolean(options.persistSourceSelection ?? false);
   }
 
   get hasResult() {
@@ -67,6 +68,23 @@ export class EmbeddedLootForge {
     return this.#clone(this.#getRenderConfig());
   }
 
+  getCompendiums() {
+    return this.#normalizeCompendiums(this.#getRenderConfig().compendiums);
+  }
+
+  async setCompendiums(compendiums = [], { render = true, persist = this.persistSourceSelection } = {}) {
+    const normalized = this.#normalizeCompendiums(compendiums);
+    this.lastConfig = this.#merge(this.#getRenderConfig(), { compendiums: normalized });
+
+    if (persist) {
+      await game.settings.set(MODULE_ID, "enabledCompendiums", normalized);
+    }
+
+    if (render) await this.refresh();
+    this.#emitChange();
+    return this;
+  }
+
   async setConfig(partial = {}, { render = true } = {}) {
     this.lastConfig = this.#merge(this.#getRenderConfig(), partial);
     if (render) await this.refresh();
@@ -85,6 +103,7 @@ export class EmbeddedLootForge {
   getState() {
     return {
       contractVersion: EmbeddedLootForge.CONTRACT_VERSION,
+      sourceSelectionScope: this.persistSourceSelection ? "world" : "host",
       config: this.getConfig(),
       result: this.getGeneratedResult(),
       loot: this.getLoot(),
@@ -127,14 +146,8 @@ export class EmbeddedLootForge {
       this.lastConfig = this.#clone(config);
     }
 
-    const enabledCompendiums = data
-      ? Object.entries(data)
-          .filter(([key, value]) => key.startsWith("pack.") && value)
-          .map(([key]) => key.replace(/^pack\./, ""))
-      : game.settings.get(MODULE_ID, "enabledCompendiums") ?? [];
-
-    await game.settings.set(MODULE_ID, "enabledCompendiums", enabledCompendiums);
-    config.compendiums = enabledCompendiums;
+    config.compendiums = this.#normalizeCompendiums(config.compendiums);
+    await this.#persistCompendiumSelection(config.compendiums);
 
     this.result = await LootGenerator.generate(config);
     this.editableLoot = this.#clone(this.result);
@@ -157,7 +170,7 @@ export class EmbeddedLootForge {
   async #prepareContext() {
     const config = this.#getRenderConfig();
 
-    const enabled = new Set(game.settings.get(MODULE_ID, "enabledCompendiums") ?? []);
+    const enabled = new Set(this.#normalizeCompendiums(config.compendiums));
     const packs = CompendiumScanner.getAvailableItemPacks().map(pack => ({
       collection: pack.collection,
       label: pack.metadata.label ?? pack.collection,
@@ -229,7 +242,8 @@ export class EmbeddedLootForge {
       includeValuables: true,
       includeCuriosities: true,
       mystifyMagicItems: game.settings.get(MODULE_ID, "mystifyMagicItems"),
-      useItemForge: game.settings.get(MODULE_ID, "useItemForgeByDefault")
+      useItemForge: game.settings.get(MODULE_ID, "useItemForgeByDefault"),
+      compendiums: this.#normalizeCompendiums(game.settings.get(MODULE_ID, "enabledCompendiums") ?? [])
     }, remembered), this.lastConfig ?? {});
   }
 
@@ -263,6 +277,13 @@ export class EmbeddedLootForge {
       input?.addEventListener("change", persistCurrentForm);
     }
 
+    this.root.querySelectorAll("input[name^='pack.']").forEach(input => {
+      input.addEventListener("change", async () => {
+        this.#syncConfigFromCurrentForm();
+        await this.#persistCompendiumSelection(this.lastConfig?.compendiums ?? []);
+      });
+    });
+
     const updateFixedBudgetState = () => {
       if (fixedBudgetInput) fixedBudgetInput.disabled = !useFixedBudgetInput?.checked;
       persistCurrentForm();
@@ -284,6 +305,8 @@ export class EmbeddedLootForge {
         this.root.querySelectorAll("input[name^='pack.']").forEach(input => {
           input.checked = checked;
         });
+        this.#syncConfigFromCurrentForm();
+        await this.#persistCompendiumSelection(this.lastConfig?.compendiums ?? []);
         return;
       }
 
@@ -428,8 +451,33 @@ export class EmbeddedLootForge {
       includeValuables: Boolean(data.includeValuables),
       includeCuriosities: Boolean(data.includeCuriosities),
       mystifyMagicItems: Boolean(data.mystifyMagicItems),
-      useItemForge: Boolean(data.useItemForge)
+      useItemForge: Boolean(data.useItemForge),
+      compendiums: this.#compendiumsFromFormData(data)
     };
+  }
+
+  #syncConfigFromCurrentForm() {
+    if (!this.root) return;
+    this.lastConfig = this.#configFromFormData(this.#formDataObject());
+    this.#emitChange();
+  }
+
+  #compendiumsFromFormData(data) {
+    return this.#normalizeCompendiums(
+      Object.entries(data ?? {})
+        .filter(([key, value]) => key.startsWith("pack.") && value)
+        .map(([key]) => key.replace(/^pack\./, ""))
+    );
+  }
+
+  #normalizeCompendiums(compendiums) {
+    if (!Array.isArray(compendiums)) return [];
+    return [...new Set(compendiums.filter(value => typeof value === "string" && value.trim()).map(value => value.trim()))];
+  }
+
+  async #persistCompendiumSelection(compendiums) {
+    if (!this.persistSourceSelection) return;
+    await game.settings.set(MODULE_ID, "enabledCompendiums", this.#normalizeCompendiums(compendiums));
   }
 
   #getRememberedSettings() {

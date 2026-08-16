@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.5
+
+- Embedded Loot Forge compendium selection is now host-local by default.
+- Added `persistSourceSelection` to the embedded editor. It defaults to `false`, so embedded hosts no longer overwrite the world-level `enabledCompendiums` setting during generation.
+- Added `initialConfig.compendiums` support as the explicit per-editor source profile while retaining the world selection as the default when no host selection is supplied.
+- Added `getCompendiums()` and `setCompendiums()` to embedded contract v2.
+- `getState()` now reports `sourceSelectionScope` as `host` or `world`.
+- Standalone Loot Forge explicitly opts into `persistSourceSelection: true`, preserving existing standalone source-selection behavior.
+- Embedded source selections are passed unchanged through normal Loot Forge generation and optional Item Forge delegation.
+- Added contract tests for host-local source isolation and explicit world persistence.
+- Test suite: 54 tests.
+
 ## 0.3.4
 
 - Remembers the standalone Loot Forge's last level, party size, minimum item level, and maximum item level per client.

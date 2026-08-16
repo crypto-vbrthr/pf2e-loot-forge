@@ -29,6 +29,7 @@ export class LootForgeApp extends foundry.applications.api.HandlebarsApplication
     this.editor = options.editor ?? new EmbeddedLootForge({
       initialConfig: options.initialConfig ?? {},
       persistGenerationSettings: true,
+      persistSourceSelection: true,
       onChange: () => this.#syncHostControls()
     });
   }

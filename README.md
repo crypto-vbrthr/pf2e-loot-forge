@@ -193,7 +193,7 @@ Fully localized in:
 
 The standalone Loot Forge remembers the last used level, party size, and minimum/maximum item level on each client.
 
-Embedded editors created by other modules remain host-controlled by default and do not automatically overwrite these standalone preferences.
+Embedded editors created by other modules remain host-controlled by default and do not automatically overwrite these standalone preferences or the world's enabled compendium selection.
 
 ### Fixed Budget
 
@@ -219,8 +219,14 @@ const editor = lootForge.createEmbeddedEditor({
   initialConfig: {
     level: 8,
     theme: "generic",
-    environment: "generic"
+    environment: "generic",
+    compendiums: [
+      "pf2e.equipment-srd",
+      "my-module.custom-items"
+    ]
   },
+  // Default is false: source selection remains local to this editor/host.
+  persistSourceSelection: false,
   onGenerate: state => {
     console.log("Generated loot", state.loot);
   }
@@ -229,11 +235,35 @@ const editor = lootForge.createEmbeddedEditor({
 await editor.render(containerElement);
 ```
 
-The embedded editor contract currently has version `1`:
+The embedded editor contract currently has version `2`:
 
 ```js
-lootForge.embeddedContractVersion; // 1
+lootForge.embeddedContractVersion; // 2
 ```
+
+### Host-local compendium selection
+
+Embedded editors keep their compendium selection local by default. The initial selection is inherited from the Loot Forge world setting unless `initialConfig.compendiums` is provided, but changes made inside the embedded editor do **not** modify `enabledCompendiums`.
+
+This is intended for hosts such as Creature Forge or Encounter Forge which need their own source profile without changing the standalone Loot Forge configuration.
+
+```js
+const editor = lootForge.createEmbeddedEditor({
+  initialConfig: {
+    level: 10,
+    compendiums: ["pf2e.equipment-srd", "creature-pack.loot"]
+  }
+});
+
+editor.getCompendiums();
+// => ["pf2e.equipment-srd", "creature-pack.loot"]
+
+await editor.setCompendiums(["creature-pack.loot"], { render: false });
+```
+
+The host-local selection is included in `getConfig()` and `getState().config`, and it is passed to every generation request including Item Forge delegation.
+
+The standalone Loot Forge opts into `persistSourceSelection: true`, preserving its existing world-level source-selection behavior. An external host can explicitly request the same behavior, but should normally leave it disabled.
 
 Available editor methods:
 
@@ -241,6 +271,8 @@ Available editor methods:
 * `refresh()`
 * `getConfig()`
 * `setConfig(partialConfig, options)`
+* `getCompendiums()`
+* `setCompendiums(compendiums, options)`
 * `getState()`
 * `getLoot()`
 * `getGeneratedResult()`
